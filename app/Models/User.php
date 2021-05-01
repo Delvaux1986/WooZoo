@@ -18,6 +18,13 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public function pets()
+    {
+        return $this->hasMany(Pet::class, 'foreign_key');
+    }
+
+
+
     /**
      * The attributes that are mass assignable.
      *
