@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 01 mai 2021 à 23:06
+-- Généré le : Dim 02 mai 2021 à 00:45
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.2
 
@@ -158,7 +158,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('gPlMiaHmxoKIyLsu6JvTvEMt5SrKEC3XHL4d5JkU', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoib3lZcmdvb2ZzeDhCT1BvY3pWUEtEaFQ5Zzg5RlFCT0xKUzh6UFF3TCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjI3OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619903061);
+('gPlMiaHmxoKIyLsu6JvTvEMt5SrKEC3XHL4d5JkU', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoib3lZcmdvb2ZzeDhCT1BvY3pWUEtEaFQ5Zzg5RlFCT0xKUzh6UFF3TCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619908340);
 
 -- --------------------------------------------------------
 
@@ -198,7 +198,7 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
   `workingToday` tinyint(1) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -217,11 +217,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `phone`, `workingToday`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', NULL, NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'GAthkRvzbrXt0WsNIJjcuAtMMyy9jcbw0GiKMTHmiZJLQBkxKBuu3JkVtaiW', NULL, NULL, '2021-05-01 16:23:33', '2021-05-01 16:23:33'),
-(2, 'Léna', 'Léna@Léna.be', 'Chef', 488555888, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'GAthkRvzbrXt0WsNIJjcuAtMMyy9jcbw0GiKMTHmiZJLQBkxKBuu3JkVtaiW', NULL, NULL, '2021-05-01 16:23:33', '2021-05-01 16:23:33'),
 (3, 'Nicode', 'Nicode@Nicode.be', 'Soigneur', 477666444, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Simon', 'Simon@Simon.be', 'Soigneur', 466333222, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Robby', 'Robby@Robby.be', 'Dresseur', 455999777, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(5, 'Robby', 'Robby@Robby.be', 'Nettoyeur ', 455999777, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Léna', 'Léna@Léna.be', 'Responsable', 488444555, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -332,7 +332,7 @@ ALTER TABLE `species`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées
