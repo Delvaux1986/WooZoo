@@ -36,6 +36,11 @@ export default {
 </script>
 
 <style scoped>
+    header
+        {
+        background-color: #bacf9f;
+        color:#52351e !important;
+        }
     nav {
         border-top: 2px solid black;
         border-bottom: 2px solid black;
@@ -49,7 +54,7 @@ export default {
         font-size: var(--text-size);
         }
     a {
-        color: black;
+        color:#52351e !important;
         }
     ol {
         list-style-type: none;

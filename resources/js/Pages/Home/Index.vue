@@ -67,8 +67,7 @@ export default {
 
 <style>
     *{
-        background-color: #bacf9f;
-        color:#52351e;
+        
         font-size: 18px;
         font-weight: 500;
     }

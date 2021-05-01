@@ -22110,7 +22110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nnav[data-v-5663af57] {\r\n        border-top: 2px solid black;\r\n        border-bottom: 2px solid black;\r\n        padding: 0.45vh;\r\n        margin-right: 40px;\r\n        margin-left: 40px;\n}\nnav > ol > li > a[data-v-5663af57] {\r\n        text-decoration: none;\r\n        font-family: Pathway;\r\n        font-size: var(--text-size);\n}\na[data-v-5663af57] {\r\n        color: black;\n}\nol[data-v-5663af57] {\r\n        list-style-type: none;\r\n        display: flex;\r\n        flex-direction: row;\r\n        justify-content: space-around;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nheader[data-v-5663af57]\r\n        {\r\n        background-color: #bacf9f;\r\n        color:#52351e !important;\n}\nnav[data-v-5663af57] {\r\n        border-top: 2px solid black;\r\n        border-bottom: 2px solid black;\r\n        padding: 0.45vh;\r\n        margin-right: 40px;\r\n        margin-left: 40px;\n}\nnav > ol > li > a[data-v-5663af57] {\r\n        text-decoration: none;\r\n        font-family: Pathway;\r\n        font-size: var(--text-size);\n}\na[data-v-5663af57] {\r\n        color:#52351e !important;\n}\nol[data-v-5663af57] {\r\n        list-style-type: none;\r\n        display: flex;\r\n        flex-direction: row;\r\n        justify-content: space-around;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22134,7 +22134,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n*{\r\n        background-color: #bacf9f;\r\n        color:#52351e;\r\n        font-size: 18px;\r\n        font-weight: 500;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n*{\r\n        \r\n        font-size: 18px;\r\n        font-weight: 500;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
