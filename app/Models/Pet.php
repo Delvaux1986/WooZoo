@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Species;
+use App\Models\Specie;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,14 +17,9 @@ class Pet extends Model
     ];
 
     protected $table = 'pets';
-    
-    public function species()
+    // Pet that can hav only One Specie
+    public function specie()
     {
-        $this->hasOne(Species::class);
-    }
-    
-    public function healer()
-    {
-        $this->hasOne(User::class);
+        return $this->belongsTo(Specie::class);
     }
 }

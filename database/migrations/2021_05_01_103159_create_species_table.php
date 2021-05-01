@@ -13,11 +13,12 @@ class CreateSpeciesTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::create('species', function (Blueprint $table) {
             $table->id();
             $table->string('specie')->nullable();
+            $table->string('family')->nullable();
             $table->string('food_type')->nullable();
+            $table->time('lunchtime');
             $table->unsignedBigInteger('enclosure_id');
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Pet;
+use App\Models\Specie;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
@@ -23,8 +24,14 @@ class User extends Authenticatable
     
     protected $table = 'users';
 
-    
-    public function pets()
+    // Users that can hav to handle one specie
+    public function usersToSpicie()
+    {
+        return $this->hasMany(Specie::class);
+    }
+
+    // Users that can handle only one Pet
+    public function usersToPet()
     {
         return $this->hasMany(Pet::class);
     }
@@ -40,6 +47,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'id',
+        'phone',
+        'worktoday'
     ];
 
     /**

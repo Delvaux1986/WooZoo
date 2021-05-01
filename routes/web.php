@@ -4,7 +4,9 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\PetsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\EnclosureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,12 @@ use App\Http\Controllers\UsersController;
 Route::get('/', [HomeController::class , 'index' ])->middleware('auth')->name('home');
 
 Route::get('/healers', [UsersController::class , 'index'])->middleware('auth')->name('users');
+
+Route::get('/animals', [PetsController::class , 'index'])->middleware('auth')->name('animals');
+
+Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
+
+
 
 
 

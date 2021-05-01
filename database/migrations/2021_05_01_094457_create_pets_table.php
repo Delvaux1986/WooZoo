@@ -21,7 +21,7 @@ class CreatePetsTable extends Migration
             $table->string('name', 20);
             $table->dateTime('created_at')->nullable();
             $table->dateTime('update_at')->nullable();
-            $table->dateTime('lunchtime')->nullable();
+            $table->time('lunchtime')->nullable();
             $table->boolean('feeds')->nullable();
         });
     }

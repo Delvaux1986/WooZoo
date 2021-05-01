@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Species;
+use App\Models\Specie;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,6 +20,6 @@ class Enclosure extends Model
 
     public function species()
     {
-        $this->belongsTo(Species::class);
+        $this->belongsTo(Specie::class);
     }
 }
