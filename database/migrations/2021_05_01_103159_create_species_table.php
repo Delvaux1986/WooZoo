@@ -13,12 +13,12 @@ class CreateSpeciesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('species', function (Blueprint $table) {
             $table->id();
-            $table->string('specie');
-            $table->string('food_type');
+            $table->string('specie')->nullable();
+            $table->string('food_type')->nullable();
             $table->unsignedBigInteger('enclosure_id');
-            $table->foreign('enclosure_id')->references('id')->on('enclosures');
         });
     }
 

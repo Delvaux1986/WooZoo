@@ -13,25 +13,16 @@ class CreatePetsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('specie_id');
-            $table->foreign('specie_id')
-                        ->references('id')
-                        ->on('species')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                        ->references('id')
-                        ->on('users')
-                        ->onDelete('cascade')
-                        ->onUpdate('cascade');           
+            $table->foreignId('specie_id')->constrained('species');
+            $table->unsignedBigInteger('user_id');         
             $table->string('name', 20);
-            $table->date('created_at');
-            $table->date('update_at');
-            $table->date('lunchtime');
-            $table->boolean('feeds');
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('update_at')->nullable();
+            $table->dateTime('lunchtime')->nullable();
+            $table->boolean('feeds')->nullable();
         });
     }
 

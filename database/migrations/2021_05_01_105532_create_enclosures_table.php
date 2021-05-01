@@ -13,12 +13,14 @@ class CreateEnclosuresTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('enclosures', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('occupy');
-            $table->unsignedBigInteger('pets_id');
-            $table->foreign('pets_id')->references('id')->on('pets');
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->boolean('occupy')->nullable();
+            $table->unsignedBigInteger('pet_id')->references('id')->on('pets');
 
         });
     }
