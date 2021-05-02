@@ -1,23 +1,21 @@
 <template>
     <header>
-      <div class="text-center">
-        <h2 class="OldLondon">WooZoo</h2>
-      </div>
       <nav class="navbar navbar-expand-lg w-100">
         <ol class="d-flex w-100 align-items-center justify-content-around">
-          <li class="navbar-brand"><a :href="route('home')">Home</a></li>
-          <li class="nav-item"><a :href="route('animals')">Animals</a></li>
-          <li class="nav-item"><a :href="route('users')">Healers</a></li>
-          <li class="nav-item"><a :href="route('enclosure')">Enclosures</a></li>
-          <li class="nav-item dropdown">
+          <a :href="route('home')">
+              <img :src="`${logo}`" alt="logo" class="img-fluid" style="width: 100px; height: 100px;">
+            </a>
+          <li class="nav-item h3 fw-bold"><a :href="route('animals')">Animals</a></li>
+          <li class="nav-item h3 fw-bold"><a :href="route('users')">Healers</a></li>
+          <li class="nav-item h3 fw-bold"><a :href="route('enclosure')">Enclosures</a></li>
+          <li class="nav-item dropdown h3 fw-bold">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ $page.props.user.name }}
             </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" :href="route('profile.show')">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" :href="route('logout')">Logout</a></li>
               </ul>
           </li>
         </ol>
@@ -34,12 +32,19 @@
 </template>
 
 <script>
-import JetDropdown from '@/Jetstream/Dropdown'
+
 
 export default {
     components: {
-        JetDropdown
-    }    
+        
+    },
+    data() {
+      return {
+        logo : 'https://scontent-bru2-1.xx.fbcdn.net/v/t1.15752-9/180434275_381621103007144_5694704895244944892_n.png?_nc_cat=106&ccb=1-3&_nc_sid=ae9488&_nc_ohc=cBTPiaXu3h8AX9vS-qn&_nc_ht=scontent-bru2-1.xx&oh=060cd11987f2f4457944be9d0d9b322a&oe=608F925A',
+      }
+    },
+    
+
 }
 </script>
 
@@ -59,4 +64,5 @@ export default {
         list-style-type: none;
         
         }
+    
 </style>

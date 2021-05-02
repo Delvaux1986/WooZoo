@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
-use Illuminate\Http\Request;
+use App\Models\User;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PetsController extends Controller
 {
@@ -15,7 +17,13 @@ class PetsController extends Controller
      */
     public function index()
     {
-        //
+        $pets = Pet::with('specie')->get();
+        $user = Auth::user();
+
+        return Inertia::render('Animals/Index',[
+            'animals' => compact('pets'),
+            'user' => compact('user')
+        ]);
     }
 
     /**
@@ -47,9 +55,14 @@ class PetsController extends Controller
      */
     public function show(Pet $pet)
     {
-        $thisPet = Pet::with('specie')->find($pet->id);
-    
-        return Inertia::render('Animals/Show', compact('thisPet'));
+        
+        $pet = Pet::with('specie')->find($pet->id);
+        $user = Auth::user();
+        
+        return Inertia::render('Animals/Show', [
+            'pet' => compact('pet'),
+            'user' => compact('user')
+        ]);
     }
 
     /**
@@ -58,9 +71,17 @@ class PetsController extends Controller
      * @param  \App\Models\Pet  $pet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pet $pet)
+    public function edit($id)
     {
-        //
+        $animal = Pet::with('specie')->find($id); // LOOK AFTER PET REQUEST
+        $user = Auth::user(); // for check if user hav right
+        $users = User::all(); // get all user for select list
+
+        return Inertia::render('Animals/Edit', [
+            'animal' => compact('animal'),
+            'user' => compact('user'),
+            'userslist' => compact('users')
+        ]);
     }
 
     /**

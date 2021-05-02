@@ -1,6 +1,6 @@
 <template>
     <app-Layout>
-            <h2 class="text-center">Animals</h2>
+            <h2 class="text-center mb-5">Animals</h2>
         <table class="table text-center table-bordered">
             <thead class="table-dark w-80">
                 <tr>
@@ -15,14 +15,14 @@
                 <tr>
                     <td><a :href="route('animals.show' , pet)">{{pet.id}}</a></td>
                     <td>{{pet.name}}</td>
-                    <td>{{pet.specie.specie}}</td>
+                    <td>{{pet.specie.specie ? pet.specie.specie : 'N/A'}}</td>
                     <td>{{pet.specie.family ? pet.specie.family : 'N/A'}}</td>
-                    <td>{{pet.specie.lunchtime}}</td>
+                    <td>{{pet.specie.lunchtime ? pet.specie.lunchtime : 'N/A'}}</td>
                 </tr>
             </tbody>
         </table>
-            <h2 class="text-center">Healers</h2>
-        <table class="table text-center table-bordered">
+            <h2 class="text-center mb-5">Healers</h2>
+        <table class="table text-center table-bordered mt-5">
             <thead class="table-dark w-80">
                 <tr>
                 <th>#</th>
@@ -38,9 +38,9 @@
                     <td>{{user.id}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.role}}</td>
-                    <td>0{{user.phone}}</td>
-                    <td>{{user.worktoday}}</td>
-                    <td>{{user.email}}</td>
+                    <td>{{user.phone ? '0'+ user.phone : 'N/A'}}</td>
+                    <td>{{user.worktoday ? user.worktoday  : 'N/A'}}</td>
+                    <td>{{user.email ? user.email : 'N/A'}}</td>
                     
                 </tr>
             </tbody>
