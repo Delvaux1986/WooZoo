@@ -13,7 +13,12 @@ class Pet extends Model
     protected $guarded = [];
     
     protected $fillable = [
-        'specie_id', 'user_id', 'name' , 'lunchtime' , 'feeds'
+        'specie_id',
+        'user_id',
+        'name',
+        'lunchtime',
+        'feeds',
+        'created_at'
     ];
 
     protected $table = 'pets';

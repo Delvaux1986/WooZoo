@@ -13,10 +13,10 @@
             </thead>
             <tbody v-for="pet in this.pets" :key="pet.id">
                 <tr>
-                    <td>{{pet.id}}</td>
+                    <td><a :href="route('animals.show' , pet)">{{pet.id}}</a></td>
                     <td>{{pet.name}}</td>
                     <td>{{pet.specie.specie}}</td>
-                    <td>{{pet.specie.family}}</td>
+                    <td>{{pet.specie.family ? pet.specie.family : 'N/A'}}</td>
                     <td>{{pet.specie.lunchtime}}</td>
                 </tr>
             </tbody>

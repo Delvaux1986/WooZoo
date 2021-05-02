@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pet;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
-class PetController extends Controller
+class PetsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,7 +47,9 @@ class PetController extends Controller
      */
     public function show(Pet $pet)
     {
-        //
+        $thisPet = Pet::with('specie')->find($pet->id);
+    
+        return Inertia::render('Animals/Show', compact('thisPet'));
     }
 
     /**

@@ -13,7 +13,7 @@ class Specie extends Model
     protected $guarded = [];
     
     protected $fillable = [
-        'specie', 'food_type', 'enclosure_id', 'family'
+        'specie', 'food_type', 'enclosure_id', 'family' , 'lunchtime'
     ];
     
     protected $table = 'species';

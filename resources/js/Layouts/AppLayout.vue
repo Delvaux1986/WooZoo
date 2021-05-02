@@ -3,14 +3,22 @@
       <div class="text-center">
         <h2 class="OldLondon">WooZoo</h2>
       </div>
-      <nav>
-        <ol>
-          <li><a :href="route('home')">Home</a></li>
-          <li><a :href="route('animals')">Animals</a></li>
-          <li><a :href="route('users')">Healers</a></li>
-          <li><a :href="route('enclosure')">Enclosures</a></li>
-          <li>
-              {{ $page.props.user.name }} faire un menu dropdown
+      <nav class="navbar navbar-expand-lg w-100">
+        <ol class="d-flex w-100 align-items-center justify-content-around">
+          <li class="navbar-brand"><a :href="route('home')">Home</a></li>
+          <li class="nav-item"><a :href="route('animals')">Animals</a></li>
+          <li class="nav-item"><a :href="route('users')">Healers</a></li>
+          <li class="nav-item"><a :href="route('enclosure')">Enclosures</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ $page.props.user.name }}
+            </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" :href="route('profile.show')">Profil</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
           </li>
         </ol>
       </nav>
@@ -41,25 +49,14 @@ export default {
         background-color: #bacf9f;
         color:#52351e !important;
         }
-    nav {
-        border-top: 2px solid black;
-        border-bottom: 2px solid black;
-        padding: 0.45vh;
-        margin-right: 40px;
-        margin-left: 40px;
-        }
     nav > ol > li > a {
         text-decoration: none;
-        font-family: Pathway;
-        font-size: var(--text-size);
         }
     a {
         color:#52351e !important;
         }
     ol {
         list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        
         }
 </style>

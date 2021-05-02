@@ -25,7 +25,11 @@ Route::get('/healers', [UsersController::class , 'index'])->middleware('auth')->
 
 Route::get('/animals', [PetsController::class , 'index'])->middleware('auth')->name('animals');
 
+Route::get('/animals/{pet}', [PetsController::class , 'show'])->name('animals.show');
+
 Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
+
+Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('logout');
 
 
 
