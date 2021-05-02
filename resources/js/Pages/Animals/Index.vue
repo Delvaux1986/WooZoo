@@ -10,24 +10,24 @@
                         <th>Specie</th>
                         <th>Family</th>
                         <th>Lunch Time</th>
-                        <th v-if="user.user.role === 'Admin'">Update</th>
-                        <th v-if="user.user.role === 'Admin'">Delete</th>
+                        <th v-if="user.role === 'Admin'">Update</th>
+                        <th v-if="user.role === 'Admin'">Delete</th>
                         </tr>
                     </thead>
-                    <tbody v-for="pet in this.animals.pets" :key="pet.id">
+                    <tbody v-for="pet in this.animals" :key="pet.id">
                         <tr>
                             <td><a :href="route('animals.show' , pet)">{{pet.id}}</a></td>
                             <td>{{pet.name}}</td>
                             <td>{{pet.specie.specie ? pet.specie.specie : 'N/A'}}</td>
                             <td>{{pet.specie.family ? pet.specie.family : 'N/A'}}</td>
                             <td>{{pet.specie.lunchtime ? pet.specie.lunchtime : 'N/A'}}</td>
-                            <td v-if="user.user.role === 'Admin'"> 
+                            <td v-if="user.role === 'Admin'"> 
                                 <a :href="route('animals.edit', pet.id)">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                     
                             </td>
-                            <td v-if="user.user.role === 'Admin'">
+                            <td v-if="user.role === 'Admin'">
                                 <a href="">
                                     <i class="bi bi-trash"></i>
                                 </a>
@@ -35,7 +35,7 @@
                         </tr>
                     </tbody>
                 </table>
-        </div>
+        </div> 
     </app-layout>
 </template>
 
@@ -51,7 +51,10 @@ export default {
         AppLayout,
         },
   
-        props: ['animals', 'user']
+        props: {
+            animals:Object,
+            user : Object,
+        }
         ,
     mounted() {
         console.log("Component Home mounted.");

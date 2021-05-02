@@ -11,7 +11,7 @@
                 <th>Lunch Time</th>
                 </tr>
             </thead>
-            <tbody v-for="pet in this.pets" :key="pet.id">
+            <tbody v-for="pet in this.animals" :key="pet.id">
                 <tr>
                     <td><a :href="route('animals.show' , pet)">{{pet.id}}</a></td>
                     <td>{{pet.name}}</td>
@@ -55,7 +55,10 @@ export default {
     components: {
         AppLayout,
         },
-    props: ['pets', 'users']
+    props: {
+        animals:Object,
+        users:Object,
+    }
         ,
     mounted() {
         console.log("Component Home mounted.");

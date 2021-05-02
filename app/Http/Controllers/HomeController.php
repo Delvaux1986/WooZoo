@@ -16,11 +16,11 @@ class HomeController extends Controller
     // LANDING PAGE
     public function index()
     {
-        $pets = Pet::with('specie')->get();
+        $animals = Pet::with('specie')->get();
         $users = User::all();
 
         return Inertia::render('Home/Index' , [
-            'pets' => $pets,
+            'animals' => $animals,
             'users' => $users
         ]);
     }

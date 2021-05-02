@@ -23,8 +23,8 @@ class PetsController extends Controller
         $user = Auth::user();
 
         return Inertia::render('Animals/Index',[
-            'animals' => compact('pets'),
-            'user' => compact('user')
+            'animals' => $pets,
+            'user' => $user
         ]);
     }
 
@@ -62,8 +62,8 @@ class PetsController extends Controller
         $user = Auth::user();
         
         return Inertia::render('Animals/Show', [
-            'pet' => compact('pet'),
-            'user' => compact('user')
+            'animal' => $pet,
+            'user' => $user
         ]);
     }
 
@@ -80,13 +80,13 @@ class PetsController extends Controller
         $users = User::all(); // get all user for select list
         $species = Specie::all(); // GET ALL SPECIES FOR SELECT LIST
         $enclosures = Enclosure::all(); // SAME FOR SELECT
-
+        // dd($animal);
         return Inertia::render('Animals/Edit', [
-            'animal' => compact('animal'),
-            'user' => compact('user'),
-            'userslist' => compact('users'),
-            'specieslist' => compact('species'),
-            'enclosurelist' => compact('enclosures')
+            'animal' => $animal,
+            'user' => $user,
+            'userslist' => $users,
+            'specieslist' => $species ,
+            'enclosurelist' => $enclosures
         ]);
     }
 
@@ -99,7 +99,9 @@ class PetsController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-        //
+        $animal = Pet::with('specie')->find($request->request->get('id')); // GET THE GOOD ANIMAL WITH IS ID
+
+        dd($request);
     }
 
     /**

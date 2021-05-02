@@ -29,6 +29,8 @@ Route::get('/animals/{pet}', [PetsController::class , 'show'])->name('animals.sh
 
 Route::get('/animals/edit/{id}' , [PetsController::class , 'edit'])->name('animals.edit');
 
+Route::post('/animals/update/{pet}', [PetsController::class , 'update'])->name('animals.update');
+
 Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
 
 Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('logout');
