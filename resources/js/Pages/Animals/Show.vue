@@ -17,7 +17,8 @@
 
                     </ul>
                     <div  v-if="user.user.role === 'Admin'" class="d-flex justify-content-between">
-                        <button class="btn btn-outline-warning">Edit</button>
+                        <inertia-link :href="route('animals.edit', pet.pet.id)" class="btn btn-outline-warning">Edit</inertia-link>
+                        
                         <button class="btn btn-outline-danger">Delete</button>
                     </div>
                     
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+import Input from '../../Jetstream/Input.vue';
 
 import AppLayout from "./../../Layouts/AppLayout";
 
@@ -38,12 +40,13 @@ import AppLayout from "./../../Layouts/AppLayout";
         components : {
             AppLayout
         },
+    
         props: 
                 ['pet' , 'user'],
 
         mounted() {
             console.log("Component animals.show mounted.");
-            console.log(this.user.user);
+            console.log(this.pet.pet.id);
             
         },
         

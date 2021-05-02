@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : Dim 02 mai 2021 à 00:45
+-- Généré le : Dim 02 mai 2021 à 17:07
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.2
 
@@ -34,6 +34,13 @@ CREATE TABLE `enclosures` (
   `occupy` tinyint(1) DEFAULT NULL,
   `pet_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `enclosures`
+--
+
+INSERT INTO `enclosures` (`id`, `name`, `description`, `occupy`, `pet_id`) VALUES
+(1, 'lion enclosure', 'lion enclosure', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -130,13 +137,15 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `specie_id`, `user_id`, `name`, `created_at`, `update_at`, `lunchtime`, `feeds`) VALUES
-(1, 4, 0, 'Winnie', '2021-05-06 22:22:38', NULL, NULL, NULL),
-(2, 2, 0, 'King', NULL, NULL, NULL, NULL),
-(3, 5, 0, 'Nemo', '2021-05-17 22:23:50', NULL, NULL, NULL),
-(4, 5, 0, 'Doris', NULL, NULL, NULL, NULL),
-(5, 6, 0, 'Ka', '2021-05-21 22:24:41', NULL, NULL, NULL),
-(6, 7, 0, 'Babar', '2021-05-13 22:28:45', NULL, NULL, NULL),
-(7, 7, 0, 'Clayton', NULL, NULL, NULL, NULL);
+(1, 4, 0, 'Winnie', '2021-05-06 22:22:38', NULL, NULL, 1),
+(2, 2, 0, 'King', NULL, NULL, NULL, 0),
+(3, 5, 0, 'Nemo', '2021-05-17 22:23:50', NULL, NULL, 1),
+(4, 5, 0, 'Doris', NULL, NULL, NULL, 1),
+(5, 6, 0, 'Ka', '2021-05-21 22:24:41', NULL, NULL, 0),
+(6, 7, 0, 'Babar', '2021-05-13 22:28:45', NULL, NULL, 0),
+(7, 7, 0, 'Clayton', NULL, NULL, NULL, 0),
+(8, 1, 0, 'Alex', '2021-05-02 16:49:07', NULL, '16:00:00', 1),
+(9, 1, 0, 'José', '2021-05-02 16:49:07', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -158,7 +167,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('gPlMiaHmxoKIyLsu6JvTvEMt5SrKEC3XHL4d5JkU', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoib3lZcmdvb2ZzeDhCT1BvY3pWUEtEaFQ5Zzg5RlFCT0xKUzh6UFF3TCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619908340);
+('oVBphCyVsK9ui8PF2FBWCxKn6ri9yiERRkNKjW4Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidUpJOXN1ZVpmMGl6ajhmZ3JOT1Z4TWl1bGxMTFVGM0FOZm9zdHpzUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hbmltYWxzL2VkaXQvOCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619967936);
 
 -- --------------------------------------------------------
 
@@ -180,7 +189,7 @@ CREATE TABLE `species` (
 --
 
 INSERT INTO `species` (`id`, `specie`, `family`, `food_type`, `lunchtime`, `enclosure_id`) VALUES
-(1, 'Félidé', 'Lion', 'Carnivore', '09:00:00', 0),
+(1, 'Félidé', 'Lion', 'Carnivore', '09:00:00', 1),
 (2, 'Primate', 'Gorille', 'Viande', '10:00:00', 0),
 (3, 'Oiseaux', NULL, 'graines', '10:30:00', 0),
 (4, 'Ursidé', 'Ours', 'Carnivore', '11:00:00', 0),
@@ -217,7 +226,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `phone`, `workingToday`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'GAthkRvzbrXt0WsNIJjcuAtMMyy9jcbw0GiKMTHmiZJLQBkxKBuu3JkVtaiW', NULL, NULL, '2021-05-01 16:23:33', '2021-05-01 16:23:33'),
+(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'P9Cag6408TxL98Pw96x1UZoS5EEhO3xZ1XHgDpKeJJKlbK0ELVJrfOFiw71t', NULL, NULL, '2021-05-01 16:23:33', '2021-05-01 16:23:33'),
 (3, 'Nicode', 'Nicode@Nicode.be', 'Soigneur', 477666444, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Simon', 'Simon@Simon.be', 'Soigneur', 466333222, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Robby', 'Robby@Robby.be', 'Nettoyeur ', 455999777, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -296,7 +305,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `enclosures`
 --
 ALTER TABLE `enclosures`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `failed_jobs`
@@ -320,7 +329,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `species`

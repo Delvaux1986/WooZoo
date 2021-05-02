@@ -27,7 +27,7 @@ Route::get('/animals', [PetsController::class , 'index'])->middleware('auth')->n
 
 Route::get('/animals/{pet}', [PetsController::class , 'show'])->name('animals.show');
 
-Route::get('/animals/edit/{pet}' , [PetsController::class , 'edit'])->name('animals.edit');
+Route::get('/animals/edit/{id}' , [PetsController::class , 'edit'])->name('animals.edit');
 
 Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
 

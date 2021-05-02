@@ -18,7 +18,7 @@ class Enclosure extends Model
     protected $table = 'enclosures';
 
 
-    public function species()
+    public function specieOccuped()
     {
         $this->belongsTo(Specie::class);
     }

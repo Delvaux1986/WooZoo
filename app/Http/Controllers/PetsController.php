@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enclosure;
 use App\Models\Pet;
+use App\Models\Specie;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -76,11 +78,15 @@ class PetsController extends Controller
         $animal = Pet::with('specie')->find($id); // LOOK AFTER PET REQUEST
         $user = Auth::user(); // for check if user hav right
         $users = User::all(); // get all user for select list
+        $species = Specie::all(); // GET ALL SPECIES FOR SELECT LIST
+        $enclosures = Enclosure::all(); // SAME FOR SELECT
 
         return Inertia::render('Animals/Edit', [
             'animal' => compact('animal'),
             'user' => compact('user'),
-            'userslist' => compact('users')
+            'userslist' => compact('users'),
+            'specieslist' => compact('species'),
+            'enclosurelist' => compact('enclosures')
         ]);
     }
 
