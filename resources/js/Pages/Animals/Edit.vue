@@ -44,8 +44,8 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="petFoodType">Food type</label>
-                        <input class="form-control mb-1" type="text" id="petFoodType" name="petFoodType" v-model="form.petFoodType">
+                        <label for="petSpecialDiet">Special diet</label>
+                        <input class="form-control mb-1" type="text" id="petSpecialDiet" name="petSpecialDiet" v-model="form.petSpecialDiet">
                     </div>
                     <div class="col">
                         <label for="petEnclosure">Enclosures</label>
@@ -54,7 +54,12 @@
                             <option v-for="enclosure in this.enclosurelist" :key="enclosure.id" :value="enclosure.id">{{enclosure.name}}</option>
                         </select>
                         <input type="hidden" name="petUpdateTime" v-model="form.petUpdateTime">
-                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="petFoodType">Food Type for this specie</label>
+                            <input type="text" name="petFoodType" id="petFoodType" class="form-control mb-1" v-model="form.petFoodType" readonly>
+                        </div>
                     </div>
                 </div>
                 <div class="col mt-5">
@@ -95,10 +100,12 @@
                 form:{
                     id : this.animal.id,
                     petName: this.animal.name,
+                    petHealer : this.animal.user_id,
                     petSpecie : this.animal.specie_id,
                     petFamily : this.animal.specie.family,
                     petLunchtime : this.animal.specie.lunchtime,
                     petFeeds : this.animal.feeds,
+                    petSpecialDiet : this.animal.special_diet,
                     petFoodType : this.animal.specie.food_type,
                     petEnclosure : this.animal.specie.enclosure_id,
                     update_at : this.time,

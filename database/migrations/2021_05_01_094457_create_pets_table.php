@@ -20,8 +20,9 @@ class CreatePetsTable extends Migration
             $table->unsignedBigInteger('user_id');         
             $table->string('name', 20);
             $table->dateTime('created_at')->nullable();
-            $table->dateTime('update_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
             $table->time('lunchtime')->nullable();
+            $table->string('special_diet')->nullable();
             $table->boolean('feeds')->nullable();
         });
     }

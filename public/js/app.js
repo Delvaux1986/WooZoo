@@ -17325,10 +17325,12 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         id: this.animal.id,
         petName: this.animal.name,
+        petHealer: this.animal.user_id,
         petSpecie: this.animal.specie_id,
         petFamily: this.animal.specie.family,
         petLunchtime: this.animal.specie.lunchtime,
         petFeeds: this.animal.feeds,
+        petSpecialDiet: this.animal.special_diet,
         petFoodType: this.animal.specie.food_type,
         petEnclosure: this.animal.specie.enclosure_id,
         update_at: this.time,
@@ -19973,8 +19975,8 @@ var _hoisted_21 = {
 };
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "for": "petFoodType"
-}, "Food type", -1
+  "for": "petSpecialDiet"
+}, "Special diet", -1
 /* HOISTED */
 );
 
@@ -19994,7 +19996,20 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_26 = {
+  "class": "row"
+};
+var _hoisted_27 = {
+  "class": "col-6"
+};
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "petFoodType"
+}, "Food Type for this specie", -1
+/* HOISTED */
+);
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col mt-5"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   type: "submit",
@@ -20017,7 +20032,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
         "class": "d-flex flex-column justify-content-around form-group",
-        onSubmit: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+        onSubmit: _cache[11] || (_cache[11] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.submit && $options.submit.apply($options, arguments);
         }, ["prevent"])),
         action: _ctx.route('animals.update', _this.animal),
@@ -20103,14 +20118,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.petHealer]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         "class": "form-control mb-1",
         type: "text",
-        id: "petFoodType",
-        name: "petFoodType",
+        id: "petSpecialDiet",
+        name: "petSpecialDiet",
         "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return $data.form.petFoodType = $event;
+          return $data.form.petSpecialDiet = $event;
         })
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.petFoodType]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.petSpecialDiet]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
         name: "petEnclosure",
         id: "petEnclosure",
         "class": "form-control mb-1",
@@ -20136,7 +20151,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.petUpdateTime]])])]), _hoisted_26], 40
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.petUpdateTime]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "text",
+        name: "petFoodType",
+        id: "petFoodType",
+        "class": "form-control mb-1",
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+          return $data.form.petFoodType = $event;
+        }),
+        readonly: ""
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.petFoodType]])])])]), _hoisted_29], 40
       /* PROPS, HYDRATE_EVENTS */
       , ["action", "method"])])];
     }),
@@ -20323,13 +20349,16 @@ var _hoisted_13 = {
   "class": "list-group-item"
 };
 var _hoisted_14 = {
+  "class": "list-group-item"
+};
+var _hoisted_15 = {
   key: 0,
   "class": "d-flex justify-content-between"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit");
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit");
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   "class": "btn btn-outline-danger"
 }, "Delete", -1
 /* HOISTED */
@@ -20352,27 +20381,29 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_9, "Food type : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.specie.food_type ? $props.animal.specie.food_type : 'N/A'), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_10, "Lunch time : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.specie.lunchtime ? $props.animal.specie.lunchtime : 'N/A'), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_10, "Special Diet : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.special_diet ? $props.animal.special_diet : 'N/A'), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_11, "Allready feed : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.feeds ? $props.animal.feeds : 'N/A'), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_11, "Lunch time : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.specie.lunchtime ? $props.animal.specie.lunchtime : 'N/A'), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_12, "Record : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.created_at ? $props.animal.created_at : 'N/A'), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_12, "Allready feed : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.feeds ? $props.animal.feeds : 'N/A'), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_13, "Healer(s) : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.user_id ? $props.animal.user_id : 'N/A'), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_13, "Record : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.created_at ? $props.animal.created_at : 'N/A'), 1
       /* TEXT */
-      )]), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_14, "Healer(s) : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animal.user_id ? $props.animal.user_id : 'N/A'), 1
+      /* TEXT */
+      )]), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('animals.edit', $props.animal.id),
         "class": "btn btn-outline-warning"
       }, {
         "default": _withId(function () {
-          return [_hoisted_15];
+          return [_hoisted_16];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["href"]), _hoisted_16])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])];
+      , ["href"]), _hoisted_17])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])];
     }),
     _: 1
     /* STABLE */

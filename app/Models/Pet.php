@@ -18,7 +18,9 @@ class Pet extends Model
         'name',
         'lunchtime',
         'feeds',
-        'created_at'
+        'created_at',
+        'updated_at',
+        'special_diet'
     ];
 
     protected $table = 'pets';

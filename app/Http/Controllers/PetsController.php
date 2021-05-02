@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enclosure;
 use App\Models\Pet;
-use App\Models\Specie;
 use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Specie;
+use App\Models\Enclosure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Redirect;
 
 class PetsController extends Controller
 {
@@ -100,8 +102,20 @@ class PetsController extends Controller
     public function update(Request $request, Pet $pet)
     {
         $animal = Pet::with('specie')->find($request->request->get('id')); // GET THE GOOD ANIMAL WITH IS ID
+        // dd($request->request);
+        $animal->name = $request->request->get('petName');
+        $animal->specie_id = $request->request->get('petSpecie');
+        $animal->user_id = $request->request->get('petHealer');
+        $animal->updated_at = NULL;
+        $animal->special_diet = $request->request->get('petSpecialDiet');
+        $animal->lunchtime = $request->request->get('petLunchtime');
+        $animal->feeds = $request->request->get('petFeeds');
+        $animal->specie->specie = $request->request->get('petFamily');
+        $animal->specie->enclosure_id = $request->request->get('petEnclosure');
+        // dd($animal);
+        $animal->save();
 
-        dd($request);
+        return Redirect::route('animals.show', $animal);
     }
 
     /**

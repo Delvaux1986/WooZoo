@@ -9,6 +9,7 @@
                         <li class="list-group-item">Specie : {{ animal.specie.specie ? animal.specie.specie : 'N/A'}}</li>
                         <li class="list-group-item">Family : {{ animal.specie.family ? animal.specie.family : 'N/A'}}</li>
                         <li class="list-group-item">Food type : {{ animal.specie.food_type ? animal.specie.food_type : 'N/A'}}</li>
+                        <li class="list-group-item">Special Diet : {{ animal.special_diet ? animal.special_diet : 'N/A'}}</li>
                         <li class="list-group-item">Lunch time : {{ animal.specie.lunchtime ? animal.specie.lunchtime : 'N/A'}}</li>
                         <li class="list-group-item">Allready feed : {{ animal.feeds ? animal.feeds : 'N/A'}}</li>
                         <li class="list-group-item">Record : {{ animal.created_at ? animal.created_at  : 'N/A'}}</li>
