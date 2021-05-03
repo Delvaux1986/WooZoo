@@ -8,6 +8,7 @@ use App\Models\Specie;
 use App\Models\Enclosure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class SpeciesController extends Controller
 {
@@ -34,7 +35,10 @@ class SpeciesController extends Controller
      */
     public function create()
     {
-        //
+        $enclosurelist = Enclosure::all();
+        return Inertia::render('Species/Create',[
+            'enclosurelist' => $enclosurelist
+        ]);
     }
 
     /**
@@ -45,9 +49,19 @@ class SpeciesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $newSpecie = new Specie();
+        $newSpecie->specie = $request->request->get('newSpecieName');
+        $newSpecie->family = $request->request->get('newSpecieFamily');
+        $newSpecie->food_type = $request->request->get('newSpecieFoodType');
+        $newSpecie->lunchtime = $request->request->get('newSpecieLunchtime');
+        $newSpecie->enclosure_id = $request->request->get('newSpecieEnclosureId');
+        $newSpecie->save();
+        $user = Auth::user();
 
+        $specie = Specie::with('enclosure','pets')->find($newSpecie->id);
+        // dd($specie);
+        return Redirect::route('species');
+    }
     /**
      * Display the specified resource.
      *
@@ -95,9 +109,20 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Specie $specie)
+    public function update(Request $request,Specie $specie)
     {
-        //
+        $specie->specie = $request->request->get('specieName');
+        $specie->family = $request->request->get('specieFamily');
+        $specie->food_type = $request->request->get('specieFoodType');
+        $specie->lunchtime = $request->request->get('specieLunchtime');
+        $specie->enclosure_id = $request->request->get('specieEnclosure');
+
+        $enclos = Enclosure::find($specie->enclosure_id);
+        $enclos->occupy = 1;
+        $enclos->save();
+        $specie->save();
+        
+        return Redirect::route('species.show', $specie);
     }
 
     /**

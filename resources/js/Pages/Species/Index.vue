@@ -2,7 +2,7 @@
     <app-layout>
         <div class="container">
             <h2 class="text-center mb-5 ">Especes</h2>
-            <!-- <inertia-link :href="route('animals.create')" class="btn btn-outline-primary mb-3">Ajouter</inertia-link> -->
+            <inertia-link :href="route('species.create')" class="btn btn-outline-primary mb-3">Ajouter</inertia-link>
                 
                 <table class="table text-center table-bordered w-80">
                     <thead class="table-dark ">
@@ -19,7 +19,7 @@
                     </thead>
                     <tbody v-for="specie in this.species" :key="specie.id">
                         <tr>
-                            <td><a :href="route('species.show' , specie)">{{specie.id}}</a></td>
+                            <td><a :href="route('species.show' , specie.id)">{{specie.id}}</a></td>
                              <td>{{specie.specie ? specie.specie : 'N/A'}}</td>
                             <td>{{specie.family ? specie.family : 'N/A'}}</td>
                             <td>{{ specie.food_type ? specie.food_type: 'N/A' }}</td>

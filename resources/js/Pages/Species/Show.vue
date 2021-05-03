@@ -24,17 +24,17 @@
                 </div>
             </div>
             </div>
-            <div v-for="pet in this.specie.pets" :key="pet.id" class="">
-                <p class="text-center"> - {{ pet.name }}</p>
-            </div>
+            
+                <!-- <div v-for="pet in this.specie.pets" :key="pet.id" class="">
+                    <p class="text-center">  {{ pet.name ? '- '+pet.name : 'Aucun'}}</p>
+                </div> -->
+            
         </div>
         
     </app-layout>
 </template>
 
 <script>
-import Input from '../../Jetstream/Input.vue';
-
 import AppLayout from "./../../Layouts/AppLayout";
 
     export default {
@@ -49,7 +49,7 @@ import AppLayout from "./../../Layouts/AppLayout";
                 
 
         mounted() {
-            console.log("Component animals.show mounted.");
+            console.log("Component specie.show mounted.");
             console.log(this.specie);
             
         },

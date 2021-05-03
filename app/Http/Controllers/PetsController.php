@@ -67,7 +67,8 @@ class PetsController extends Controller
         
         $pet->save();
 
-        return Redirect::route('animals.show', $pet);
+
+        return Redirect::route('animals');
     }
 
     /**
@@ -134,7 +135,7 @@ class PetsController extends Controller
         // dd($animal);
         $animal->save();
 
-        return Redirect::route('animals.show', $animal);
+        return Redirect::route('animals');
     }
 
     /**
