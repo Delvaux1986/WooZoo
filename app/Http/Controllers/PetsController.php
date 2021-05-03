@@ -21,9 +21,10 @@ class PetsController extends Controller
      */
     public function index()
     {
-        $pets = Pet::with('specie')->get();
+        $pets = Pet::with('specie.enclosure')->get();
+        
         $user = Auth::user();
-
+        
         return Inertia::render('Animals/Index',[
             'animals' => $pets,
             'user' => $user
@@ -60,7 +61,7 @@ class PetsController extends Controller
     public function show(Pet $pet)
     {
         
-        $pet = Pet::with('specie')->find($pet->id);
+        $pet = Pet::with('specie.enclosure')->find($pet->id);
         $user = Auth::user();
         
         return Inertia::render('Animals/Show', [
@@ -77,7 +78,7 @@ class PetsController extends Controller
      */
     public function edit($id)
     {
-        $animal = Pet::with('specie')->find($id); // LOOK AFTER PET REQUEST
+        $animal = Pet::with('specie.enclosure')->find($id); // LOOK AFTER PET REQUEST
         $user = Auth::user(); // for check if user hav right
         $users = User::all(); // get all user for select list
         $species = Specie::all(); // GET ALL SPECIES FOR SELECT LIST

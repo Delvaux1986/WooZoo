@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Specie;
+use App\Models\Enclosure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,4 +30,9 @@ class Pet extends Model
     {
         return $this->belongsTo(Specie::class);
     }
+    // public function enclosure()
+    // {
+    //     return $this->hasManyThrough(Enclosure::class, Specie::class);
+    // }
+    
 }

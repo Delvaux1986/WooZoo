@@ -13,14 +13,18 @@ class Specie extends Model
     protected $guarded = [];
     
     protected $fillable = [
-        'specie', 'food_type', 'enclosure_id', 'family' , 'lunchtime'
+        'specie',
+        'food_type',
+        'enclosure_id',
+        'family' ,
+        'lunchtime',
     ];
     
     protected $table = 'species';
     // Species that can hav Many enclosure
     public function enclosure()
     {
-        return $this->hasMany(Enclosure::class);
+        return $this->hasOne(Enclosure::class);
     }
     // Species that can hav many animals 
     public function pets()

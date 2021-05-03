@@ -33,7 +33,7 @@ Route::post('/animals/update/{pet}', [PetsController::class , 'update'])->name('
 
 Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
 
-Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('logout');
+// Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('logout');
 
 
 

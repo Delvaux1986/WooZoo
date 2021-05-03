@@ -20,7 +20,7 @@ class CreateEnclosuresTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->boolean('occupy')->nullable();
-            $table->unsignedBigInteger('pet_id')->references('id')->on('pets');
+            $table->foreignId('specie_id')->constrained('species');
 
         });
     }

@@ -10,6 +10,8 @@
                         <th>Specie</th>
                         <th>Family</th>
                         <th>Lunch Time</th>
+                        <td>Special Diet</td>
+                        <td>Enclos</td>
                         <th v-if="user.role === 'Admin'">Update</th>
                         <th v-if="user.role === 'Admin'">Delete</th>
                         </tr>
@@ -21,6 +23,8 @@
                             <td>{{pet.specie.specie ? pet.specie.specie : 'N/A'}}</td>
                             <td>{{pet.specie.family ? pet.specie.family : 'N/A'}}</td>
                             <td>{{pet.specie.lunchtime ? pet.specie.lunchtime : 'N/A'}}</td>
+                            <td>{{ pet.special_diet ? pet.special_diet : 'N/A'}}</td>
+                            <td>{{ pet.specie.enclosure_id ? pet.specie.enclosure.name : 'N/A'}}</td>
                             <td v-if="user.role === 'Admin'"> 
                                 <a :href="route('animals.edit', pet.id)">
                                     <i class="bi bi-pencil-square"></i>

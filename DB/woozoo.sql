@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : Dim 02 mai 2021 à 17:07
+-- Généré le : lun. 03 mai 2021 à 09:27
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.2
 
@@ -40,7 +40,7 @@ CREATE TABLE `enclosures` (
 --
 
 INSERT INTO `enclosures` (`id`, `name`, `description`, `occupy`, `pet_id`) VALUES
-(1, 'lion enclosure', 'lion enclosure', NULL, 0);
+(1, 'lion enclosure', 'lion enclosure', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -127,8 +127,9 @@ CREATE TABLE `pets` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
-  `update_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   `lunchtime` time DEFAULT NULL,
+  `special_diet` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `feeds` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -136,16 +137,16 @@ CREATE TABLE `pets` (
 -- Déchargement des données de la table `pets`
 --
 
-INSERT INTO `pets` (`id`, `specie_id`, `user_id`, `name`, `created_at`, `update_at`, `lunchtime`, `feeds`) VALUES
-(1, 4, 0, 'Winnie', '2021-05-06 22:22:38', NULL, NULL, 1),
-(2, 2, 0, 'King', NULL, NULL, NULL, 0),
-(3, 5, 0, 'Nemo', '2021-05-17 22:23:50', NULL, NULL, 1),
-(4, 5, 0, 'Doris', NULL, NULL, NULL, 1),
-(5, 6, 0, 'Ka', '2021-05-21 22:24:41', NULL, NULL, 0),
-(6, 7, 0, 'Babar', '2021-05-13 22:28:45', NULL, NULL, 0),
-(7, 7, 0, 'Clayton', NULL, NULL, NULL, 0),
-(8, 1, 0, 'Alex', '2021-05-02 16:49:07', NULL, '16:00:00', 1),
-(9, 1, 0, 'José', '2021-05-02 16:49:07', NULL, NULL, 1);
+INSERT INTO `pets` (`id`, `specie_id`, `user_id`, `name`, `created_at`, `updated_at`, `lunchtime`, `special_diet`, `feeds`) VALUES
+(1, 4, 0, 'Winnie', '2021-05-06 22:22:38', NULL, NULL, NULL, 1),
+(2, 5, 6, 'King', NULL, NULL, '12:00:00', 'VeganouPAs', 0),
+(3, 5, 0, 'Nemo', '2021-05-17 22:23:50', NULL, NULL, NULL, 1),
+(4, 5, 0, 'Doris', NULL, NULL, NULL, NULL, 1),
+(5, 6, 0, 'Ka', '2021-05-21 22:24:41', NULL, NULL, NULL, 0),
+(6, 7, 0, 'Babar', '2021-05-13 22:28:45', NULL, NULL, NULL, 0),
+(7, 7, 0, 'Clayton', NULL, NULL, NULL, NULL, 0),
+(8, 1, 0, 'Alex', '2021-05-02 16:49:07', NULL, '16:00:00', NULL, 1),
+(9, 1, 0, 'José', '2021-05-02 16:49:07', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('oVBphCyVsK9ui8PF2FBWCxKn6ri9yiERRkNKjW4Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidUpJOXN1ZVpmMGl6ajhmZ3JOT1Z4TWl1bGxMTFVGM0FOZm9zdHpzUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hbmltYWxzL2VkaXQvOCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619967936);
+('oVBphCyVsK9ui8PF2FBWCxKn6ri9yiERRkNKjW4Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidUpJOXN1ZVpmMGl6ajhmZ3JOT1Z4TWl1bGxMTFVGM0FOZm9zdHpzUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619983993),
+('RBo8L3fzxHx2h9PJiuIhfqPiCHNJYWB0FAOwNbzx', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaHhNVnhxV2h1ZU1WVVRCVEhNcW12V1dhNXN2a2tqWUVPMVBBY2NidSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovL2xvY2FsaG9zdDo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1620026698),
+('YkLRLxv0qK6bfxeZmUMQqxRXYLKNoce1xR2pNdLB', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZmhlVlhhSVRrOVlrNkNsSXlNbGw2ZjVDMUU5SHVrMUxZM0c4YzVWaiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovL2xvY2FsaG9zdDo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1620025984);
 
 -- --------------------------------------------------------
 
