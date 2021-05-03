@@ -30,6 +30,7 @@ class Pet extends Model
     {
         return $this->belongsTo(Specie::class);
     }
+    
     // public function enclosure()
     // {
     //     return $this->hasManyThrough(Enclosure::class, Specie::class);

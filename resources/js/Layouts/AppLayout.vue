@@ -6,6 +6,7 @@
               <img :src="`${logo}`" alt="logo" class="img-fluid" style="width: 100px; height: 100px;">
             </a>
           <li class="nav-item h3 fw-bold"><a :href="route('animals')">Animals</a></li>
+          <li class="nav-item h3 fw-bold"><a :href="route('species')">Especes</a></li>
           <li class="nav-item h3 fw-bold"><a :href="route('users')">Healers</a></li>
           <li class="nav-item h3 fw-bold"><a :href="route('enclosure')">Enclosures</a></li>
           <li class="nav-item dropdown h3 fw-bold">

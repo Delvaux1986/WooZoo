@@ -48,16 +48,16 @@
                         <input class="form-control mb-1" type="text" id="petSpecialDiet" name="petSpecialDiet" v-model="form.petSpecialDiet">
                     </div>
                     <div class="col">
-                        <label for="petEnclosure">Enclosures</label>
+                        <label for="petEnclosure">Enclos</label>
                         <select name="petEnclosure" id="petEnclosure" class="form-control mb-1" v-model="form.petEnclosure">
-                            <option value="NULL">No one</option>
+                            <option value="NULL">Pas d'enclos</option>
                             <option v-for="enclosure in this.enclosurelist" :key="enclosure.id" :value="enclosure.id">{{enclosure.name}}</option>
                         </select>
                         <input type="hidden" name="petUpdateTime" v-model="form.petUpdateTime">
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <label for="petFoodType">Food Type for this specie</label>
+                            <label for="petFoodType">Type de nourriture pour l'espece</label>
                             <input type="text" name="petFoodType" id="petFoodType" class="form-control mb-1" v-model="form.petFoodType" readonly>
                         </div>
                     </div>

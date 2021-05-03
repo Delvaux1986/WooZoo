@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Species;
+use App\Models\User;
+use Inertia\Inertia;
+use App\Models\Specie;
+use App\Models\Enclosure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SpeciesController extends Controller
 {
@@ -14,7 +18,13 @@ class SpeciesController extends Controller
      */
     public function index()
     {
-        //
+        $species = Specie::with('enclosure','pets')->get();
+        $user = Auth::user();
+        // dd($species);
+        return Inertia::render('Species/Index', [
+            'species' => $species,
+            'user' => $user
+        ]);
     }
 
     /**
@@ -44,9 +54,15 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function show(Species $species)
+    public function show(Specie $specie)
     {
-        //
+        $specie = Specie::with('enclosure','pets')->find($specie->id);
+        $user = Auth::user();
+
+        return Inertia::render('Species/Show', [
+            'specie' => $specie,
+            'user' => $user
+        ]);
     }
 
     /**
@@ -55,9 +71,21 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function edit(Species $species)
+    public function edit($id)
     {
-        //
+        $specie = Specie::with('enclosure','pets')->find($id);
+        $user = Auth::user(); // for check if user hav right
+        $users = User::all(); // get all user for select list
+        $species = Specie::all(); // GET ALL SPECIES FOR SELECT LIST
+        $enclosures = Enclosure::all();
+
+        return Inertia::render('Species/Edit', [
+            'specie' => $specie,
+            'user' => $user,
+            'specieslist' => $species,
+            'userslist' => $users,
+            'enclosurelist' => $enclosures
+        ]);
     }
 
     /**
@@ -67,7 +95,7 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Species $species)
+    public function update(Request $request, Specie $specie)
     {
         //
     }
@@ -78,7 +106,7 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Species $species)
+    public function destroy(Specie $specie)
     {
         //
     }

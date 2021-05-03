@@ -7,7 +7,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\PetsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EnclosureController;
-
+use App\Http\Controllers\SpeciesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,13 @@ Route::get('/animals/create' , [PetsController::class , 'create'])->middleware('
 Route::get('/animals/{pet}', [PetsController::class , 'show'])->middleware('auth')->name('animals.show');
 Route::get('/animals/edit/{id}' , [PetsController::class , 'edit'])->middleware('auth')->name('animals.edit');
 Route::post('/animals/update/{pet}', [PetsController::class , 'update'])->middleware('auth')->name('animals.update');
+Route::post('/animals/store' , [PetsController::class , 'store'])->middleware('auth')->name('animals.store');
+
+
+Route::get('/species' , [SpeciesController::class , 'index'])->middleware('auth')->name('species');
+Route::get('/species/{specie}', [SpeciesController::class , 'show'])->middleware('auth')->name('species.show');
+Route::get('/species/edit/{id}' , [SpeciesController::class , 'edit'])->middleware('auth')->name('species.edit');
+Route::post('/species/update/{specie}', [SpeciesController::class , 'update'])->middleware('auth')->name('species.update');
 
 Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
 

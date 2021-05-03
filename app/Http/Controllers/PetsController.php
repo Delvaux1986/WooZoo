@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use DateInterval;
 use App\Models\Pet;
 use App\Models\User;
 use Inertia\Inertia;
@@ -53,7 +55,19 @@ class PetsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $now = new DateTime();
+        $now->add(new DateInterval("PT2H")); // get CURRENT DATE FOR CREATED AT
+        $pet = new Pet();
+        $pet->name = $request->request->get('newAnimalName');
+        $pet->specie_id = $request->request->get('newAnimalFamily');
+        $pet->lunchtime = $request->request->get('newAnimalLunchtime');
+        $pet->special_diet = $request->request->get('newAnimalSpecialDiet');
+        $pet->user_id = 0;
+        $pet->created_at = $now ;
+        
+        $pet->save();
+
+        return Redirect::route('animals.show', $pet);
     }
 
     /**
