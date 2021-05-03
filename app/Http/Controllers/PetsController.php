@@ -38,7 +38,11 @@ class PetsController extends Controller
      */
     public function create()
     {
-        //
+        $species = Specie::all();
+
+        return Inertia::render('Animals/Create',[
+            'specieslist' => $species
+        ]);
     }
 
     /**

@@ -58,6 +58,30 @@
                         </tbody>
                     </table>
         </div>
+        <div class="container">
+            <h2 class="text-center mb-5">Enclos</h2>
+                    <table class="table text-center table-bordered mt-5">
+                        <thead class="table-dark w-80">
+                            <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Occuper</th>
+                            <th>Par</th>
+                            </tr>
+                        </thead>
+                        <tbody v-for="enclos in this.enclosures" :key="enclos.id">
+                            <tr>
+                                <td>{{enclos.id}}</td>
+                                <td>{{enclos.name}}</td>
+                                <td>{{enclos.description}}</td>
+                                <td>{{enclos.occupy ?  enclos.occupy : 'N/A'}}</td>
+                                <td>{{enclos.specie.family ? enclos.specie.family  : 'N/A'}}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+        </div>
         
     </app-Layout>
 </template>
@@ -72,11 +96,12 @@ export default {
     props: {
         animals:Object,
         users:Object,
+        enclosures:Object
     }
         ,
     mounted() {
         console.log("Component Home mounted.");
-        console.log(this.animals);
+        console.log(this.enclosures);
     },
   
 }

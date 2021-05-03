@@ -2,6 +2,7 @@
     <app-layout>
         <div class="container">
             <h2 class="text-center mb-5 ">Animals</h2>
+            <inertia-link :href="route('animals.create')" class="btn btn-outline-primary mb-3">Ajouter</inertia-link>
                 <table class="table text-center table-bordered w-80">
                     <thead class="table-dark ">
                         <tr>
@@ -62,7 +63,7 @@ export default {
         ,
     mounted() {
         console.log("Component Home mounted.");
-        console.log(this.animals);
+        console.log();
     },
   
 }

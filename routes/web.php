@@ -8,6 +8,7 @@ use App\Http\Controllers\PetsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EnclosureController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,12 +25,10 @@ Route::get('/', [HomeController::class , 'index' ])->middleware('auth')->name('h
 Route::get('/healers', [UsersController::class , 'index'])->middleware('auth')->name('users');
 
 Route::get('/animals', [PetsController::class , 'index'])->middleware('auth')->name('animals');
-
-Route::get('/animals/{pet}', [PetsController::class , 'show'])->name('animals.show');
-
-Route::get('/animals/edit/{id}' , [PetsController::class , 'edit'])->name('animals.edit');
-
-Route::post('/animals/update/{pet}', [PetsController::class , 'update'])->name('animals.update');
+Route::get('/animals/create' , [PetsController::class , 'create'])->middleware('auth')->name('animals.create');
+Route::get('/animals/{pet}', [PetsController::class , 'show'])->middleware('auth')->name('animals.show');
+Route::get('/animals/edit/{id}' , [PetsController::class , 'edit'])->middleware('auth')->name('animals.edit');
+Route::post('/animals/update/{pet}', [PetsController::class , 'update'])->middleware('auth')->name('animals.update');
 
 Route::get('/enclosure', [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
 

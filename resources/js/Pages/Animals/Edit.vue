@@ -6,12 +6,12 @@
             <form  class="d-flex flex-column justify-content-around form-group" @submit.prevent="submit" :action="route('animals.update', this.animal)" :method="POST">
                 <div class="row">
                     <div class="col">
-                        <label for="petName">Name :</label>
+                        <label for="petName">Nom :</label>
                         <input class="form-control mb-1" id="petName" name="petName" type="text"  v-model="form.petName">
                         
                     </div>
                     <div class="col">
-                        <label for="petSpecie">Specie :</label>
+                        <label for="petSpecie">Espece :</label>
                             <select class="form-control mb-1" name="petSpecie" id="petSpecie" type="text" v-model="form.petSpecie">
                                 <option v-for="specie in this.specieslist" :key="specie.id" :value="specie.id" >{{specie.specie}}</option>
                             </select>
@@ -19,24 +19,24 @@
                 </div>    
                 <div class="row">
                     <div class="col">
-                        <label for="petFamily">Family : </label>
+                        <label for="petFamily">Famille : </label>
                     <input class="form-control mb-1" name="petFamily" id="petFamily" type="text" v-model="form.petFamily">
                     </div>
                     <div class="col">
-                        <label for="petLunchtime">Lunch time :</label>
+                        <label for="petLunchtime">Heure manger :</label>
                         <vue-datepicker-local v-model="form.petLunchtime" clearable name="petLunchtime" format="HH:mm:ss" class="form-control mb-1" > </vue-datepicker-local>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="petFeeds">Animal feed : </label>
+                        <label for="petFeeds">Animal nourri : </label>
                         <select name="petFeeds" id="petFeeds" class="form-control mb-1" v-model="form.petFeeds">
                             <option value="0">Not Do</option>
                             <option value="1">Do</option>
                         </select>
                     </div>
                     <div class="col">
-                        <label for="petHealer">Healer</label>
+                        <label for="petHealer">Soigneur</label>
                         <select name="petHealer" id="petHealer" class="form-control mb-1" v-model="form.petHealer"> 
                             <option v-for="healer in this.userslist" :key="healer.id" :value="healer.id" :v-if="healer.worktoday === 1">{{healer.name}}</option>
                         </select>

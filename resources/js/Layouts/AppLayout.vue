@@ -38,9 +38,12 @@ export default {
     components: {
         
     },
+    mounted(){
+      // console.log(this.$page);
+    },
     data() {
       return {
-        logo : 'https://scontent-bru2-1.xx.fbcdn.net/v/t1.15752-9/180434275_381621103007144_5694704895244944892_n.png?_nc_cat=106&ccb=1-3&_nc_sid=ae9488&_nc_ohc=cBTPiaXu3h8AX9vS-qn&_nc_ht=scontent-bru2-1.xx&oh=060cd11987f2f4457944be9d0d9b322a&oe=608F925A',
+        logo : "./assets/img/logo.png",
       }
     },
     
