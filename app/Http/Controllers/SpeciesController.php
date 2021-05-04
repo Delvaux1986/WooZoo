@@ -125,30 +125,34 @@ class SpeciesController extends Controller
         $oldSpecie->family = $request->request->get('specieFamily');
         $oldSpecie->food_type = $request->request->get('specieFoodType');
         $oldSpecie->lunchtime = $request->request->get('specieLunchtime');
-        $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
-        // $oldSpecie->enclosure->specie_id = NULL;
-        
         $oldSpecie->updated_at = NULL;
-        if(is_int($oldSpecie->enclosure_id) && $oldSpecie->enclosure_id != 0){
-            // IF HE HAD A INT & NOT INT 0 WE FIND THIS ENCLOS FOR SET OCCUPY & SPECIE ID
+
+        if($oldSpecie->getOriginal('enclosure_id') && !$request->request->get('specieEnclosure')){// WE GET OUT THE SPECIE OF ENCLOSURE
+            $enclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
+            $oldSpecie->enclosure_id = NULL;
+            $enclos->occupy = 0;
+            $enclos->specie_id = NULL;
+            $enclos->save();
+            
+        }else if(!$oldSpecie->getOriginal('enclosure_id') && $request->request->get('specieEnclosure')){ // GET IN ENCLOSURE THE SPECIE 
+            $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
             $enclos = Enclosure::find($oldSpecie->enclosure_id);
             $enclos->occupy = 1;
             $enclos->specie_id = $oldSpecie->id;
-            
-            // $enclos->save();
-            
+            $enclos->save();    
         }else{
-            
-            $enclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
-            $enclos->occupy = 0;
-            // $enclosure->specie_id = NULL;
-            
-            dd($oldSpecie);
-            
-            // $enclos->save();
+            $oldEnclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
+            $newEnclos = Enclosure::find($request->request->get('specieEnclosure'));
+            $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
+            $oldEnclos->occupy = 0;
+            $oldEnclos->specie_id = NULL;
+            $newEnclos->occupy = 1;
+            $newEnclos->specie_id = $oldSpecie->id;
+            $newEnclos->save();
+            $oldEnclos->save();
         }
-        // $oldSpecie->save();
-        dd($oldSpecie);
+        $oldSpecie->save();
+        
         
         return Redirect::route('species');
     }
