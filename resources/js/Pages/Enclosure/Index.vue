@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <div class="container">
-            <h2 class="text-center mb-5 ">Especes</h2>
+            <h2 class="text-center mb-5 ">Espèces</h2>
             <inertia-link :href="route('enclosures.create')" class="btn btn-outline-primary mb-3">Ajouter</inertia-link>
                 
                 <table class="table text-center table-bordered w-80">
@@ -10,11 +10,11 @@
                         <th>#</th>
                         <th>Nom</th>
                         <th>Description</th>
-                        <th>Occuper</th>
+                        <th>Occupé</th>
                         <th>Par</th>
-                        <td>Mis a jour</td>
-                        <th v-if="user.role === 'Admin'">Update</th>
-                        <th v-if="user.role === 'Admin'">Delete</th>
+                        <td>Mis à jour</td>
+                        <th v-if="user.role === 'Admin'">Editer</th>
+                        <th v-if="user.role === 'Admin'">Supprimer</th>
                         </tr>
                     </thead>
                     <tbody v-for="enclos in this.enclosurelist" :key="enclos.id">

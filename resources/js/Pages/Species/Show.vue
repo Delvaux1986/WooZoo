@@ -6,11 +6,11 @@
                 <div class="card-title text-center bg-dark text-info"><h5>{{ this.specie.specie }}</h5></div>
                 <div class="card-body text-center">
                     <ul class="card-text list-group list-group-flush">
-                        <li class="list-group-item">Espece : {{ this.specie.specie ? this.specie.specie: 'N/A'}}</li>
+                        <li class="list-group-item">Espèce : {{ this.specie.specie ? this.specie.specie: 'N/A'}}</li>
                             
                         <li class="list-group-item">Famille : {{ this.specie.family ? this.specie.family : 'N/A'}}</li>
-                        <li class="list-group-item">Food type : {{ this.specie.food_type ? this.specie.food_type : 'N/A'}}</li>
-                        <li class="list-group-item">Heure de manger : {{ this.specie.lunchtime ? this.specie.lunchtime : 'N/A'}}</li>
+                        <li class="list-group-item">Type de nourriture : {{ this.specie.food_type ? this.specie.food_type : 'N/A'}}</li>
+                        <li class="list-group-item">H - Repas Espèce : {{ this.specie.lunchtime ? this.specie.lunchtime : 'N/A'}}</li>
                         <li class="list-group-item">Enclos : {{ this.specie.enclosure.name ? this.specie.enclosure.name : 'N/A'}}</li>
                         <li class="list-group-item">Enclos Description  : {{this.specie.enclosure.description ? this.specie.enclosure.description : 'N/A'}}</li>
                     </ul>

@@ -1,17 +1,17 @@
 <template>
     <app-Layout>
         <div class="container w-80">
-                <h2 class="text-center mb-5">Animaux</h2>
+                <h2 class="text-center mb-2">Récapitulatif Repas</h2>
                     <table class="table text-center table-bordered">
                         <thead class="table-dark w-80">
                             <tr>
                             <th>#</th>
                             <th>Nom</th>
-                            <th>Espece</th>
+                            <th>Espèce</th>
                             <th>Famille</th>
-                            <th>Heure manger</th>
+                            <th>H - Repas Individu</th>
                             <th>Nourris</th>
-                            <th>Special Diet</th>
+                            <th>Régime Spécial</th>
                             <th>Enclos</th>
                             </tr>
                         </thead>
@@ -34,15 +34,15 @@
         <!-- {{pet.specie.enclosure_id ? pet.specie.enclosure.name : 'N/A'}} -->
         
         <div class="container">
-                <h2 class="text-center mb-5">Soigneurs</h2>
+                <h3 class="text-center mb-2">Soigneurs</h3>
                     <table class="table text-center table-bordered mt-5">
                         <thead class="table-dark w-80">
                             <tr>
                             <th>#</th>
                             <th>Nom</th>
-                            <th>Role</th>
+                            <th>Rôle</th>
                             <th>Tel</th>
-                            <th>Travail Auj</th>
+                            <th>Présent</th>
                             <th>E-mail</th>
                             </tr>
                         </thead>
@@ -60,14 +60,14 @@
                     </table>
         </div>
         <div class="container">
-            <h2 class="text-center mb-5">Enclos</h2>
+            <h2 class="text-center mb-2">Enclos</h2>
                     <table class="table text-center table-bordered mt-5">
                         <thead class="table-dark w-80">
                             <tr>
                             <th>#</th>
                             <th>Nom</th>
                             <th>Description</th>
-                            <th>Occuper</th>
+                            <th>Occupé</th>
                             <th>Par</th>
                             </tr>
                         </thead>

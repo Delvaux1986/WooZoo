@@ -6,7 +6,7 @@
             <form  class="d-flex flex-column justify-content-around form-group" @submit.prevent="submit" :action="route('species.update', this.specie)" :method="POST">
                 <div class="row">
                     <div class="col">
-                        <label for="specieName">Nom de l'espece :</label>
+                        <label for="specieName">Nom de l'espèce :</label>
                         <input type="text" name="specieName" id="specieName" class="form-control mb-1" v-model="form.specieName">
                     </div>
                     <div class="col">
@@ -18,12 +18,12 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                         <label for="specieFoodType">Type d'aliment :</label>
+                         <label for="specieFoodType">Type d'aliments :</label>
                         <input type="text" name="specieFoodType" id="specieFoodType" class="form-control mb-1" v-model="form.specieFoodType">
                     </div>
                     <div class="col">
-                        <label for="specieLunchtime">Heure repas :</label>
-                        <input type="time" min="09:00" max="18:00" name="specieLunchtime" id="specieLunchtime" class="form-control mb-1" v-model="form.specieLunchtime">
+                        <label for="specieLunchtime">Heures repas :</label>
+                        <input type="time" min="06:00" max="23:00" name="specieLunchtime" id="specieLunchtime" class="form-control mb-1" v-model="form.specieLunchtime">
                     </div>
                 </div>
                 <div class="row">

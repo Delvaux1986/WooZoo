@@ -8,11 +8,11 @@
                         <tr>
                         <th>#</th>
                         <th>Nom</th>
-                        <th>Espece</th>
+                        <th>Espèce</th>
                         <th>Famille</th>
-                        <th>Heure de manger Espece</th>
-                        <th>Heure pour cet animal</th>
-                        <td>Special Diet</td>
+                        <th>H - Repas Espèce</th>
+                        <th>H - Repas Individu</th>
+                        <td>Régime Spécial</td>
                         <td>Enclos</td>
                         <th v-if="user.role === 'Admin'">Update</th>
                         <th v-if="user.role === 'Admin'">Delete</th>

@@ -1,20 +1,20 @@
 <template>
     <app-layout>
         <div class="container">
-            <h2 class="text-center mb-5 ">Especes</h2>
+            <h2 class="text-center mb-5 ">Espèces</h2>
             <inertia-link :href="route('species.create')" class="btn btn-outline-primary mb-3">Ajouter</inertia-link>
                 
                 <table class="table text-center table-bordered w-80">
                     <thead class="table-dark ">
                         <tr>
                         <th>#</th>
-                        <th>Espece</th>
-                        <th>Family</th>
+                        <th>Espèce</th>
+                        <th>Famille</th>
                         <th>Type de nourriture</th>
-                        <th>Heure de manger</th>
+                        <th>H - Repas Espèce</th>
                         <td>Enclos</td>
-                        <th v-if="user.role === 'Admin'">Update</th>
-                        <th v-if="user.role === 'Admin'">Delete</th>
+                        <th v-if="user.role === 'Admin'">Editer</th>
+                        <th v-if="user.role === 'Admin'">Supprimer</th>
                         </tr>
                     </thead>
                     <tbody v-for="specie in this.species" :key="specie.id">

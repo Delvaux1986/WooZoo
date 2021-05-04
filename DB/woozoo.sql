@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 04 mai 2021 à 13:51
+-- Généré le : mar. 04 mai 2021 à 21:28
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.2
 
@@ -32,7 +32,7 @@ CREATE TABLE `enclosures` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `occupy` tinyint(1) DEFAULT NULL,
-  `specie_id` bigint(20) UNSIGNED NOT NULL,
+  `specie_id` bigint(20) UNSIGNED DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -42,10 +42,14 @@ CREATE TABLE `enclosures` (
 --
 
 INSERT INTO `enclosures` (`id`, `name`, `description`, `occupy`, `specie_id`, `updated_at`, `created_at`) VALUES
-(1, 'lion enclosure', 'lion enclosure', 0, 1, '2021-05-04 13:01:13', NULL),
-(2, 'Bears enclosure', 'Like lions they hav them enclosure', NULL, 4, NULL, NULL),
-(3, 'Enclos aux Gorilles', 'Enclos aux Gorilles Semi interieur Semi exterieur', 1, 2, '2021-05-03 18:10:40', NULL),
-(4, 'Aquarium', 'Aquarium 3000L', 1, 9, '2021-05-04 11:20:20', '2021-05-04 13:20:20');
+(1, 'Cage Carnivore', 'Cage pour grand carnivores', 1, NULL, NULL, NULL),
+(2, 'Cage Herbivore', 'Cage pour grand Herbivores', 1, NULL, NULL, NULL),
+(3, 'Pavillon Singe', 'Cage pour grand carnivores', 1, NULL, NULL, NULL),
+(4, 'Volière', 'Cage externe pour oiseaux', 1, NULL, NULL, NULL),
+(5, 'Cage Groupe', 'Cage pour animaux de groupes', 1, NULL, NULL, NULL),
+(6, 'Aquarium', 'Cage pour poissons', 1, NULL, NULL, NULL),
+(7, 'Bassin', 'Cage pour mammifère aquatique', 1, NULL, NULL, NULL),
+(8, 'Terrarium', 'Cage pour Insectes/Reptiles', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -128,7 +132,7 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `pets` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `specie_id` bigint(20) UNSIGNED NOT NULL,
+  `specie_id` bigint(20) UNSIGNED DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -143,18 +147,48 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `specie_id`, `user_id`, `name`, `created_at`, `updated_at`, `lunchtime`, `special_diet`, `feeds`) VALUES
-(1, 4, 0, 'Winnie', '2021-05-06 22:22:38', NULL, NULL, NULL, 1),
-(2, 2, 6, 'King', NULL, '2021-05-03 12:12:27', '12:00:00', 'VeganouPAs', 0),
-(3, 5, 0, 'Nemo2', '2021-05-17 22:23:50', '2021-05-03 19:40:52', '12:00:00', NULL, 1),
-(4, 5, 0, 'Doris', NULL, NULL, NULL, NULL, 1),
-(5, 6, 0, 'Ka', '2021-05-21 22:24:41', NULL, NULL, NULL, 0),
-(6, 7, 0, 'Babar', '2021-05-13 22:28:45', NULL, NULL, NULL, 0),
-(7, 7, 0, 'Clayton', NULL, NULL, NULL, NULL, 0),
-(8, 1, 0, 'Alex', '2021-05-02 16:49:07', NULL, '16:00:00', NULL, 1),
-(9, 1, 0, 'José', '2021-05-02 16:49:07', NULL, NULL, NULL, 1),
-(10, 1, 0, 'Bebere', '2021-05-03 12:50:45', '2021-05-03 12:50:45', NULL, 'Vegan', NULL),
-(11, 8, 0, 'Rico', '2021-05-03 21:27:58', '2021-05-03 19:27:58', NULL, 'Vegan', NULL),
-(14, 2, 0, 'Rico', '2021-05-03 21:30:40', '2021-05-03 19:30:40', NULL, 'Vegan', NULL);
+(1, 1, 0, 'Kiara', NULL, NULL, NULL, NULL, NULL),
+(2, 1, 0, 'Sarafina', NULL, NULL, NULL, NULL, NULL),
+(3, 1, 0, 'Nala', NULL, NULL, NULL, NULL, NULL),
+(4, 1, 0, 'Aslan', NULL, NULL, NULL, NULL, NULL),
+(5, 2, 0, 'Lola', NULL, NULL, NULL, NULL, NULL),
+(6, 2, 0, 'Miky', NULL, NULL, NULL, NULL, NULL),
+(7, 3, 0, 'Raja', NULL, NULL, NULL, NULL, NULL),
+(8, 3, 0, 'Khan', NULL, NULL, NULL, NULL, NULL),
+(9, 4, 0, 'Rafiki', NULL, NULL, NULL, NULL, NULL),
+(10, 4, 0, 'Kala', NULL, NULL, NULL, NULL, NULL),
+(11, 4, 0, 'Miro', NULL, NULL, NULL, NULL, NULL),
+(12, 4, 0, 'Loupi', NULL, NULL, NULL, NULL, NULL),
+(13, 4, 0, 'Peanuts', NULL, NULL, NULL, NULL, NULL),
+(14, 4, 0, 'Victor', NULL, NULL, NULL, NULL, NULL),
+(15, 5, 0, 'King', NULL, NULL, NULL, NULL, NULL),
+(16, 5, 0, 'Dounia', NULL, NULL, NULL, NULL, NULL),
+(17, 6, 0, 'Kira', NULL, NULL, NULL, NULL, NULL),
+(18, 6, 0, 'Momak', NULL, NULL, NULL, NULL, NULL),
+(19, 6, 0, 'Sully', NULL, NULL, NULL, NULL, NULL),
+(20, 6, 0, 'Ramu', NULL, NULL, NULL, NULL, NULL),
+(21, 7, 0, 'Lulu', NULL, NULL, NULL, NULL, NULL),
+(22, 7, 0, 'Philippe', NULL, NULL, NULL, NULL, NULL),
+(23, 7, 0, 'Aby', NULL, NULL, NULL, NULL, NULL),
+(24, 8, 0, 'Clayton', NULL, NULL, NULL, NULL, NULL),
+(25, 8, 0, 'Timmy', NULL, NULL, NULL, NULL, NULL),
+(26, 8, 0, 'Ronflex', NULL, NULL, NULL, NULL, NULL),
+(27, 8, 0, 'Oli', NULL, NULL, NULL, NULL, NULL),
+(28, 9, 0, 'Sarah', NULL, NULL, NULL, NULL, NULL),
+(29, 9, 0, 'John', NULL, NULL, NULL, NULL, NULL),
+(30, 10, 0, 'Rikky', NULL, NULL, NULL, NULL, NULL),
+(31, 10, 0, 'Martine', NULL, NULL, NULL, NULL, NULL),
+(32, 11, 0, 'Adhès', NULL, NULL, NULL, NULL, NULL),
+(33, 11, 0, 'Pokali', NULL, NULL, NULL, NULL, NULL),
+(34, 12, 0, 'Kuma', NULL, NULL, NULL, NULL, NULL),
+(35, 12, 0, 'Dora', NULL, NULL, NULL, NULL, NULL),
+(36, 12, 0, 'Rio', NULL, NULL, NULL, NULL, NULL),
+(37, 12, 0, 'Furu', NULL, NULL, NULL, NULL, NULL),
+(38, 12, 0, 'Happy', NULL, NULL, NULL, NULL, NULL),
+(39, 13, 0, 'Fumikage', NULL, NULL, NULL, NULL, NULL),
+(40, 13, 0, 'Bower', NULL, NULL, NULL, NULL, NULL),
+(41, 14, 0, 'Nagato', NULL, NULL, NULL, NULL, NULL),
+(42, 14, 0, 'Yamscha', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -176,7 +210,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('kNSOsMc25LpDHZ6SBRSQ8BRAqGPeQn3R8EkfI4lR', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicHFOYlNsbThndWFvZUE0TU9HdlU5Y2s2cGRqWjkybElRYVEwY0xrVSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMToiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3NwZWNpZXMvNCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1620129090);
+('JqrRT4dmHGEgBqRCPXSKdJxW4xUfJhk3fPB7iFgP', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieGU3bmVVZkU0S0pRTGZ6TW90cDczNGN5T3ZMajRVbmtUTWh0eFcyTiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyOToiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3NwZWNpZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1620156456);
 
 -- --------------------------------------------------------
 
@@ -188,8 +222,11 @@ CREATE TABLE `species` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `specie` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feedSpecie` tinyint(1) DEFAULT NULL,
   `food_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lunchtime` time DEFAULT NULL,
+  `lunchtimeTwo` time DEFAULT NULL,
+  `lunchtimeThree` time DEFAULT NULL,
   `enclosure_id` bigint(20) UNSIGNED DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
@@ -199,22 +236,21 @@ CREATE TABLE `species` (
 -- Déchargement des données de la table `species`
 --
 
-INSERT INTO `species` (`id`, `specie`, `family`, `food_type`, `lunchtime`, `enclosure_id`, `updated_at`, `created_at`) VALUES
-(1, 'Félidé', 'Lion', 'Carnivore', '09:00:00', 1, NULL, NULL),
-(2, 'Primate', 'Gorille', 'Viande', '10:00:00', 3, '2021-05-03 18:13:28', NULL),
-(3, 'Oiseaux', NULL, 'graines', '10:30:00', 0, NULL, NULL),
-(4, 'Ursidé', 'Ours', 'Carnivore', '11:00:00', 2, NULL, NULL),
-(5, 'Poissons', NULL, 'euhhhhh', '12:00:00', 0, NULL, NULL),
-(6, 'Reptiles', 'Lézard', 'Insectes', '12:30:00', 0, NULL, NULL),
-(7, 'Herbivore', 'Elephant', 'Herbes', '12:30:00', 0, NULL, NULL),
-(8, 'Oiseaux', 'Pinguin', 'Poissons', '14:00:00', NULL, '2021-05-03 18:49:58', '2021-05-03 18:49:58'),
-(9, 'Oiseaux', 'Pinguin', 'Poissons', '14:00:00', NULL, '2021-05-03 18:58:23', '2021-05-03 18:58:23'),
-(10, 'Oiseaux', 'Pinguin', 'Poissons', '14:00:00', NULL, '2021-05-03 18:58:57', '2021-05-03 18:58:57'),
-(20, 'Herbivore', 'Girafe', 'Plantes', '09:00:00', NULL, '2021-05-03 19:14:22', '2021-05-03 19:14:22'),
-(21, 'Oiseaux', 'Ours blanc', 'Carnivore', '12:30:00', NULL, '2021-05-03 19:16:15', '2021-05-03 19:16:15'),
-(22, 'Herbivore', 'Ours blanc', 'Plantes', '11:00:00', NULL, '2021-05-03 19:21:20', '2021-05-03 19:21:20'),
-(24, 'Arachnide', 'Ours blanc', 'Insectes', '09:00:00', NULL, '2021-05-03 19:24:29', '2021-05-03 19:24:29'),
-(25, 'Oiseaux', 'Pinguin Blanc', 'Plantes', '09:00:00', NULL, '2021-05-03 19:27:33', '2021-05-03 19:27:33');
+INSERT INTO `species` (`id`, `specie`, `family`, `feedSpecie`, `food_type`, `lunchtime`, `lunchtimeTwo`, `lunchtimeThree`, `enclosure_id`, `updated_at`, `created_at`) VALUES
+(1, 'Félidé', 'Lion', 0, 'Biche', '00:07:00', '00:00:17', NULL, NULL, NULL, NULL),
+(2, 'Félidé', 'Léopard', 0, 'Biche', '00:07:25', '00:17:25', NULL, NULL, NULL, NULL),
+(3, 'Félidé', 'Tigre', 0, 'Poulet', '00:07:30', '00:17:30', NULL, NULL, NULL, NULL),
+(4, 'Primate', 'Chimpanzee', 0, 'Banane', '00:07:45', '00:17:45', NULL, NULL, NULL, NULL),
+(5, 'Primate', 'Gorille', 0, 'Légume', '00:08:10', '00:18:10', NULL, NULL, NULL, NULL),
+(6, 'Herbivore', 'Antilope', 0, 'Feuilles + Foin', '00:08:25', '00:18:25', NULL, NULL, NULL, NULL),
+(7, 'Herbivore', 'Girafe', 0, 'Acacia', '00:08:40', '00:18:40', NULL, NULL, NULL, NULL),
+(8, 'Herbivore', 'Elephant', 0, 'Fruits + Foin', '00:08:55', '00:18:55', NULL, NULL, NULL, NULL),
+(9, 'Ursidé', 'Panda roux', 0, 'Fruits + Oeuf', '00:09:15', '00:19:15', NULL, NULL, NULL, NULL),
+(10, 'Ursidé', 'Ours brun', 0, 'Saumon', '00:09:30', '00:19:30', NULL, NULL, NULL, NULL),
+(11, 'Ursidé', 'Ours blanc', 0, 'Phoque', '00:09:45', '00:19:45', NULL, NULL, NULL, NULL),
+(12, 'Oiseau', 'Perroquet', 0, 'Graine Spécial', '00:00:10', '00:00:20', NULL, NULL, NULL, NULL),
+(13, 'Oiseau', 'Aigle', 0, 'Lapin', '00:10:15', '00:20:15', NULL, NULL, NULL, NULL),
+(14, 'Oiseau', 'Vautour', 0, 'Carcasse Boeuf', '00:10:30', '00:20:30', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -245,7 +281,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `phone`, `workingToday`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'P9Cag6408TxL98Pw96x1UZoS5EEhO3xZ1XHgDpKeJJKlbK0ELVJrfOFiw71t', NULL, NULL, '2021-05-01 14:23:33', '2021-05-01 14:23:33'),
+(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'P9Cag6408TxL98Pw96x1UZoS5EEhO3xZ1XHgDpKeJJKlbK0ELVJrfOFiw71t', NULL, NULL, '2021-05-01 12:23:33', '2021-05-01 12:23:33'),
 (3, 'Nicode', 'Nicode@Nicode.be', 'Soigneur', 477666444, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Simon', 'Simon@Simon.be', 'Soigneur', 466333222, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Robby', 'Robby@Robby.be', 'Nettoyeur ', 455999777, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -326,7 +362,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `enclosures`
 --
 ALTER TABLE `enclosures`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `failed_jobs`
@@ -350,13 +386,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `users`
