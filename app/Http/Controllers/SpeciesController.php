@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+use DateInterval;
+use App\Models\Pet;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Specie;
@@ -50,11 +53,14 @@ class SpeciesController extends Controller
     public function store(Request $request)
     {
         $newSpecie = new Specie();
+        $now = new DateTime();
+        $now->add(new DateInterval("PT2H"));
         $newSpecie->specie = $request->request->get('newSpecieName');
         $newSpecie->family = $request->request->get('newSpecieFamily');
         $newSpecie->food_type = $request->request->get('newSpecieFoodType');
         $newSpecie->lunchtime = $request->request->get('newSpecieLunchtime');
         $newSpecie->enclosure_id = $request->request->get('newSpecieEnclosureId');
+        $newSpecie->created_at = $now ;
         $newSpecie->save();
         $user = Auth::user();
 
@@ -111,18 +117,40 @@ class SpeciesController extends Controller
      */
     public function update(Request $request,Specie $specie)
     {
-        $specie->specie = $request->request->get('specieName');
-        $specie->family = $request->request->get('specieFamily');
-        $specie->food_type = $request->request->get('specieFoodType');
-        $specie->lunchtime = $request->request->get('specieLunchtime');
-        $specie->enclosure_id = $request->request->get('specieEnclosure');
+        $oldSpecie = Specie::with('enclosure')->find($specie->id);
+        $now = new DateTime();
+        $now->add(new DateInterval("PT2H"));
 
-        $enclos = Enclosure::find($specie->enclosure_id);
-        $enclos->occupy = 1;
-        $enclos->save();
-        $specie->save();
+        $oldSpecie->specie = $request->request->get('specieName');
+        $oldSpecie->family = $request->request->get('specieFamily');
+        $oldSpecie->food_type = $request->request->get('specieFoodType');
+        $oldSpecie->lunchtime = $request->request->get('specieLunchtime');
+        $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
+        // $oldSpecie->enclosure->specie_id = NULL;
         
-        return Redirect::route('species.show', $specie);
+        $oldSpecie->updated_at = NULL;
+        if(is_int($oldSpecie->enclosure_id) && $oldSpecie->enclosure_id != 0){
+            // IF HE HAD A INT & NOT INT 0 WE FIND THIS ENCLOS FOR SET OCCUPY & SPECIE ID
+            $enclos = Enclosure::find($oldSpecie->enclosure_id);
+            $enclos->occupy = 1;
+            $enclos->specie_id = $oldSpecie->id;
+            
+            // $enclos->save();
+            
+        }else{
+            
+            $enclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
+            $enclos->occupy = 0;
+            // $enclosure->specie_id = NULL;
+            
+            dd($oldSpecie);
+            
+            // $enclos->save();
+        }
+        // $oldSpecie->save();
+        dd($oldSpecie);
+        
+        return Redirect::route('species');
     }
 
     /**
@@ -131,8 +159,27 @@ class SpeciesController extends Controller
      * @param  \App\Models\Species  $species
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Specie $specie)
+    public function destroy($id)
     {
-        //
+        $specie = Specie::with('enclosure','pets')->find($id);
+        // dd($specie->pets);
+        if($specie->enclosure){
+            $enclos = Enclosure::find($specie->enclosure->id);
+            $enclos->specie_id = null;
+            $enclos->occupy = 0;
+            $enclos->save();
+        }
+        if($specie->pets){
+            foreach ($specie->pets as $pet){
+                $thisPet = Pet::find($pet->id);
+                $thisPet->specie_id = null;
+                $thisPet->save();
+            }
+        }
+           
+        Specie::destroy($id);
+        
+
+        return Redirect::route('species');
     }
 }

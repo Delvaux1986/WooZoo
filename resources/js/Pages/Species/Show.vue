@@ -15,9 +15,8 @@
                         <li class="list-group-item">Enclos Description  : {{this.specie.enclosure.description ? this.specie.enclosure.description : 'N/A'}}</li>
                     </ul>
                     <div  v-if="user.role === 'Admin'" class="d-flex justify-content-between">
-                        <inertia-link :href="route('species.edit', this.specie.id)" class="btn btn-outline-warning">Edit</inertia-link>
-                        
-                        <button class="btn btn-outline-danger">Delete</button>
+                        <inertia-link :href="route('species.edit', this.specie.id)" class="btn btn-outline-warning">Editer</inertia-link>
+                        <inertia-link :href="route('species.delete', this.specie.id)" class="btn btn-outline-danger">Supprimer</inertia-link>
                     </div>
                     
 

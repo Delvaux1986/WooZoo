@@ -30,6 +30,8 @@ Route::get('/animals/{pet}', [PetsController::class , 'show'])->middleware('auth
 Route::get('/animals/edit/{id}' , [PetsController::class , 'edit'])->middleware('auth')->name('animals.edit');
 Route::post('/animals/update/{pet}', [PetsController::class , 'update'])->middleware('auth')->name('animals.update');
 Route::post('/animals/store' , [PetsController::class , 'store'])->middleware('auth')->name('animals.store');
+Route::get('/animals/destroy/{id}' , [PetsController::class , 'destroy'])->middleware('auth')->name('animals.delete');
+
 
 
 Route::get('/species' , [SpeciesController::class , 'index'])->middleware('auth')->name('species');
@@ -38,13 +40,15 @@ Route::get('/species/{specie}', [SpeciesController::class , 'show'])->middleware
 Route::get('/species/edit/{id}' , [SpeciesController::class , 'edit'])->middleware('auth')->name('species.edit');
 Route::post('/species/update/{specie}', [SpeciesController::class , 'update'])->middleware('auth')->name('species.update');
 Route::post('/species/store' , [SpeciesController::class , 'store'])->middleware('auth')->name('species.store');
+Route::get('/species/destroy/{id}' , [SpeciesController::class , 'destroy'])->middleware('auth')->name('species.delete');
 
-Route::get('/enclosure' , [EnclosureController::class , 'index'])->middleware('auth')->name('enclosure');
-Route::get('/enclosures/create' , [EnclosureController::class , 'create'])->middleware('auth')->name('enclosures.create');
-Route::get('/enclosures/{specie}', [EnclosureController::class , 'show'])->middleware('auth')->name('enclosures.show');
-Route::get('/enclosures/edit/{id}' , [EnclosureController::class , 'edit'])->middleware('auth')->name('enclosures.edit');
-Route::post('/enclosures/update/{specie}', [EnclosureController::class , 'update'])->middleware('auth')->name('enclosures.update');
-Route::post('/enclosures/store' , [EnclosureController::class , 'store'])->middleware('auth')->name('enclosures.store');
+Route::get('/enclosure' , [EnclosureController::class , 'index'])->middleware('auth')->name('enclosures');
+Route::get('/enclosure/create' , [EnclosureController::class , 'create'])->middleware('auth')->name('enclosures.create');
+Route::get('/enclosure/{enclosure}', [EnclosureController::class , 'show'])->middleware('auth')->name('enclosures.show');
+Route::get('/enclosure/edit/{id}' , [EnclosureController::class , 'edit'])->middleware('auth')->name('enclosures.edit');
+Route::post('/enclosure/update/{specie}', [EnclosureController::class , 'update'])->middleware('auth')->name('enclosures.update');
+Route::post('/enclosure/store' , [EnclosureController::class , 'store'])->middleware('auth')->name('enclosures.store');
+Route::get('/enclosure/destroy/{id}' , [EnclosureController::class , 'destroy'])->middleware('auth')->name('enclosures.delete');
 
 
 // Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('logout');

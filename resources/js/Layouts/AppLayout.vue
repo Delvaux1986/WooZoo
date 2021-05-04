@@ -5,10 +5,10 @@
           <a :href="route('home')">
               <img :src="`${logo}`" alt="logo" class="img-fluid" style="width: 100px; height: 100px;">
             </a>
-          <li class="nav-item h3 fw-bold"><a :href="route('animals')">Animals</a></li>
+          <li class="nav-item h3 fw-bold"><a :href="route('animals')">Animaux</a></li>
           <li class="nav-item h3 fw-bold"><a :href="route('species')">Especes</a></li>
-          <li class="nav-item h3 fw-bold"><a :href="route('users')">Healers</a></li>
-          <li class="nav-item h3 fw-bold"><a :href="route('enclosure')">Enclosures</a></li>
+          <li class="nav-item h3 fw-bold"><a :href="route('users')">Soigneur</a></li>
+          <li class="nav-item h3 fw-bold"><a :href="route('enclosures')">Enclos</a></li>
           <li class="nav-item dropdown h3 fw-bold">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{ $page.props.user.name }}
@@ -22,9 +22,7 @@
         </ol>
       </nav>
       <div id="banner" ref="banner">
-        <p>
-          {{ messagePromo }}
-        </p>
+        <p class="text-center fs-1" id="thisTime"></p>
       </div>
     </header>
     <main>
@@ -33,20 +31,34 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 
 
 export default {
     components: {
         
     },
-    mounted(){
-      // console.log(this.$page);
-    },
+    
     data() {
       return {
-        logo : "./assets/img/logo.png",
+        logo : "./assets/img/logo.png",        
       }
     },
+    methods:{
+        momentHour () {
+          setInterval(() => {
+              document.getElementById("thisTime").innerHTML = moment().format('H:mm:ss')
+              
+          },1000);
+            
+        },
+        
+    },
+    mounted () {
+      this.momentHour();
+      console.log(document.getElementById("thisTime"));
+    }
     
 
 }

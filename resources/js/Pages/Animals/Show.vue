@@ -18,9 +18,10 @@
 
                     </ul>
                     <div  v-if="user.role === 'Admin'" class="d-flex justify-content-between">
-                        <inertia-link :href="route('animals.edit', animal.id)" class="btn btn-outline-warning">Edit</inertia-link>
+                        <inertia-link :href="route('animals.edit', animal.id)" class="btn btn-outline-warning">Editer</inertia-link>
+                        <inertia-link :href="route('animals.delete', animal.id)" class="btn btn-outline-danger">Supprimer</inertia-link>
                         
-                        <button class="btn btn-outline-danger">Delete</button>
+                        
                     </div>
                     
 

@@ -23,8 +23,8 @@
                     <input class="form-control mb-1" name="petFamily" id="petFamily" type="text" v-model="form.petFamily">
                     </div>
                     <div class="col">
-                        <label for="petLunchtime">Heure manger :</label>
-                        <vue-datepicker-local v-model="form.petLunchtime" clearable name="petLunchtime" format="HH:mm:ss" class="form-control mb-1" > </vue-datepicker-local>
+                        <label for="petLunchtime">Heure de manger :</label>
+                        <input class="form-control mb-1"  type="time" min="09:00" max="18:00" name="petLunchtime" id="petLunchtime" v-model="form.petLunchtime">
                     </div>
                 </div>
                 <div class="row">

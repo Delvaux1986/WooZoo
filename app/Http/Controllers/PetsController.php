@@ -11,7 +11,6 @@ use App\Models\Specie;
 use App\Models\Enclosure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Redirect;
 
 class PetsController extends Controller
@@ -62,6 +61,7 @@ class PetsController extends Controller
         $pet->specie_id = $request->request->get('newAnimalFamily');
         $pet->lunchtime = $request->request->get('newAnimalLunchtime');
         $pet->special_diet = $request->request->get('newAnimalSpecialDiet');
+        $pet->lunchtime = $request->request->get('newAnimalLunchtime');
         $pet->user_id = 0;
         $pet->created_at = $now ;
         
@@ -122,7 +122,8 @@ class PetsController extends Controller
     public function update(Request $request, Pet $pet)
     {
         $animal = Pet::with('specie')->find($request->request->get('id')); // GET THE GOOD ANIMAL WITH IS ID
-        // dd($request->request);
+        $now = new DateTime();
+        $now->add(new DateInterval("PT2H"));
         $animal->name = $request->request->get('petName');
         $animal->specie_id = $request->request->get('petSpecie');
         $animal->user_id = $request->request->get('petHealer');
@@ -144,8 +145,10 @@ class PetsController extends Controller
      * @param  \App\Models\Pet  $pet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pet $pet)
+    public function destroy($id)
     {
-        //
+        Pet::destroy($id);
+
+        return Redirect::route('animals');
     }
 }

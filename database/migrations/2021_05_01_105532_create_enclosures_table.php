@@ -20,7 +20,7 @@ class CreateEnclosuresTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->boolean('occupy')->nullable();
-            $table->foreignId('specie_id')->constrained('species');
+            $table->foreignId('specie_id')->nullable()->constrained('species');
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('created_at')->nullable();
         });

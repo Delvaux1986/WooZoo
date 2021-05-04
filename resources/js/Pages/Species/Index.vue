@@ -24,7 +24,8 @@
                             <td>{{specie.family ? specie.family : 'N/A'}}</td>
                             <td>{{ specie.food_type ? specie.food_type: 'N/A' }}</td>
                             <td>{{ specie.lunchtime ? specie.lunchtime : 'N/A'}}</td>
-                            <td>{{ specie.enclosure_id ? specie.enclosure.name : 'N/A'}}</td>
+                            <td v-if="specie.enclosure">{{specie.enclosure.name }}</td>
+                            <td v-else>Pas d'enclos Attitré</td>
                             <td v-if="user.role === 'Admin'"> 
                                 <a :href="route('species.edit', specie.id)">
                                     <i class="bi bi-pencil-square"></i>
@@ -32,7 +33,7 @@
                                     
                             </td>
                             <td v-if="user.role === 'Admin'">
-                                <a href="">
+                                <a :href="route('species.delete', specie.id)">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td>

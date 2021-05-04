@@ -19,12 +19,13 @@
                             <tr>
                                 <td><a :href="route('animals.show' , pet)">{{pet.id}}</a></td>
                                 <td>{{pet.name}}</td>
-                                <td>{{pet.specie.specie ? pet.specie.specie : 'N/A'}}</td>
-                                <td>{{pet.specie.family ? pet.specie.family : 'N/A'}}</td>
-                                <td>{{pet.specie.lunchtime ? pet.specie.lunchtime : 'N/A'}}</td>
+                                <td>{{pet.specie ? pet.specie.specie : 'N/A'}}</td>
+                                <td>{{pet.specie ? pet.specie.family : 'N/A'}}</td>
+                                <td>{{pet.specie ? pet.specie.lunchtime : 'N/A'}}</td>
                                 <td>{{ pet.feeds ? 'Fais' : 'Pas fais'}}</td>
                                 <td>{{pet.special_diet ? pet.special_diet : 'N/A'}}</td>
-                                <td>{{pet.specie.enclosure_id ? pet.specie.enclosure.name : 'N/A' }}</td>
+                                <td v-if="pet.specie">{{  pet.specie.enclosure ? pet.specie.enclosure.name : 'N/A'}}</td>
+                                <td v-else>N/A</td>
                                 
                             </tr>
                         </tbody>
@@ -76,7 +77,7 @@
                                 <td>{{enclos.name}}</td>
                                 <td>{{enclos.description}}</td>
                                 <td>{{enclos.occupy ?  enclos.occupy : 'N/A'}}</td>
-                                <td>{{enclos.specie.family ? enclos.specie.family  : 'N/A'}}</td>
+                                <td>{{enclos.specie ? enclos.specie.family  : 'N/A'}}</td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -88,6 +89,7 @@
 
 <script>
 import AppLayout from "./../../Layouts/AppLayout";
+
 
 export default {
     components: {
@@ -101,16 +103,16 @@ export default {
         ,
     mounted() {
         console.log("Component Home mounted.");
-        console.log(this.enclosures);
+        // console.log(this.enclosures);
     },
+    data () {
+        
+    },
+    
   
 }
 </script>
 
 <style>
-    *{
-        
-        font-size: 18px;
-        font-weight: 500;
-    }
+    
 </style>

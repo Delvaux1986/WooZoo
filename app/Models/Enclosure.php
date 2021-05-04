@@ -13,7 +13,12 @@ class Enclosure extends Model
     protected $guarded = [];
     
     protected $fillable = [
-        'name', 'description', 'occupy' , 'specie_id'
+        'name',
+        'description',
+        'occupy',
+        'specie_id',
+        'updated_at',
+        'created_at'
     ];
     
     protected $table = 'enclosures';

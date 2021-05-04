@@ -16,7 +16,7 @@ class CreatePetsTable extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('specie_id')->constrained('species');
+            $table->foreignId('specie_id')->nullable()->constrained('species');
             $table->unsignedBigInteger('user_id');         
             $table->string('name', 20);
             $table->dateTime('created_at')->nullable();

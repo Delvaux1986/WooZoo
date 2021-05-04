@@ -22,14 +22,15 @@
                         <input type="text" name="specieFoodType" id="specieFoodType" class="form-control mb-1" v-model="form.specieFoodType">
                     </div>
                     <div class="col">
-                        <label for="specieLunchtime">Heure repas</label>
-                        <input type="text" name="specieLunchtime" id="specieLunchtime" class="form-control mb-1" v-model="form.specieLunchtime">
+                        <label for="specieLunchtime">Heure repas :</label>
+                        <input type="time" min="09:00" max="18:00" name="specieLunchtime" id="specieLunchtime" class="form-control mb-1" v-model="form.specieLunchtime">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="specieEnclosure">Enclos :</label>
                             <select name="specieEnclosure" id="specieEnclosure" class="form-control mb-1" v-model="form.specieEnclosure">
+                                <option value="0" selected>Aucun</option>
                                 <option v-for="enclos in this.enclosurelist" :key="enclos.id" :value="enclos.id">{{ enclos.name}}</option>
                             </select> 
                     </div>

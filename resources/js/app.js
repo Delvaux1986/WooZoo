@@ -1,4 +1,5 @@
 require('./bootstrap');
+var moment = require('moment');
 
 // Import modules...
 import { createApp, h } from 'vue';
@@ -8,7 +9,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 
 
 const el = document.getElementById('app');
-
+console.log(moment().format());
 createApp({
     render: () =>
         h(InertiaApp, {

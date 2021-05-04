@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 03 mai 2021 à 09:27
+-- Généré le : mar. 04 mai 2021 à 13:51
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.2
 
@@ -32,15 +32,20 @@ CREATE TABLE `enclosures` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `occupy` tinyint(1) DEFAULT NULL,
-  `pet_id` bigint(20) UNSIGNED NOT NULL
+  `specie_id` bigint(20) UNSIGNED NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `enclosures`
 --
 
-INSERT INTO `enclosures` (`id`, `name`, `description`, `occupy`, `pet_id`) VALUES
-(1, 'lion enclosure', 'lion enclosure', NULL, 1);
+INSERT INTO `enclosures` (`id`, `name`, `description`, `occupy`, `specie_id`, `updated_at`, `created_at`) VALUES
+(1, 'lion enclosure', 'lion enclosure', 0, 1, '2021-05-04 13:01:13', NULL),
+(2, 'Bears enclosure', 'Like lions they hav them enclosure', NULL, 4, NULL, NULL),
+(3, 'Enclos aux Gorilles', 'Enclos aux Gorilles Semi interieur Semi exterieur', 1, 2, '2021-05-03 18:10:40', NULL),
+(4, 'Aquarium', 'Aquarium 3000L', 1, 9, '2021-05-04 11:20:20', '2021-05-04 13:20:20');
 
 -- --------------------------------------------------------
 
@@ -129,7 +134,7 @@ CREATE TABLE `pets` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `lunchtime` time DEFAULT NULL,
-  `special_diet` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `special_diet` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `feeds` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -139,14 +144,17 @@ CREATE TABLE `pets` (
 
 INSERT INTO `pets` (`id`, `specie_id`, `user_id`, `name`, `created_at`, `updated_at`, `lunchtime`, `special_diet`, `feeds`) VALUES
 (1, 4, 0, 'Winnie', '2021-05-06 22:22:38', NULL, NULL, NULL, 1),
-(2, 5, 6, 'King', NULL, NULL, '12:00:00', 'VeganouPAs', 0),
-(3, 5, 0, 'Nemo', '2021-05-17 22:23:50', NULL, NULL, NULL, 1),
+(2, 2, 6, 'King', NULL, '2021-05-03 12:12:27', '12:00:00', 'VeganouPAs', 0),
+(3, 5, 0, 'Nemo2', '2021-05-17 22:23:50', '2021-05-03 19:40:52', '12:00:00', NULL, 1),
 (4, 5, 0, 'Doris', NULL, NULL, NULL, NULL, 1),
 (5, 6, 0, 'Ka', '2021-05-21 22:24:41', NULL, NULL, NULL, 0),
 (6, 7, 0, 'Babar', '2021-05-13 22:28:45', NULL, NULL, NULL, 0),
 (7, 7, 0, 'Clayton', NULL, NULL, NULL, NULL, 0),
 (8, 1, 0, 'Alex', '2021-05-02 16:49:07', NULL, '16:00:00', NULL, 1),
-(9, 1, 0, 'José', '2021-05-02 16:49:07', NULL, NULL, NULL, 1);
+(9, 1, 0, 'José', '2021-05-02 16:49:07', NULL, NULL, NULL, 1),
+(10, 1, 0, 'Bebere', '2021-05-03 12:50:45', '2021-05-03 12:50:45', NULL, 'Vegan', NULL),
+(11, 8, 0, 'Rico', '2021-05-03 21:27:58', '2021-05-03 19:27:58', NULL, 'Vegan', NULL),
+(14, 2, 0, 'Rico', '2021-05-03 21:30:40', '2021-05-03 19:30:40', NULL, 'Vegan', NULL);
 
 -- --------------------------------------------------------
 
@@ -168,9 +176,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('oVBphCyVsK9ui8PF2FBWCxKn6ri9yiERRkNKjW4Z', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidUpJOXN1ZVpmMGl6ajhmZ3JOT1Z4TWl1bGxMTFVGM0FOZm9zdHpzUCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkeDducDF0WTRjV2cxNTEycEVIbnF4LnpiT1JrbkZMb1BFQzRwRU9WMHNQcEM3aE1odUtzdU8iO30=', 1619983993),
-('RBo8L3fzxHx2h9PJiuIhfqPiCHNJYWB0FAOwNbzx', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaHhNVnhxV2h1ZU1WVVRCVEhNcW12V1dhNXN2a2tqWUVPMVBBY2NidSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovL2xvY2FsaG9zdDo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1620026698),
-('YkLRLxv0qK6bfxeZmUMQqxRXYLKNoce1xR2pNdLB', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZmhlVlhhSVRrOVlrNkNsSXlNbGw2ZjVDMUU5SHVrMUxZM0c4YzVWaiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovL2xvY2FsaG9zdDo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1620025984);
+('kNSOsMc25LpDHZ6SBRSQ8BRAqGPeQn3R8EkfI4lR', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicHFOYlNsbThndWFvZUE0TU9HdlU5Y2s2cGRqWjkybElRYVEwY0xrVSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHg3bnAxdFk0Y1dnMTUxMnBFSG5xeC56Yk9Sa25GTG9QRUM0cEVPVjBzUHBDN2hNaHVLc3VPIjtzOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMToiaHR0cDovL2xvY2FsaG9zdDo4MDAwL3NwZWNpZXMvNCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1620129090);
 
 -- --------------------------------------------------------
 
@@ -183,22 +189,32 @@ CREATE TABLE `species` (
   `specie` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `food_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lunchtime` time NOT NULL,
-  `enclosure_id` bigint(20) UNSIGNED NOT NULL
+  `lunchtime` time DEFAULT NULL,
+  `enclosure_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `species`
 --
 
-INSERT INTO `species` (`id`, `specie`, `family`, `food_type`, `lunchtime`, `enclosure_id`) VALUES
-(1, 'Félidé', 'Lion', 'Carnivore', '09:00:00', 1),
-(2, 'Primate', 'Gorille', 'Viande', '10:00:00', 0),
-(3, 'Oiseaux', NULL, 'graines', '10:30:00', 0),
-(4, 'Ursidé', 'Ours', 'Carnivore', '11:00:00', 0),
-(5, 'Poissons', NULL, 'euhhhhh', '12:00:00', 0),
-(6, 'Reptiles', 'Lézard', 'Insectes', '12:30:00', 0),
-(7, 'Herbivore', 'Elephant', 'Herbes', '12:30:00', 0);
+INSERT INTO `species` (`id`, `specie`, `family`, `food_type`, `lunchtime`, `enclosure_id`, `updated_at`, `created_at`) VALUES
+(1, 'Félidé', 'Lion', 'Carnivore', '09:00:00', 1, NULL, NULL),
+(2, 'Primate', 'Gorille', 'Viande', '10:00:00', 3, '2021-05-03 18:13:28', NULL),
+(3, 'Oiseaux', NULL, 'graines', '10:30:00', 0, NULL, NULL),
+(4, 'Ursidé', 'Ours', 'Carnivore', '11:00:00', 2, NULL, NULL),
+(5, 'Poissons', NULL, 'euhhhhh', '12:00:00', 0, NULL, NULL),
+(6, 'Reptiles', 'Lézard', 'Insectes', '12:30:00', 0, NULL, NULL),
+(7, 'Herbivore', 'Elephant', 'Herbes', '12:30:00', 0, NULL, NULL),
+(8, 'Oiseaux', 'Pinguin', 'Poissons', '14:00:00', NULL, '2021-05-03 18:49:58', '2021-05-03 18:49:58'),
+(9, 'Oiseaux', 'Pinguin', 'Poissons', '14:00:00', NULL, '2021-05-03 18:58:23', '2021-05-03 18:58:23'),
+(10, 'Oiseaux', 'Pinguin', 'Poissons', '14:00:00', NULL, '2021-05-03 18:58:57', '2021-05-03 18:58:57'),
+(20, 'Herbivore', 'Girafe', 'Plantes', '09:00:00', NULL, '2021-05-03 19:14:22', '2021-05-03 19:14:22'),
+(21, 'Oiseaux', 'Ours blanc', 'Carnivore', '12:30:00', NULL, '2021-05-03 19:16:15', '2021-05-03 19:16:15'),
+(22, 'Herbivore', 'Ours blanc', 'Plantes', '11:00:00', NULL, '2021-05-03 19:21:20', '2021-05-03 19:21:20'),
+(24, 'Arachnide', 'Ours blanc', 'Insectes', '09:00:00', NULL, '2021-05-03 19:24:29', '2021-05-03 19:24:29'),
+(25, 'Oiseaux', 'Pinguin Blanc', 'Plantes', '09:00:00', NULL, '2021-05-03 19:27:33', '2021-05-03 19:27:33');
 
 -- --------------------------------------------------------
 
@@ -229,7 +245,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `phone`, `workingToday`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'P9Cag6408TxL98Pw96x1UZoS5EEhO3xZ1XHgDpKeJJKlbK0ELVJrfOFiw71t', NULL, NULL, '2021-05-01 16:23:33', '2021-05-01 16:23:33'),
+(1, 'Robby Delvaux', 'Delvaux.robby@protonmail.com', 'Admin', NULL, NULL, NULL, '$2y$10$x7np1tY4cWg1512pEHnqx.zbORknFLoPEC4pEOV0sPpC7hMhuKsuO', NULL, NULL, 'P9Cag6408TxL98Pw96x1UZoS5EEhO3xZ1XHgDpKeJJKlbK0ELVJrfOFiw71t', NULL, NULL, '2021-05-01 14:23:33', '2021-05-01 14:23:33'),
 (3, 'Nicode', 'Nicode@Nicode.be', 'Soigneur', 477666444, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'Simon', 'Simon@Simon.be', 'Soigneur', 466333222, 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'Robby', 'Robby@Robby.be', 'Nettoyeur ', 455999777, 1, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -243,7 +259,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `role`, `phone`, `workingToday`, `em
 -- Index pour la table `enclosures`
 --
 ALTER TABLE `enclosures`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enclosures_specie_id_foreign` (`specie_id`);
 
 --
 -- Index pour la table `failed_jobs`
@@ -291,7 +308,8 @@ ALTER TABLE `sessions`
 -- Index pour la table `species`
 --
 ALTER TABLE `species`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `species_enclosure_id_foreign` (`enclosure_id`);
 
 --
 -- Index pour la table `users`
@@ -308,7 +326,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `enclosures`
 --
 ALTER TABLE `enclosures`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `failed_jobs`
@@ -332,13 +350,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `species`
 --
 ALTER TABLE `species`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -351,10 +369,22 @@ ALTER TABLE `users`
 --
 
 --
+-- Contraintes pour la table `enclosures`
+--
+ALTER TABLE `enclosures`
+  ADD CONSTRAINT `enclosures_specie_id_foreign` FOREIGN KEY (`specie_id`) REFERENCES `species` (`id`);
+
+--
 -- Contraintes pour la table `pets`
 --
 ALTER TABLE `pets`
   ADD CONSTRAINT `pets_specie_id_foreign` FOREIGN KEY (`specie_id`) REFERENCES `species` (`id`);
+
+--
+-- Contraintes pour la table `species`
+--
+ALTER TABLE `species`
+  ADD CONSTRAINT `species_enclosure_id_foreign` FOREIGN KEY (`enclosure_id`) REFERENCES `enclosures` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
