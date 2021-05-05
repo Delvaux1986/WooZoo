@@ -87,6 +87,7 @@
             submit(){
                 this.$inertia.post('/species/update/'+this.specie.id, this.form);
             }
+            
         }
   
 }

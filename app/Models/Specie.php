@@ -18,6 +18,9 @@ class Specie extends Model
         'enclosure_id',
         'family' ,
         'lunchtime',
+        'lunchtimeTwo',
+        'feedSpecie',
+        'feedSpecieTwo'
     ];
     
     protected $table = 'species';

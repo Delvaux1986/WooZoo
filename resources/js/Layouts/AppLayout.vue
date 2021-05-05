@@ -57,7 +57,7 @@ export default {
     },
     mounted () {
       this.momentHour();
-      console.log(document.getElementById("thisTime"));
+      console.log();
     }
     
 

@@ -140,7 +140,7 @@ class SpeciesController extends Controller
             $enclos->occupy = 1;
             $enclos->specie_id = $oldSpecie->id;
             $enclos->save();    
-        }else{
+        }else{ // SWITCH ENCLOSURE
             $oldEnclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
             $newEnclos = Enclosure::find($request->request->get('specieEnclosure'));
             $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
@@ -185,5 +185,14 @@ class SpeciesController extends Controller
         
 
         return Redirect::route('species');
+    }
+    public function updateFirstLunchtime($id , $state)
+    {
+        $feedingAnimals = Specie::find($id);
+        $feedingAnimals->feedSpecie = $state;
+        $feedingAnimals->save();
+        return Redirect::route('home');
+
+        
     }
 }

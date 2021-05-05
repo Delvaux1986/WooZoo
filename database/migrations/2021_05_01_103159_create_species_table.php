@@ -20,6 +20,7 @@ class CreateSpeciesTable extends Migration
             $table->string('food_type')->nullable();
             $table->boolean('feedSpecie')->nullable();
             $table->time('lunchtime')->nullable();
+            $table->boolean('feedSpecieTwo')->nullable();
             $table->time('lunchtimeTwo')->nullable();
             $table->time('lunchtimeThree')->nullable();
             $table->foreignId('enclosure_id')->nullable()->constrained('enclosures');

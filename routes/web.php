@@ -50,6 +50,9 @@ Route::post('/enclosure/update/{specie}', [EnclosureController::class , 'update'
 Route::post('/enclosure/store' , [EnclosureController::class , 'store'])->middleware('auth')->name('enclosures.store');
 Route::get('/enclosure/destroy/{id}' , [EnclosureController::class , 'destroy'])->middleware('auth')->name('enclosures.delete');
 
+// ROUTE FOR CHANGING LUNCHTIME BOOLEAN 
+Route::post('/species/firstLunchtime/{id}/{state}' , [SpeciesController::class , 'updateFirstLunchtime'])->middleware('auth')->name('update.firstlunchtime');
+
 
 // Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('logout');
 
