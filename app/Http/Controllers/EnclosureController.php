@@ -23,11 +23,10 @@ class EnclosureController extends Controller
         $enclosures = Enclosure::with('specie')->get();
         $user = Auth::user();
 
-        return Inertia::render('Enclosure/Index',[
+        return Inertia::render('Enclosure/Index', [
             'enclosurelist' => $enclosures,
             'user' => $user
         ]);
-
     }
 
     /**
@@ -39,7 +38,7 @@ class EnclosureController extends Controller
     {
         $species = Specie::all();
 
-        return Inertia::render('Enclosure/Create',[
+        return Inertia::render('Enclosure/Create', [
             'specieslist' => $species
         ]);
     }
@@ -59,7 +58,7 @@ class EnclosureController extends Controller
         $enclosure->description = $request->request->get('newEnclosDescription');
         $enclosure->occupy = $request->request->get('newEnclosOccupy');
         $enclosure->specie_id = $request->request->get('newEnclosSpecieId');
-        $enclosure->created_at = $now ;
+        $enclosure->created_at = $now;
 
         $enclosure->save();
 
@@ -93,7 +92,7 @@ class EnclosureController extends Controller
     {
         $enclosure = Enclosure::with('specie')->find($id);
         $species = Specie::all();
-        
+
         return Inertia::render('Enclosure/Edit', [
             'enclosure' => $enclosure,
             'specieslist' => $species,
@@ -107,7 +106,7 @@ class EnclosureController extends Controller
      * @param  \App\Models\Enclosure  $enclosure
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $enclosure = Enclosure::with('specie')->find($id);
         $now = new DateTime();

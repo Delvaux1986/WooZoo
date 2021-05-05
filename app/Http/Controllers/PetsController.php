@@ -23,10 +23,10 @@ class PetsController extends Controller
     public function index()
     {
         $pets = Pet::with('specie.enclosure')->get();
-        
+
         $user = Auth::user();
-        
-        return Inertia::render('Animals/Index',[
+
+        return Inertia::render('Animals/Index', [
             'animals' => $pets,
             'user' => $user
         ]);
@@ -41,7 +41,7 @@ class PetsController extends Controller
     {
         $species = Specie::all();
 
-        return Inertia::render('Animals/Create',[
+        return Inertia::render('Animals/Create', [
             'specieslist' => $species
         ]);
     }
@@ -63,8 +63,8 @@ class PetsController extends Controller
         $pet->special_diet = $request->request->get('newAnimalSpecialDiet');
         $pet->lunchtime = $request->request->get('newAnimalLunchtime');
         $pet->user_id = 0;
-        $pet->created_at = $now ;
-        
+        $pet->created_at = $now;
+
         $pet->save();
 
 
@@ -79,10 +79,10 @@ class PetsController extends Controller
      */
     public function show(Pet $pet)
     {
-        
+
         $pet = Pet::with('specie.enclosure')->find($pet->id);
         $user = Auth::user();
-        
+
         return Inertia::render('Animals/Show', [
             'animal' => $pet,
             'user' => $user
@@ -107,7 +107,7 @@ class PetsController extends Controller
             'animal' => $animal,
             'user' => $user,
             'userslist' => $users,
-            'specieslist' => $species ,
+            'specieslist' => $species,
             'enclosurelist' => $enclosures
         ]);
     }
@@ -150,5 +150,13 @@ class PetsController extends Controller
         Pet::destroy($id);
 
         return Redirect::route('animals');
+    }
+    public function updateFeeds($id, $state)
+    {
+        $animal = Pet::find($id);
+        $animal->feeds = $state;
+        $animal->save();
+
+        return Redirect::route('home');
     }
 }

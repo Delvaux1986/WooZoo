@@ -7,7 +7,6 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Specie;
 use App\Models\Enclosure;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -22,8 +21,8 @@ class HomeController extends Controller
         $users = User::all();
         $enclosures = Enclosure::with('specie')->get();
         $species = Specie::with('enclosure')->get();
-
-        return Inertia::render('Home/Index' , [
+        // dd($species);
+        return Inertia::render('Home/Index', [
             'animals' => $animals,
             'users' => $users,
             'enclosures' => $enclosures,

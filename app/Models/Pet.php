@@ -12,7 +12,7 @@ class Pet extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
+
     protected $fillable = [
         'specie_id',
         'user_id',
@@ -30,10 +30,10 @@ class Pet extends Model
     {
         return $this->belongsTo(Specie::class);
     }
-    
+
     // public function enclosure()
     // {
     //     return $this->hasManyThrough(Enclosure::class, Specie::class);
     // }
-    
+
 }

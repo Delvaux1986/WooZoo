@@ -1,9 +1,11 @@
 <template>
-    <app-Layout>
-        <div class="container d-flex justify-content-center mt-5">
-            <div class='card d-flex w-50 '>
+<app-Layout>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class='card d-flex w-50 '>
             <div class="card-body">
-                <div class="card-title text-center bg-dark text-info"><h5>{{ animal.name }}</h5></div>
+                <div class="card-title text-center bg-dark text-info">
+                    <h5>{{ animal.name }}</h5>
+                </div>
                 <div class="card-body text-center">
                     <ul class="card-text list-group list-group-flush">
                         <li class="list-group-item">Specie : {{ animal.specie.specie ? animal.specie.specie : 'N/A'}}</li>
@@ -15,53 +17,47 @@
                         <li class="list-group-item">Record : {{ animal.created_at ? animal.created_at  : 'N/A'}}</li>
                         <li class="list-group-item">Healer(s) : {{ animal.user_id ? animal.user_id : 'N/A'}}</li>
 
-
                     </ul>
-                    <div  v-if="user.role === 'Admin'" class="d-flex justify-content-between">
+                    <div v-if="user.role === 'Admin'" class="d-flex justify-content-between">
                         <inertia-link :href="route('animals.edit', animal.id)" class="btn btn-outline-warning">Editer</inertia-link>
                         <inertia-link :href="route('animals.delete', animal.id)" class="btn btn-outline-danger">Supprimer</inertia-link>
-                        
-                        
+
                     </div>
-                    
 
                 </div>
             </div>
-            </div>
         </div>
-        
-    </app-layout>
+    </div>
+
+</app-layout>
 </template>
 
 <script>
-import Input from '../../Jetstream/Input.vue';
 
 import AppLayout from "./../../Layouts/AppLayout";
 
-    export default {
-        components : {
-            AppLayout
-        },
-    
-        props: {
-            animal:Object,
-            user:Object,
-        },
-                
+export default {
+    components: {
+        AppLayout
+    },
 
-        mounted() {
-            console.log("Component animals.show mounted.");
-            console.log(this.animal);
-            
-        },
-        
-    }
-    
+    props: {
+        animal: Object,
+        user: Object,
+    },
+
+    mounted() {
+        console.log("Component animals.show mounted.");
+        console.log(this.animal);
+
+    },
+
+}
 </script>
 
 <style scoped>
-    main{
-        display:flex;
-        justify-content: center;
-    }
+main {
+    display: flex;
+    justify-content: center;
+}
 </style>

@@ -17148,6 +17148,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     momentHour: function momentHour() {
+      // REFRESH CLOCK
       setInterval(function () {
         document.getElementById("thisTime").innerHTML = moment__WEBPACK_IMPORTED_MODULE_0___default()().format('H:mm:ss');
       }, 1000);
@@ -17441,13 +17442,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Jetstream_Input_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Jetstream/Input.vue */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__.default
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
     animal: Object,
@@ -18057,10 +18056,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default
   },
@@ -18071,15 +18068,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     species: Object
   },
   mounted: function mounted() {
-    console.log("Component Home mounted."); // console.log(this.enclosures);
+    console.log("Component Home mounted.");
   },
   data: function data() {
     return {
-      specieFirstLunchtime: Object,
-      specieSecondLunchtime: ''
+      specieFirstLunchtime: [],
+      specieSecondLunchtime: [],
+      petFeed: []
     };
   },
   methods: {
+    // 3 METHODS FOR UPDATE FEED ON SPECIE & ANIMAL
     changeFirstLunchtime: function changeFirstLunchtime(specie) {
       if (specie.feedSpecie === 0) {
         specie.feedSpecie = 1;
@@ -18088,7 +18087,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.$inertia.post('/species/firstLunchtime/' + specie.id + '/' + specie.feedSpecie);
-      console.log(this.species[0]);
+      console.log(this.specie);
     },
     changeSecondLunchtime: function changeSecondLunchtime(specie) {
       if (specie.feedSpecieTwo === 0) {
@@ -18098,9 +18097,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.$inertia.post('/species/secondLunchtime/' + specie.id + '/' + specie.feedSpecieTwo);
+    },
+    changePetFeed: function changePetFeed(pet) {
+      console.log(pet);
+      if (pet.feeds === 0) pet.feeds = 1;else if (pet.feeds === 1) pet.feeds = 0;
+      this.$inertia.post('/animals/feeds/' + pet.id + '/' + pet.feeds);
     }
   }
-}, "mounted", function mounted() {}));
+});
 
 /***/ }),
 
@@ -18569,7 +18573,7 @@ __webpack_require__.r(__webpack_exports__);
     'enclosurelist': Object
   },
   mounted: function mounted() {
-    console.log(this.specie);
+    console.log('Component Species/create mounted.');
   },
   data: function data() {
     return {
@@ -18620,8 +18624,7 @@ __webpack_require__.r(__webpack_exports__);
     specieslist: Object
   },
   mounted: function mounted() {
-    console.log("Component Animals.edit mounted.");
-    console.log(this.userslist);
+    console.log("Component Species/edit mounted.");
   },
   data: function data() {
     return {
@@ -18668,8 +18671,7 @@ __webpack_require__.r(__webpack_exports__);
     user: Object
   },
   mounted: function mounted() {
-    console.log("Component Home mounted.");
-    console.log(this.species);
+    console.log("Component Species/index mounted.");
   }
 });
 
@@ -18698,7 +18700,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log("Component specie.show mounted.");
-    console.log(this.specie);
   }
 });
 
@@ -22607,17 +22608,9 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = {
   "class": "form-check form-switch d-flex justify-content-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-  "class": "form-check-input",
-  type: "checkbox",
-  id: "flexSwitchCheckChecked",
-  checked: ""
-})])], -1
-/* HOISTED */
-);
-
+};
 var _hoisted_12 = {
   key: 0
 };
@@ -22675,7 +22668,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_Layout, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_3, [_hoisted_4, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.species, function (specie) {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SPECIES TABLE  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_3, [_hoisted_4, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.species, function (specie) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tbody", {
           key: specie.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
@@ -22688,10 +22681,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.lunchtime ? specie.lunchtime : 'N/A'), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [specie.feedSpecie === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+          key: 0,
           "class": "form-check-input",
           type: "checkbox",
-          id: $data.specieFirstLunchtime,
+          id: "specieFirstLunchtime",
           checked: "",
           "v-model": $data.specieFirstLunchtime,
           onChange: function onChange($event) {
@@ -22699,24 +22693,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }
         }, null, 40
         /* PROPS, HYDRATE_EVENTS */
-        , ["id", "v-model", "onChange"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.lunchtimeTwo ? specie.lunchtimeTwo : 'N/A'), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        , ["v-model", "onChange"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+          key: 1,
           "class": "form-check-input",
           type: "checkbox",
-          id: $data.specieSecondLunchtime + specie.id,
+          id: "specieFirstLunchtime",
+          "v-model": $data.specieFirstLunchtime,
+          onChange: function onChange($event) {
+            return $options.changeFirstLunchtime(specie);
+          }
+        }, null, 40
+        /* PROPS, HYDRATE_EVENTS */
+        , ["v-model", "onChange"]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.lunchtimeTwo ? specie.lunchtimeTwo : 'N/A'), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [specie.feedSpecieTwo ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+          key: 0,
+          "class": "form-check-input",
+          type: "checkbox",
+          id: "specieSecondLunchtime",
           checked: "",
-          "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-            return $data.specieSecondLunchtime = $event;
-          })
-        }, null, 8
-        /* PROPS */
-        , ["id"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.specieSecondLunchtime]])])]), specie.enclosure ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.enclosure ? specie.enclosure.name : 'N/A'), 1
+          "v-model": $data.specieSecondLunchtime,
+          onChange: function onChange($event) {
+            return $options.changeSecondLunchtime(specie);
+          }
+        }, null, 40
+        /* PROPS, HYDRATE_EVENTS */
+        , ["v-model", "onChange"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+          key: 1,
+          "class": "form-check-input",
+          type: "checkbox",
+          id: "specieSecondLunchtime",
+          "v-model": $data.specieSecondLunchtime,
+          onChange: function onChange($event) {
+            return $options.changeSecondLunchtime(specie);
+          }
+        }, null, 40
+        /* PROPS, HYDRATE_EVENTS */
+        , ["v-model", "onChange"]))])]), specie.enclosure ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.enclosure ? specie.enclosure.name : 'N/A'), 1
         /* TEXT */
         )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_8, "N/A"))])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_9, [_hoisted_10, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.animals, function (pet) {
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ANIMALS TABLE  ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_9, [_hoisted_10, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.animals, function (pet) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tbody", {
           key: pet.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
@@ -22731,14 +22749,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pet.specie ? pet.specie.lunchtime : 'N/A'), 1
         /* TEXT */
-        ), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pet.special_diet ? pet.special_diet : 'N/A'), 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [pet.feeds === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+          key: 0,
+          "class": "form-check-input",
+          type: "checkbox",
+          id: "flexSwitchCheckChecked",
+          checked: "",
+          "v-model": $data.petFeed,
+          onChange: function onChange($event) {
+            return $options.changePetFeed(pet);
+          }
+        }, null, 40
+        /* PROPS, HYDRATE_EVENTS */
+        , ["v-model", "onChange"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("input", {
+          key: 1,
+          "class": "form-check-input",
+          type: "checkbox",
+          id: "flexSwitchCheckChecked",
+          "v-model": $data.petFeed,
+          onChange: function onChange($event) {
+            return $options.changePetFeed(pet);
+          }
+        }, null, 40
+        /* PROPS, HYDRATE_EVENTS */
+        , ["v-model", "onChange"]))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pet.special_diet ? pet.special_diet : 'N/A'), 1
         /* TEXT */
         ), pet.specie ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pet.specie.enclosure ? pet.specie.enclosure.name : 'N/A'), 1
         /* TEXT */
         )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_13, "N/A"))])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{pet.specie.enclosure_id ? pet.specie.enclosure.name : 'N/A'}} "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ pet.feeds ? 'Oui' : 'Non'}} "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_16, [_hoisted_17, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.users, function (user) {
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" USERS TABLE  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_16, [_hoisted_17, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.users, function (user) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tbody", {
           key: user.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.id), 1
@@ -22756,7 +22797,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         )])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_20, [_hoisted_21, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.enclosures, function (enclos) {
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ENCLOS TABLE  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_20, [_hoisted_21, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.enclosures, function (enclos) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tbody", {
           key: enclos.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(enclos.id), 1
@@ -24251,32 +24292,34 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Espèce", -1
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Famille", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Famille", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Type de nourriture", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Type de nourriture", -1
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "H - Repas Matin", -1
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "H - Repas Espèce", -1
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Nourris", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, "Enclos", -1
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "H - Repas Soir", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = {
-  key: 0
-};
-var _hoisted_13 = {
-  key: 1
-};
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, "Nourris", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, "Enclos", -1
+/* HOISTED */
+);
+
 var _hoisted_14 = {
   key: 0
 };
@@ -24284,20 +24327,26 @@ var _hoisted_15 = {
   key: 1
 };
 var _hoisted_16 = {
+  key: 0
+};
+var _hoisted_17 = {
+  key: 1
+};
+var _hoisted_18 = {
   key: 2
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "bi bi-pencil-square"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_18 = {
+var _hoisted_20 = {
   key: 3
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
   "class": "bi bi-trash"
 }, null, -1
 /* HOISTED */
@@ -24324,30 +24373,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [_hoisted_6, _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", _hoisted_12, "Editer")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", _hoisted_13, "Supprimer")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.species, function (specie) {
+      , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [_hoisted_6, _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", _hoisted_14, "Editer")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("th", _hoisted_15, "Supprimer")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.species, function (specie) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tbody", {
           key: specie.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
           href: _ctx.route('species.show', specie.id)
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.id), 9
         /* TEXT, PROPS */
-        , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.specie ? specie.specie : 'N/A'), 1
-        /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.family ? specie.family : 'N/A'), 1
+        , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.family ? specie.family : 'N/A'), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.food_type ? specie.food_type : 'N/A'), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.lunchtime ? specie.lunchtime : 'N/A'), 1
         /* TEXT */
-        ), specie.enclosure ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.enclosure.name), 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.feedSpecie ? 'Oui' : 'Non'), 1
         /* TEXT */
-        )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_15, "Pas d'enclos Attitré")), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.lunchtimeTwo ? specie.lunchtimeTwo : 'N/A'), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.feedSpecieTwo ? 'Oui' : 'Non'), 1
+        /* TEXT */
+        ), specie.enclosure ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(specie.enclosure.name), 1
+        /* TEXT */
+        )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_17, "Pas d'enclos Attitré")), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
           href: _ctx.route('species.edit', specie.id)
-        }, [_hoisted_17], 8
-        /* PROPS */
-        , ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-          href: _ctx.route('species.delete', specie.id)
         }, [_hoisted_19], 8
+        /* PROPS */
+        , ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("td", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+          href: _ctx.route('species.delete', specie.id)
+        }, [_hoisted_21], 8
         /* PROPS */
         , ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
       }), 128
@@ -24439,9 +24492,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_10, "H - Repas Espèce : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.specie.lunchtime ? _this.specie.lunchtime : 'N/A'), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_11, "Enclos : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.specie.enclosure.name ? _this.specie.enclosure.name : 'N/A'), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_11, "Enclos : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.specie.enclosure ? _this.specie.enclosure.name : 'N/A'), 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_12, "Enclos Description : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.specie.enclosure.description ? _this.specie.enclosure.description : 'N/A'), 1
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_12, "Enclos Description : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.specie.enclosure ? _this.specie.enclosure.description : 'N/A'), 1
       /* TEXT */
       )]), $props.user.role === 'Admin' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('species.edit', _this.specie.id),
@@ -24491,7 +24544,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "Healers", -1
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "container"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "Healers")], -1
 /* HOISTED */
 );
 
@@ -24755,7 +24810,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nmain[data-v-23257844]{\r\n        display:flex;\r\n        justify-content: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nmain[data-v-23257844] {\r\n    display: flex;\r\n    justify-content: center;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -69876,42 +69931,6 @@ _Show_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = 
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Users/Create.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/Pages/Users/Create.vue ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const script = {}
-script.__file = "resources/js/Pages/Users/Create.vue"
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Users/Edit.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/Pages/Users/Edit.vue ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const script = {}
-script.__file = "resources/js/Pages/Users/Edit.vue"
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
-
-/***/ }),
-
 /***/ "./resources/js/Pages/Users/Index.vue":
 /*!********************************************!*\
   !*** ./resources/js/Pages/Users/Index.vue ***!
@@ -69935,24 +69954,6 @@ if (false) {}
 _Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Users/Index.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
-
-/***/ }),
-
-/***/ "./resources/js/Pages/Users/Show.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/Pages/Users/Show.vue ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const script = {}
-script.__file = "resources/js/Pages/Users/Show.vue"
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
 
 /***/ }),
 
@@ -72610,14 +72611,8 @@ var map = {
 	"./Species/Index.vue": "./resources/js/Pages/Species/Index.vue",
 	"./Species/Show": "./resources/js/Pages/Species/Show.vue",
 	"./Species/Show.vue": "./resources/js/Pages/Species/Show.vue",
-	"./Users/Create": "./resources/js/Pages/Users/Create.vue",
-	"./Users/Create.vue": "./resources/js/Pages/Users/Create.vue",
-	"./Users/Edit": "./resources/js/Pages/Users/Edit.vue",
-	"./Users/Edit.vue": "./resources/js/Pages/Users/Edit.vue",
 	"./Users/Index": "./resources/js/Pages/Users/Index.vue",
-	"./Users/Index.vue": "./resources/js/Pages/Users/Index.vue",
-	"./Users/Show": "./resources/js/Pages/Users/Show.vue",
-	"./Users/Show.vue": "./resources/js/Pages/Users/Show.vue"
+	"./Users/Index.vue": "./resources/js/Pages/Users/Index.vue"
 };
 
 

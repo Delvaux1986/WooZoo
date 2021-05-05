@@ -46,7 +46,7 @@ export default {
       }
     },
     methods:{
-        momentHour () {
+        momentHour () { // REFRESH CLOCK
           setInterval(() => {
               document.getElementById("thisTime").innerHTML = moment().format('H:mm:ss')
               

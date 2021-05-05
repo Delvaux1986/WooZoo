@@ -18,9 +18,9 @@ class CreateSpeciesTable extends Migration
             $table->string('specie')->nullable();
             $table->string('family')->nullable();
             $table->string('food_type')->nullable();
-            $table->boolean('feedSpecie')->nullable();
+            $table->boolean('feedSpecie')->nullable()->default(0);
             $table->time('lunchtime')->nullable();
-            $table->boolean('feedSpecieTwo')->nullable();
+            $table->boolean('feedSpecieTwo')->nullable()->default(0);
             $table->time('lunchtimeTwo')->nullable();
             $table->time('lunchtimeThree')->nullable();
             $table->foreignId('enclosure_id')->nullable()->constrained('enclosures');

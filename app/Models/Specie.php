@@ -11,18 +11,18 @@ class Specie extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
+
     protected $fillable = [
         'specie',
         'food_type',
         'enclosure_id',
-        'family' ,
+        'family',
         'lunchtime',
         'lunchtimeTwo',
         'feedSpecie',
         'feedSpecieTwo'
     ];
-    
+
     protected $table = 'species';
     // Species that can hav Many enclosure
     public function enclosure()

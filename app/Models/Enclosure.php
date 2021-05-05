@@ -11,7 +11,7 @@ class Enclosure extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
+
     protected $fillable = [
         'name',
         'description',
@@ -20,12 +20,11 @@ class Enclosure extends Model
         'updated_at',
         'created_at'
     ];
-    
+
     protected $table = 'enclosures';
 
     public function specie()
     {
         return $this->hasMany(Specie::class);
     }
-    
 }

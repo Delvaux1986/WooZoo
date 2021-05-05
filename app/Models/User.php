@@ -20,8 +20,8 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     protected $guarded = [];
-    
-    
+
+
     protected $table = 'users';
 
     // Users that can hav to handle one specie

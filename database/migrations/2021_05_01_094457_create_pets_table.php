@@ -23,7 +23,7 @@ class CreatePetsTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->time('lunchtime')->nullable();
             $table->string('special_diet')->nullable();
-            $table->boolean('feeds')->nullable();
+            $table->boolean('feeds')->default(0);
         });
     }
 
