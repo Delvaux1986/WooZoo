@@ -20,7 +20,7 @@
                 </div>
                 <div class="col">
                     <label for="newSpecieLunchtime">Heure de manger :</label>
-                    <input type="time" min="09:00" max="18:00" class="form-control mb-1" id="newSpecieLunchtime" name="newSpecieLunchtime" v-model="form.newSpecieLunchtime">
+                    <input type="time" min="06:00" max="23:00" class="form-control mb-1" id="newSpecieLunchtime" name="newSpecieLunchtime" v-model="form.newSpecieLunchtime">
                 </div>
             </div>
             <div class="row">

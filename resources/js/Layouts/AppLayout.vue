@@ -22,7 +22,7 @@
         </ol>
       </nav>
     </header>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center content">
         <p class="text-center fs-1 border border-dark p-1" id="thisTime"></p>
     </div>
     <main>
@@ -65,6 +65,7 @@ export default {
 </script>
 
 <style scoped>
+    
     header
         {
         background-color: #bacf9f;

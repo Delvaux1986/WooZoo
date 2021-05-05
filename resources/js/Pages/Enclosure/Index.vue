@@ -57,7 +57,6 @@ export default {
     },
     mounted() {
         console.log("Component Enclosure/Index mounted.");
-        console.log(this.enclosurelist);
     },
 
 }
