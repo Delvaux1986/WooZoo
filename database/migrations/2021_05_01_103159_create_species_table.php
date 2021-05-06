@@ -23,7 +23,7 @@ class CreateSpeciesTable extends Migration
             $table->boolean('feedSpecieTwo')->nullable()->default(0);
             $table->time('lunchtimeTwo')->nullable();
             $table->time('lunchtimeThree')->nullable();
-            $table->foreignId('enclosure_id')->nullable()->constrained('enclosures');
+            $table->integer('enclosure_id')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('created_at')->nullable();
         });

@@ -12,7 +12,8 @@
 
                         <li class="list-group-item">Famille : {{ this.specie.family ? this.specie.family : 'N/A'}}</li>
                         <li class="list-group-item">Type de nourriture : {{ this.specie.food_type ? this.specie.food_type : 'N/A'}}</li>
-                        <li class="list-group-item">H - Repas Espèce : {{ this.specie.lunchtime ? this.specie.lunchtime : 'N/A'}}</li>
+                        <li class="list-group-item">H - Repas matin : {{ this.specie.lunchtime ? this.specie.lunchtime.substr(0, 5) : 'N/A'}}</li>
+                        <li class="list-group-item">H - Repas soir : {{ this.specie.lunchtimeTwo ? this.specie.lunchtime.substr(0, 5) : 'N/A'}}</li>
                         <li class="list-group-item">Enclos : {{ this.specie.enclosure ? this.specie.enclosure.name : 'N/A'}}</li>
                         <li class="list-group-item">Enclos Description : {{this.specie.enclosure ? this.specie.enclosure.description : 'N/A'}}</li>
                     </ul>

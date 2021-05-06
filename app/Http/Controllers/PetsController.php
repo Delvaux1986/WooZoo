@@ -22,7 +22,7 @@ class PetsController extends Controller
      */
     public function index()
     {
-        $pets = Pet::with('specie.enclosure')->get();
+        $pets = Pet::with('specie')->get();
 
         $user = Auth::user();
 
@@ -97,7 +97,7 @@ class PetsController extends Controller
      */
     public function edit($id)
     {
-        $animal = Pet::with('specie.enclosure')->find($id); // LOOK AFTER PET REQUEST
+        $animal = Pet::with('specie')->find($id); // LOOK AFTER PET REQUEST
         $user = Auth::user(); // for check if user hav right
         $users = User::all(); // get all user for select list
         $species = Specie::all(); // GET ALL SPECIES FOR SELECT LIST
@@ -132,7 +132,7 @@ class PetsController extends Controller
         $animal->lunchtime = $request->request->get('petLunchtime');
         $animal->feeds = $request->request->get('petFeeds');
         $animal->specie->specie = $request->request->get('petFamily');
-        $animal->specie->enclosure_id = $request->request->get('petEnclosure');
+        // $animal->specie->enclosure_id = $request->request->get('petEnclosure');
         // dd($animal);
         $animal->save();
 

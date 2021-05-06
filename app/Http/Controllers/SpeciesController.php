@@ -10,6 +10,8 @@ use Inertia\Inertia;
 use App\Models\Specie;
 use App\Models\Enclosure;
 use Illuminate\Http\Request;
+use App\Models\Specie_Enclosure;
+use Hamcrest\Type\IsInteger;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -22,7 +24,7 @@ class SpeciesController extends Controller
      */
     public function index()
     {
-        $species = Specie::with('enclosure', 'pets')->get();
+        $species = Specie::with('specie_enclosure.enclosure', 'pets')->get();
         $user = Auth::user();
         // dd($species);
         return Inertia::render('Species/Index', [
@@ -60,6 +62,7 @@ class SpeciesController extends Controller
         $newSpecie->food_type = $request->request->get('newSpecieFoodType');
         $newSpecie->lunchtime = $request->request->get('newSpecieLunchtime');
         $newSpecie->enclosure_id = $request->request->get('newSpecieEnclosureId');
+        $newSpecie->lunchtimeTwo = $request->request->get('newSpecieLunchtimeTwo');
         $newSpecie->created_at = $now;
         $newSpecie->save();
         $user = Auth::user();
@@ -76,7 +79,7 @@ class SpeciesController extends Controller
      */
     public function show(Specie $specie)
     {
-        $specie = Specie::with('enclosure', 'pets')->find($specie->id);
+        $specie = Specie::with('specie_enclosure.enclosure', 'pets')->find($specie->id);
         $user = Auth::user();
 
         return Inertia::render('Species/Show', [
@@ -93,11 +96,11 @@ class SpeciesController extends Controller
      */
     public function edit($id)
     {
-        $specie = Specie::with('enclosure', 'pets')->find($id);
+        $specie = Specie::with('specie_enclosure.enclosure', 'pets')->find($id);
         $user = Auth::user(); // for check if user hav right
         $users = User::all(); // get all user for select list
         $species = Specie::all(); // GET ALL SPECIES FOR SELECT LIST
-        $enclosures = Enclosure::all();
+        $enclosures = Enclosure::with('specie_enclosure.specie')->get();
 
         return Inertia::render('Species/Edit', [
             'specie' => $specie,
@@ -117,40 +120,39 @@ class SpeciesController extends Controller
      */
     public function update(Request $request, Specie $specie)
     {
-        $oldSpecie = Specie::with('enclosure')->find($specie->id);
+
+        $specie = Specie::with('specie_enclosure.enclosure')->find($specie->id);
         $now = new DateTime();
         $now->add(new DateInterval("PT2H"));
 
-        $oldSpecie->specie = $request->request->get('specieName');
-        $oldSpecie->family = $request->request->get('specieFamily');
-        $oldSpecie->food_type = $request->request->get('specieFoodType');
-        $oldSpecie->lunchtime = $request->request->get('specieLunchtime');
-        $oldSpecie->updated_at = NULL;
+        $specie->specie = $request->request->get('specieName');
+        $specie->family = $request->request->get('specieFamily');
+        $specie->food_type = $request->request->get('specieFoodType');
+        $specie->lunchtime = $request->request->get('specieLunchtime');
+        $specie->lunchtimeTwo = $request->request->get('specieLunchtimeTwo');
+        $specie->enclosure_id = $request->request->get('specieEnclosure');
+       
+        
+        
 
-        if ($oldSpecie->getOriginal('enclosure_id') && !$request->request->get('specieEnclosure')) { // WE GET OUT THE SPECIE OF ENCLOSURE
-            $enclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
-            $oldSpecie->enclosure_id = NULL;
-            $enclos->occupy = 0;
-            $enclos->specie_id = NULL;
-            $enclos->save();
-        } else if (!$oldSpecie->getOriginal('enclosure_id') && $request->request->get('specieEnclosure')) { // GET IN ENCLOSURE THE SPECIE 
-            $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
-            $enclos = Enclosure::find($oldSpecie->enclosure_id);
-            $enclos->occupy = 1;
-            $enclos->specie_id = $oldSpecie->id;
-            $enclos->save();
-        } else { // SWITCH ENCLOSURE
-            $oldEnclos = Enclosure::find($oldSpecie->getOriginal('enclosure_id'));
-            $newEnclos = Enclosure::find($request->request->get('specieEnclosure'));
-            $oldSpecie->enclosure_id = $request->request->get('specieEnclosure');
-            $oldEnclos->occupy = 0;
-            $oldEnclos->specie_id = NULL;
-            $newEnclos->occupy = 1;
-            $newEnclos->specie_id = $oldSpecie->id;
-            $newEnclos->save();
-            $oldEnclos->save();
+        if (is_int($specie->getOriginal('enclosure_id'))  && $specie->enclosure_id === 1 ) { // WE GET Specie out the OF ENCLOS 
+            
+            $specie_enclosure = Specie_Enclosure::find(1)->where('specie_id', $specie->id);
+            $specie_enclosure->update([ 'enclosure_id' => $specie->enclosure_id]);
+            
+
+        }elseif(is_int($specie->getOriginal('enclosure_id')) && $specie->getOriginal('enclosure_id') != 0 && $specie->enclosure_id != 0 ){ // WE GET SPECIE OUT OF ENCLOS
+
+            $specie_enclosure = Specie_Enclosure::where('specie_id', $specie->id)->first();
+            $specie_enclosure->update(['enclosure_id' => $specie->enclosure_id ]);
+        }elseif(is_int($specie->getOriginal('enclosure_id')) && is_int($specie->enclosure_id) && $specie->getOriginal('enclosure_id') != 0 && $specie->enclosure_id != 0){
+            
+            $specie_enclosure = Specie_Enclosure::where('specie_id', $specie->id)->first();
+            $specie_enclosure->update(['enclosure_id' => $specie->enclosure_id]);
+
         }
-        $oldSpecie->save();
+
+        $specie->save();
 
 
         return Redirect::route('species');

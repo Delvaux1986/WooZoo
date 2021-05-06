@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="col">
-                    <label for="petSpecie">Espece :</label>
+                    <label for="petSpecie">Espèce :</label>
                     <select class="form-control mb-1" name="petSpecie" id="petSpecie" type="text" v-model="form.petSpecie">
                         <option v-for="specie in this.specieslist" :key="specie.id" :value="specie.id">{{specie.specie}}</option>
                     </select>
@@ -23,16 +23,16 @@
                     <input class="form-control mb-1" name="petFamily" id="petFamily" type="text" v-model="form.petFamily">
                 </div>
                 <div class="col">
-                    <label for="petLunchtime">Heure de manger :</label>
+                    <label for="petLunchtime">H - Repas Individu :</label>
                     <input class="form-control mb-1" type="time" min="06:00" max="23:00" name="petLunchtime" id="petLunchtime" v-model="form.petLunchtime">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="petFeeds">Animal nourri : </label>
+                    <label for="petFeeds">Animal nourrit : </label>
                     <select name="petFeeds" id="petFeeds" class="form-control mb-1" v-model="form.petFeeds">
-                        <option value="0">Not Do</option>
-                        <option value="1">Do</option>
+                        <option value="0">Non</option>
+                        <option value="1">Oui</option>
                     </select>
                 </div>
                 <div class="col">
@@ -44,7 +44,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="petSpecialDiet">Special diet</label>
+                    <label for="petSpecialDiet">Régime spécial</label>
                     <input class="form-control mb-1" type="text" id="petSpecialDiet" name="petSpecialDiet" v-model="form.petSpecialDiet">
                 </div>
                 <div class="col">

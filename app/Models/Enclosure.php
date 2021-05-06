@@ -25,6 +25,10 @@ class Enclosure extends Model
 
     public function specie()
     {
-        return $this->hasMany(Specie::class);
+        return $this->belongsToMany(Specie::class);
+    }
+    public function specie_enclosure()
+    {
+        return $this->hasMany(Specie_Enclosure::class);
     }
 }

@@ -19,18 +19,21 @@
                     <input type="text" class="form-control mb-1" id="newSpecieFoodType" name="newSpecieFoodType" v-model="form.newSpecieFoodType">
                 </div>
                 <div class="col">
-                    <label for="newSpecieLunchtime">Heure de manger :</label>
-                    <input type="time" min="06:00" max="23:00" class="form-control mb-1" id="newSpecieLunchtime" name="newSpecieLunchtime" v-model="form.newSpecieLunchtime">
+                    <label for="newSpecieLunchtime">H - Repas matin :</label>
+                    <input type="time" min="06:00" max="13:00" class="form-control mb-1" id="newSpecieLunchtime" name="newSpecieLunchtime" v-model="form.newSpecieLunchtime">
                 </div>
             </div>
             <div class="row">
+                <div class="col">
+                    <label for="newSpecieLunchtimeTwo">H - Repas soir :</label>
+                    <input type="time" min="13:00" max="23:00" class="form-control mb-1" id="newSpecieLunchtimeTwo" name="newSpecieLunchtimeTwo" v-model="form.newSpecieLunchtimeTwo">
+                </div>
                 <div class="col">
                     <label for="newSpecieEnclosureId">Enclos :</label>
                     <select class="form-control mb-1" name="newSpecieEnclosureId" id="newSpecieEnclosureId" v-model="form.newSpecieEnclosureId">
                         <option v-for="enclos in this.enclosurelist" :key="enclos.id" :value="enclos.name">{{ enclos.name }}</option>
                     </select>
                 </div>
-                <div class="col"></div>
             </div>
             <div class="row">
                 <div class="col mt-5">
@@ -65,6 +68,7 @@ export default {
                 newSpecieFoodType: '',
                 newSpecieLunchtime: '',
                 newSpecieEnclosureId: '',
+                newSpecieLunchtimeTwo : '',
             }
         }
     },

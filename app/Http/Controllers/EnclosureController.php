@@ -20,7 +20,7 @@ class EnclosureController extends Controller
      */
     public function index()
     {
-        $enclosures = Enclosure::with('specie')->get();
+        $enclosures = Enclosure::with('specie_enclosure.specie')->get();
         $user = Auth::user();
 
         return Inertia::render('Enclosure/Index', [
@@ -73,7 +73,7 @@ class EnclosureController extends Controller
      */
     public function show($id)
     {
-        $enclosure = Enclosure::with('specie')->find($id);
+        $enclosure = Enclosure::with('specie_enclosure.specie')->find($id);
         $user = Auth::user();
 
         return Inertia::render('Enclosure/Show', [
@@ -90,7 +90,7 @@ class EnclosureController extends Controller
      */
     public function edit($id)
     {
-        $enclosure = Enclosure::with('specie')->find($id);
+        $enclosure = Enclosure::with('specie_enclosure.specie')->find($id);
         $species = Specie::all();
 
         return Inertia::render('Enclosure/Edit', [
@@ -108,7 +108,7 @@ class EnclosureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $enclosure = Enclosure::with('specie')->find($id);
+        $enclosure = Enclosure::with('specie_enclosure.specie')->find($id);
         $now = new DateTime();
         $now->add(new DateInterval("PT2H"));
         $enclosure->name = $request->request->get('enclosName');
@@ -129,7 +129,7 @@ class EnclosureController extends Controller
      */
     public function destroy($id)
     {
-        $enclos = Enclosure::with('specie')->find($id);
+        $enclos = Enclosure::with('specie_enclosure.specie')->find($id);
         $specie = Specie::find($enclos->specie_id);
         $specie->enclosure_id = NULL;
         $specie->save();

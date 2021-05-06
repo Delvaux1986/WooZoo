@@ -23,7 +23,7 @@
             </td>
             <td>{{ specie.family ? specie.family : "N/A" }}</td>
             <td>{{ specie.food_type ? specie.food_type : "N/A" }}</td>
-            <td>{{ specie.lunchtime ? specie.lunchtime : "N/A" }}</td>
+            <td>{{ specie.lunchtime ? specie.lunchtime.substr(0, 5) : "N/A" }}</td>
             <td>
               <div class="form-check form-switch d-flex justify-content-center">
                 <input
@@ -45,7 +45,7 @@
                 />
               </div>
             </td>
-            <td>{{ specie.lunchtimeTwo ? specie.lunchtimeTwo : "N/A" }}</td>
+            <td>{{ specie.lunchtimeTwo ? specie.lunchtimeTwo.substr(0, 5) : "N/A" }}</td>
             <td>
               <div class="form-check form-switch d-flex justify-content-center">
                 <input
@@ -67,8 +67,8 @@
                 />
               </div>
             </td>
-            <td v-if="specie.enclosure">
-              {{ specie.enclosure ? specie.enclosure.name : "N/A" }}
+            <td v-if="specie.specie_enclosure[0].enclosure">
+              {{ specie.specie_enclosure[0].enclosure ? specie.specie_enclosure[0].enclosure.name : "N/A" }}
             </td>
             <td v-else>N/A</td>
           </tr>
@@ -81,12 +81,10 @@
           <tr>
             <th>#</th>
             <th>Nom</th>
-            <th>Espèce</th>
             <th>Famille</th>
             <th>H - Repas Individu</th>
             <th>Nourris</th>
             <th>Régime Spécial</th>
-            <th>Enclos</th>
           </tr>
         </thead>
         <tbody v-for="pet in this.animals" :key="pet.id">
@@ -95,9 +93,8 @@
               <a :href="route('animals.show', pet)">{{ pet.id }}</a>
             </td>
             <td>{{ pet.name }}</td>
-            <td>{{ pet.specie ? pet.specie.specie : "N/A" }}</td>
             <td>{{ pet.specie ? pet.specie.family : "N/A" }}</td>
-            <td>{{ pet.lunchtime ? pet.lunchtime : "N/A" }}</td>
+            <td>{{ pet.lunchtime ? pet.lunchtime.substr(0, 5) : "N/A" }}</td>
             <td>
               <div class="form-check form-switch d-flex justify-content-center">
                 <input
@@ -121,10 +118,6 @@
             </td>
             <td v-if="pet.special_diet">{{ pet.special_diet }}</td>
             <td v-else>{{ pet.specie.food_type}}</td>
-            <td v-if="pet.specie">
-              {{ pet.specie.enclosure ? pet.specie.enclosure.name : "N/A" }}
-            </td>
-            <td v-else>N/A</td>
           </tr>
         </tbody>
       </table>
@@ -164,7 +157,6 @@
             <th>#</th>
             <th>Nom</th>
             <th>Description</th>
-            <th>Occupé</th>
             <th>Par</th>
           </tr>
         </thead>
@@ -173,8 +165,7 @@
             <td>{{ enclos.id }}</td>
             <td>{{ enclos.name }}</td>
             <td>{{ enclos.description }}</td>
-            <td>{{ enclos.occupy ? enclos.occupy : "N/A" }}</td>
-            <td>{{ enclos.specie ? enclos.specie.family : "N/A" }}</td>
+            <td>{{ enclos.specie_enclosure ? enclos.specie_enclosure.length+' espèce(s) ' : "N/A" }}</td>
             <td></td>
           </tr>
         </tbody>
@@ -198,7 +189,7 @@ export default {
   },
   mounted() {
     console.log("Component Home mounted.");
-    console.log(this.species);
+    console.log();
   },
   data() {
     return {

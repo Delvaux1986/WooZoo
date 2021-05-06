@@ -23,9 +23,9 @@
                 </div>
                 <div class="col">
                     <label for="enclosSpecie">Par :</label>
-                    <select class="form-control mb-1" name="enclosSpecie" id="enclosSpecie">
-                        <option v-for="family in this.specieslist" :key="family.id" :value="family.id">{{ family.family}}</option>
-                    </select>
+                    <ul v-for="specie in this.enclosure.specie_enclosure" :key="specie.id" id="enclosSpecie">
+                        <li>{{ specie.specie.family }}</li>
+                    </ul>
                 </div>
             </div>
             <!-- <div class="row">
@@ -60,14 +60,14 @@ export default {
                 enclosName: this.enclosure.name,
                 enclosDescription: this.enclosure.description,
                 enclosOccupy: this.enclosure.occupy,
-                enclosSpecie: this.enclosure.specie.id,
+                // enclosSpecie: this.enclosure.specie,
                 enclosUpdate: this.time,
             }
         }
     },
     mounted() {
         console.log("Component Enclosure/Edit mounted.");
-        console.log(this.time);
+        console.log(this.enclosure.specie_enclosure[0]);
     },
     methods: {
         submit() {

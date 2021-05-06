@@ -8,7 +8,6 @@
                 <tr>
                     <th>#</th>
                     <th>Nom</th>
-                    <th>Espèce</th>
                     <th>Famille</th>
                     <th>H - Repas Espèce</th>
                     <th>H - Repas Individu</th>
@@ -22,10 +21,9 @@
                 <tr>
                     <td><a :href="route('animals.show' , pet)">{{pet.id}}</a></td>
                     <td>{{pet.name ? pet.name : 'N/A'}}</td>
-                    <td>{{pet.specie ? pet.specie.specie : 'N/A'}}</td>
                     <td>{{pet.specie ? pet.specie.family : 'N/A'}}</td>
-                    <td>{{pet.specie ? pet.specie.lunchtime : 'N/A'}}</td>
-                    <td>{{ pet.lunchtime ? pet.lunchtime : 'N/A'}}</td>
+                    <td>{{pet.specie ? pet.specie.lunchtime.substr(0, 5) : 'N/A'}}</td>
+                    <td>{{ pet.lunchtime ? pet.lunchtime.substr(0, 5) : 'N/A'}}</td>
                     <td>{{ pet.special_diet ? pet.special_diet : 'N/A'}}</td>
                     <td v-if="pet.specie">{{ pet.specie.enclosure ? pet.specie.enclosure.name : 'N/A'}}</td>
                     <td v-else>N/A</td>

@@ -22,19 +22,22 @@
                     <input type="text" name="specieFoodType" id="specieFoodType" class="form-control mb-1" v-model="form.specieFoodType">
                 </div>
                 <div class="col">
-                    <label for="specieLunchtime">Heures repas :</label>
-                    <input type="time" min="06:00" max="23:00" name="specieLunchtime" id="specieLunchtime" class="form-control mb-1" v-model="form.specieLunchtime">
+                    <label for="specieLunchtime">H - Repas matin :</label>
+                    <input type="time" min="06:00" max="13:00" name="specieLunchtime" id="specieLunchtime" class="form-control mb-1" v-model="form.specieLunchtime">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="specieEnclosure">Enclos :</label>
+                    <label for="specieLunchtimeTwo">H - Repas soir :</label>
+                    <input type="time" min="13:00" max="23:00" name="specieLunchtimeTwo" id="specieLunchtimeTwo" class="form-control mb-1" v-model="form.specieLunchtimeTwo">
+                </div>
+                <div class="col">
+                    <label for="specieEnclosure">Enclos : </label>
                     <select name="specieEnclosure" id="specieEnclosure" class="form-control mb-1" v-model="form.specieEnclosure">
-                        <option value="0" selected>Aucun</option>
-                        <option v-for="enclos in this.enclosurelist" :key="enclos.id" :value="enclos.id">{{ enclos.name}}</option>
+                        <!-- <option :value=".enclosure.id">{{this.specie.specie_enclosure[0].enclosure.name}}</option> -->
+                        <option v-for="enclos in this.enclosurelist"  :key="enclos.id" :value="enclos.id">{{ enclos.name}}</option>
                     </select>
                 </div>
-                <div class="col"></div>
             </div>
             <div class="col mt-5">
                 <button type="submit" value="Update" class="btn btn-outline-warning">Update</button>
@@ -64,6 +67,7 @@ export default {
     },
     mounted() {
         console.log("Component Species/edit mounted.");
+        console.log(this.specie.specie_enclosure[0])
     },
     data() {
         return {
@@ -74,7 +78,8 @@ export default {
                 specieFamily: this.specie.family,
                 specieFoodType: this.specie.food_type,
                 specieLunchtime: this.specie.lunchtime,
-                specieEnclosure: this.specie.enclosure_id,
+                specieLunchtimeTwo : this.specie.lunchtimeTwo,
+                specieEnclosure: this.specie.specie_enclosure[0].enclosure.id,
                 _token: this.$page.props.csrf_token,
             }
 
