@@ -29,7 +29,7 @@
                     Forgot your password?
                 </inertia-link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4"  :disabled="form.processing">
                     Log in
                 </jet-button>
             </div>
