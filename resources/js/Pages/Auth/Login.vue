@@ -1,6 +1,6 @@
 <template>
 <app-Layout>
-<div class="container bg-dark d-flex flex-column align-items-center justify-content-center">
+<div class="login">
     <p class="text-center text-info">Ce projet est un Test </p>
     <div v-if="status" class="">
             {{ status }}
@@ -87,3 +87,12 @@
         }
     }
 </script>
+<style scoped>
+    .login
+    {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
