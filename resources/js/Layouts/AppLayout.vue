@@ -11,7 +11,7 @@
             <li class="nav-item h3 fw-bold"><a :href="route('enclosures')">Enclos</a></li>
             <li class="nav-item dropdown h3 fw-bold">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ $page.props.user.name }}
+                    {{ $page.props.user.name ?  $page.props.user.name : ''}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" :href="route('profile.show')">Profil</a></li>
