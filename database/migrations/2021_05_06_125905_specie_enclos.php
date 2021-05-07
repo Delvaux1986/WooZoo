@@ -16,8 +16,8 @@ class SpecieEnclos extends Migration
         Schema::create('specie_enclosure', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('specie_id')->unsigned()->nullable();
-            $table->integer('enclosure_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('specie_id')->default(0);
+            $table->unsignedBigInteger('enclosure_id')->default(0);
         });
     }
 
