@@ -160,15 +160,15 @@
             <!-- <th>Par</th> -->
           </tr>
         </thead>
-        <tbody v-for="enclos in this.enclosures" :key="enclos.id">
+        <!-- <tbody v-for="enclos in this.enclosures" :key="enclos.id">
           <tr>
             <td>{{ enclos.id }}</td>
             <td>{{ enclos.name }}</td>
             <td>{{ enclos.description }}</td>
-            <!-- <td>{{ enclos.specie_enclosure ? enclos.specie_enclosure.length+' espèce(s) ' : "N/A" }}</td> -->
+            <td>{{ enclos.specie_enclosure ? enclos.specie_enclosure.length+' espèce(s) ' : "N/A" }}</td>
             <td></td>
           </tr>
-        </tbody>
+        </tbody> -->
       </table>
     </div>
   </app-Layout>
