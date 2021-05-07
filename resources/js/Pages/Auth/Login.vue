@@ -1,5 +1,6 @@
 <template>
-<div class="container-fluid">
+<div class="container-fluid bg-dark">
+    <p class="text-center text-info"></p>
     <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
