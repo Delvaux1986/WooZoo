@@ -1,4 +1,5 @@
 <template>
+<app-Layout>
 <div class="container-fluid bg-dark d-flex flex-column align-items-center justify-content-center">
     <p class="text-center text-info">Ce projet est un Test </p>
     <div v-if="status" class="">
@@ -35,6 +36,7 @@
         </form>
 
 </div>
+</app-Layout>
 </template>
 
 <script>
@@ -45,6 +47,7 @@
     import JetCheckbox from '@/Jetstream/Checkbox'
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import AppLayout from "./../../Layouts/AppLayout";
 
     export default {
         components: {
@@ -54,7 +57,8 @@
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            AppLayout
         },
 
         props: {
