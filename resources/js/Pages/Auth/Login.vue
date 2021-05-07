@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid bg-dark">
     <p class="text-center text-info"></p>
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+    <div v-if="status" class="d-flex flex-column align-items-center justify-content-center">
             {{ status }}
         </div>
 
