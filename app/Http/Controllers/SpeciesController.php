@@ -65,9 +65,12 @@ class SpeciesController extends Controller
         $newSpecie->lunchtimeTwo = $request->request->get('newSpecieLunchtimeTwo');
         $newSpecie->created_at = $now;
         $newSpecie->save();
-        $user = Auth::user();
+        if($request->request->get('newSpecieEnclosureId')){
+            $enclos = Specie_Enclosure::find(1)->where('specie_id' , $newSpecie->id);
+            // dd($enclos);
+            $enclos->update(['enclosure_id' => $request->request->get('newSpecieEnclosureId')]);
 
-        $specie = Specie::with('enclosure', 'pets')->find($newSpecie->id);
+        }
         // dd($specie);
         return Redirect::route('species');
     }
@@ -81,6 +84,7 @@ class SpeciesController extends Controller
     {
         $specie = Specie::with('specie_enclosure.enclosure', 'pets')->find($specie->id);
         $user = Auth::user();
+        
 
         return Inertia::render('Species/Show', [
             'specie' => $specie,

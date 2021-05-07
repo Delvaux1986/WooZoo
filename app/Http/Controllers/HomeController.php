@@ -10,6 +10,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Specie;
 use App\Models\Enclosure;
+use App\Models\Specie_Enclosure;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -57,4 +58,5 @@ class HomeController extends Controller
             'species' => $species
         ]);
     }
+
 }

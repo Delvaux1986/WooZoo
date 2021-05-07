@@ -21374,7 +21374,9 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       }, 8
       /* PROPS */
       , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": "ml-4",
+        "class": ["ml-4", {
+          'opacity-25': $data.form.processing
+        }],
         disabled: $data.form.processing
       }, {
         "default": _withId(function () {
@@ -21385,7 +21387,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["disabled"])])], 32
+      , ["class", "disabled"])])], 32
       /* HYDRATE_EVENTS */
       )])];
     }),
@@ -23987,7 +23989,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_this.enclosurelist, function (enclos) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("option", {
           key: enclos.id,
-          value: enclos.name
+          value: enclos.id
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(enclos.name), 9
         /* TEXT, PROPS */
         , ["value"]);

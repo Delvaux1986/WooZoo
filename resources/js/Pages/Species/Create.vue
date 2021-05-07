@@ -31,7 +31,7 @@
                 <div class="col">
                     <label for="newSpecieEnclosureId">Enclos :</label>
                     <select class="form-control mb-1" name="newSpecieEnclosureId" id="newSpecieEnclosureId" v-model="form.newSpecieEnclosureId">
-                        <option v-for="enclos in this.enclosurelist" :key="enclos.id" :value="enclos.name">{{ enclos.name }}</option>
+                        <option v-for="enclos in this.enclosurelist" :key="enclos.id" :value="enclos.id">{{ enclos.name }}</option>
                     </select>
                 </div>
             </div>
