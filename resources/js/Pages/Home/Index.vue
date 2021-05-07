@@ -3,7 +3,7 @@
     <div class="container w-80">
       <h2 class="text-center mb-2">Récapitulatif Repas</h2>
       <!-- SPECIES TABLE  -->
-      <table class="table text-center table-bordered">
+      <!-- <table class="table text-center table-bordered">
         <thead class="table-dark w-80">
           <tr>
             <th>#</th>
@@ -13,9 +13,9 @@
             <th>Nourris Matin</th>
             <th>H - Repas Espèce Soir</th>
             <th>Nourris Soir</th>
-            <!-- <th>Enclos</th> -->
+            <th>Enclos</th>
           </tr>
-        </thead>
+        </thead> -->
         <!-- <tbody v-for="specie in this.species" :key="specie.id">
           <tr>
             <td>
@@ -72,9 +72,9 @@
             </td> 
             <td v-else>N/A</td>
           </tr>
-        </tbody> -->
-        <!-- ANIMALS TABLE  -->
-      </table>
+        </tbody> 
+       ANIMALS TABLE  
+      </table>-->
       <h2 class="text-center mb-2">Récapitulatif Animaux</h2>
       <table class="table text-center table-bordered">
         <thead class="table-dark w-80">
@@ -166,7 +166,6 @@
             <td>{{ enclos.name }}</td>
             <td>{{ enclos.description }}</td>
             <td>{{ enclos.specie_enclosure ? enclos.specie_enclosure.length+' espèce(s) ' : "N/A" }}</td>
-            <td></td>
           </tr>
         </tbody>
       </table>
