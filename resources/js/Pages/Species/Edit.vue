@@ -79,7 +79,7 @@ export default {
                 specieFoodType: this.specie.food_type,
                 specieLunchtime: this.specie.lunchtime,
                 specieLunchtimeTwo : this.specie.lunchtimeTwo,
-                specieEnclosure: this.specie.specie_enclosure[0].enclosure.id,
+                // specieEnclosure: this.specie.specie_enclosure[0].enclosure.id,
                 _token: this.$page.props.csrf_token,
             }
 
