@@ -16,15 +16,11 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     // LANDING PAGE
     public function index()
-    {
-        $thisUser = User::find(Auth::user()->id)->get();
-        $thisUser->role = "Admin";
-        $thisUser->save();
-        
+    {  
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
         // dd($now->format('H:i'));
