@@ -1,4 +1,5 @@
 <template>
+<div class="container-fluid">
     <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
@@ -31,7 +32,8 @@
                 </inertia-link>
             </div>
         </form>
-    </jet-authentication-card>
+
+</div>
 </template>
 
 <script>
