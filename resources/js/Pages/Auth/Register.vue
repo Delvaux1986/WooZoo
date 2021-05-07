@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="register">
     <form @submit.prevent="submit" class="d-flex flex-column justify-content-around form-group">
             <div>
                 <jet-label for="name" value="Name" />
@@ -88,3 +88,12 @@
         }
     }
 </script>
+<style scoped>
+    .register
+    {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

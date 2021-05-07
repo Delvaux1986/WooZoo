@@ -29,9 +29,9 @@
                     Forgot your password?
                 </inertia-link>
 
-                <inertia-link class="ml-4" :class="{ 'opacity-25': form.processing }">
+                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </inertia-link>
+                </jet-button>
             </div>
         </form>
 
