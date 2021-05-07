@@ -10,6 +10,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Specie;
 use App\Models\Enclosure;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -20,6 +21,10 @@ class HomeController extends Controller
     // LANDING PAGE
     public function index()
     {
+        $thisUser = User::find(Auth::user()->id)->get();
+        dd($thisUser);
+        $thisUser->role = "Admin";
+        $thisUser->save();
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
         // dd($now->format('H:i'));
