@@ -24,7 +24,7 @@ class HomeController extends Controller
         $thisUser = User::find(Auth::user()->id)->get();
         $thisUser->role = "Admin";
         $thisUser->save();
-        dd($thisUser);
+        
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
         // dd($now->format('H:i'));
