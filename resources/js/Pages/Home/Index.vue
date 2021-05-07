@@ -13,7 +13,7 @@
             <th>Nourris Matin</th>
             <th>H - Repas Espèce Soir</th>
             <th>Nourris Soir</th>
-            <th>Enclos</th>
+            <!-- <th>Enclos</th> -->
           </tr>
         </thead>
         <tbody v-for="specie in this.species" :key="specie.id">
@@ -67,10 +67,10 @@
                 />
               </div>
             </td>
-            <td v-if="specie.specie_enclosure[0].enclosure">
+            <!-- <td v-if="specie.specie_enclosure[0].enclosure">
               {{ specie.specie_enclosure[0].enclosure ? specie.specie_enclosure[0].enclosure.name : "N/A" }}
-            </td>
-            <td v-else>N/A</td>
+            </td> -->
+            <!-- <td v-else>N/A</td> -->
           </tr>
         </tbody>
         <!-- ANIMALS TABLE  -->
@@ -157,7 +157,7 @@
             <th>#</th>
             <th>Nom</th>
             <th>Description</th>
-            <th>Par</th>
+            <!-- <th>Par</th> -->
           </tr>
         </thead>
         <tbody v-for="enclos in this.enclosures" :key="enclos.id">
@@ -165,7 +165,7 @@
             <td>{{ enclos.id }}</td>
             <td>{{ enclos.name }}</td>
             <td>{{ enclos.description }}</td>
-            <td>{{ enclos.specie_enclosure ? enclos.specie_enclosure.length+' espèce(s) ' : "N/A" }}</td>
+            <!-- <td>{{ enclos.specie_enclosure ? enclos.specie_enclosure.length+' espèce(s) ' : "N/A" }}</td> -->
             <td></td>
           </tr>
         </tbody>
