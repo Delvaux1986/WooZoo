@@ -1,12 +1,5 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
-        <jet-validation-errors class="mb-4" />
-
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
@@ -33,9 +26,9 @@
                     Forgot your password?
                 </inertia-link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <inertia-link class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </jet-button>
+                </inertia-link>
             </div>
         </form>
     </jet-authentication-card>
