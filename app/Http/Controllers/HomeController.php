@@ -51,9 +51,9 @@ class HomeController extends Controller
 
         return Inertia::render('Home/Index', [
             // 'animals' => $animals,
-            // 'users' => $users,
+            'users' => $users,
             // 'enclosures' => $enclosures,
-            // 'species' => $species
+            'species' => $species
         ]);
     }
 }
