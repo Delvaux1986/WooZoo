@@ -54,7 +54,7 @@ class HomeController extends Controller
             'animals' => $animals,
             'users' => $users,
             'enclosures' => $enclosures,
-            // 'species' => $species
+            'species' => $species
         ]);
     }
 }

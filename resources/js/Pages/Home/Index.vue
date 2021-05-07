@@ -16,7 +16,7 @@
             <!-- <th>Enclos</th> -->
           </tr>
         </thead>
-        <tbody v-for="specie in this.species" :key="specie.id">
+        <!-- <tbody v-for="specie in this.species" :key="specie.id">
           <tr>
             <td>
               <a :href="route('species.show', specie)">{{ specie.id }}</a>
@@ -67,12 +67,12 @@
                 />
               </div>
             </td>
-            <!-- <td v-if="specie.specie_enclosure[0].enclosure">
+            <td v-if="specie.specie_enclosure[0].enclosure">
               {{ specie.specie_enclosure[0].enclosure ? specie.specie_enclosure[0].enclosure.name : "N/A" }}
-            </td> -->
-            <!-- <td v-else>N/A</td> -->
+            </td> 
+            <td v-else>N/A</td>
           </tr>
-        </tbody>
+        </tbody> -->
         <!-- ANIMALS TABLE  -->
       </table>
       <h2 class="text-center mb-2">Récapitulatif Animaux</h2>
@@ -157,7 +157,7 @@
             <th>#</th>
             <th>Nom</th>
             <th>Description</th>
-            <!-- <th>Par</th> -->
+            <th>Par</th>
           </tr>
         </thead>
         <tbody v-for="enclos in this.enclosures" :key="enclos.id">
@@ -191,11 +191,11 @@ export default {
     console.log(this.animals);
     console.log(this.users);
     console.log(this.enclosures);
-    // console.log(this.species);
+    console.log(this.species);
   },
   mounted() {
     console.log("Component Home mounted.");
-    console.log();
+    console.log(this.species);
   },
   data() {
     return {
