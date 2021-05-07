@@ -50,10 +50,10 @@ class HomeController extends Controller
         $enclosures = Enclosure::with('specie_enclosure.specie')->get();
 
         return Inertia::render('Home/Index', [
-            'animals' => $animals,
-            'users' => $users,
-            'enclosures' => $enclosures,
-            'species' => $species
+            // 'animals' => $animals,
+            // 'users' => $users,
+            // 'enclosures' => $enclosures,
+            // 'species' => $species
         ]);
     }
 }
