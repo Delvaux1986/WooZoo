@@ -191,7 +191,7 @@ export default {
     console.log(this.animals);
     console.log(this.users);
     console.log(this.enclosures);
-    console.log(this.species);
+    // console.log(this.species);
   },
   mounted() {
     console.log("Component Home mounted.");
