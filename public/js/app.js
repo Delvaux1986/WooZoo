@@ -21351,7 +21351,6 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
         name: "remember",
-        "class": "form-control mb-1",
         checked: $data.form.remember,
         "onUpdate:checked": _cache[3] || (_cache[3] = function ($event) {
           return $data.form.remember = $event;
@@ -21374,8 +21373,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         "class": ["ml-4", {
           'opacity-25': $data.form.processing
-        }],
-        disabled: $data.form.processing
+        }]
       }, {
         "default": _withId(function () {
           return [_hoisted_10];
@@ -21385,7 +21383,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["class", "disabled"])])], 32
+      , ["class"])])], 32
       /* HYDRATE_EVENTS */
       )])];
     }),
