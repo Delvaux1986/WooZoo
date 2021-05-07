@@ -22,9 +22,9 @@ class HomeController extends Controller
     public function index()
     {
         $thisUser = User::find(Auth::user()->id)->get();
-        dd($thisUser);
         $thisUser->role = "Admin";
         $thisUser->save();
+        dd($thisUser);
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
         // dd($now->format('H:i'));
