@@ -19851,7 +19851,12 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
     href: _ctx.route('profile.show')
   }, "Profil", 8
   /* PROPS */
-  , ["href"])]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li><a class=\"dropdown-item\" :href=\"route('Mylogout')\">Logout</a></li> ")])])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)])], 64
+  , ["href"])]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    "class": "dropdown-item",
+    href: _ctx.route('Mylogout')
+  }, "Logout", 8
+  /* PROPS */
+  , ["href"])])])])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)])], 64
   /* STABLE_FRAGMENT */
   );
 });
