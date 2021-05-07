@@ -23,8 +23,7 @@ class HomeController extends Controller
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
         // dd($now->format('H:i'));
-        $animals = Pet::with('specie.specie_enclosure.enclosure')
-            ->where('lunchtime', '>', $now->format('H:i'))
+        $animals = Pet::where('lunchtime', '>', $now->format('H:i'))
             ->get();
         if ($now->format('Hi') < 1300 && $now->format('Hi') > 0000) { // IF ITS THE MORNING
             $species = Specie::with('specie_enclosure.enclosure')
