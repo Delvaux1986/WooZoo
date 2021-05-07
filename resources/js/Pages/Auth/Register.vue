@@ -1,30 +1,24 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
-        <jet-validation-errors class="mb-4" />
-
-        <form @submit.prevent="submit">
+<div class="container">
+    <form @submit.prevent="submit" class="d-flex flex-column justify-content-around form-group">
             <div>
                 <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+                <jet-input id="name" type="text" class="form-control mb-1" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
                 <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
+                <jet-input id="email" type="email" class="form-control mb-1" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
                 <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                <jet-input id="password" type="password" class="form-control mb-1" v-model="form.password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
                 <jet-label for="password_confirmation" value="Confirm Password" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                <jet-input id="password_confirmation" type="password" class="form-control mb-1" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
@@ -49,7 +43,8 @@
                 </jet-button>
             </div>
         </form>
-    </jet-authentication-card>
+</div>
+   
 </template>
 
 <script>
