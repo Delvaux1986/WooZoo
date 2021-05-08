@@ -172,14 +172,8 @@ class SpeciesController extends Controller
      */
     public function destroy($id)
     {
-        $specie = Specie::with('enclosure', 'pets')->find($id);
+        $specie = Specie::with('pets')->find($id);
         // dd($specie->pets);
-        if ($specie->enclosure) {
-            $enclos = Enclosure::find($specie->enclosure->id);
-            $enclos->specie_id = null;
-            $enclos->occupy = 0;
-            $enclos->save();
-        }
         if ($specie->pets) {
             foreach ($specie->pets as $pet) {
                 $thisPet = Pet::find($pet->id);

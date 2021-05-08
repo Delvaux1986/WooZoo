@@ -11,9 +11,8 @@
                 </div>
                 <div class="col">
                     <label for="specieFamily">Famille :</label>
-                    <select name="specieFamily" id="specieFamily" class="form-control mb-1" v-model="form.specieFamily">
-                        <option v-for="family in this.specieslist" :key="family.id" :value="family.family">{{ family.family ? family.family : 'N/A'}}</option>
-                    </select>
+                    <input name="specieFamily" type="text" id="specieFamily" class="form-control mb-1" v-model="form.specieFamily">
+                    
                 </div>
             </div>
             <div class="row">
