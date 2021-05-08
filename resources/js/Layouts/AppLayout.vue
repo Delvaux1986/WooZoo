@@ -18,7 +18,13 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" :href="route('logout')">Logout</a></li>
+                <li><a class="dropdown-item" :href="route('login')">Se connecter</a></li>
+                <li><a class="dropdown-item" :href="route('register')">S'enregister</a></li>
+                    <li>
+                    <form @submit.prevent="logout">
+                        <a class="dropdown-item" :href="route('logout')">Se déconecter</a>
+                    </form>
+                    </li>
                 </ul>
             </li>
         </ol>
@@ -56,17 +62,20 @@ export default {
             setInterval(() => {
                 let species = this.$page.props.species;
                 for (let props in species) {
-                    if (species[props].lunchtime.substr(0, 5) == moment().add(5, 'm').format('H:mm') ||// CHEKC IF MORNING FEED IS IN 5 MIN
+                    if (species[props].lunchtime.substr(0, 5) == moment().add(5, 'm').format('H:mm') || // CHEKC IF MORNING FEED IS IN 5 MIN
                         species[props].lunchtimeTwo.substr(0, 5) == moment().add(5, 'm').format('H:mm')) {
-                            if(species[props].feedSpecie === 0 && species[props].feedSpecieTwo === 1){// CHECK IF IS THE MORNING FEED
-                                alert("Il va être l\'heure de nourrire les " + species[props].family + "s dans 5 min !!!");
-                            }else if(species[props].feedSpecieTwo === 0 && species[props].feedSpecie === 1 ){ // CHECK IF IS THE AFTERNOOR FEED IN 5 MIN
-                                alert("Il va être l\'heure de nourrire les " + species[props].family + "s dans 5 min !!!");
-                            }
+                        if (species[props].feedSpecie === 0 && species[props].feedSpecieTwo === 1) { // CHECK IF IS THE MORNING FEED
+                            alert("Il va être l\'heure de nourrire les " + species[props].family + "s dans 5 min !!!");
+                        } else if (species[props].feedSpecieTwo === 0 && species[props].feedSpecie === 1) { // CHECK IF IS THE AFTERNOOR FEED IN 5 MIN
+                            alert("Il va être l\'heure de nourrire les " + species[props].family + "s dans 5 min !!!");
+                        }
                     }
                 }
 
             }, 60000);
+        },
+        logout() {
+            this.$inertia.post(route('logout'));
         },
 
     },
@@ -75,7 +84,6 @@ export default {
         this.checkFeedTime();
         console.log();
     },
-    
 
 }
 </script>

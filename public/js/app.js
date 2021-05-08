@@ -17172,6 +17172,9 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       }, 60000);
+    },
+    logout: function logout() {
+      this.$inertia.post(route('logout'));
     }
   },
   mounted: function mounted() {
@@ -18082,17 +18085,17 @@ __webpack_require__.r(__webpack_exports__);
     animals: Object,
     users: Object,
     enclosures: Object,
-    species: Object
+    species: Object,
+    userlog: Object
   },
-  beforeMount: function beforeMount() {
-    console.log(this.animals);
-    console.log(this.users);
-    console.log(this.enclosures);
-    console.log(this.species);
+  beforeMount: function beforeMount() {// console.log(this.animals);
+    // console.log(this.users);
+    // console.log(this.enclosures);
+    // console.log(this.species);
   },
   mounted: function mounted() {
     console.log("Component Home mounted.");
-    console.log(this.species);
+    console.log(this.animals);
   },
   data: function data() {
     return {
@@ -18104,10 +18107,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     // 3 METHODS FOR UPDATE FEED ON SPECIE & ANIMAL
     changeFirstLunchtime: function changeFirstLunchtime(specie) {
-      if (specie.feedSpecie === 0) {
+      // if(this.userlog.role === 'Admin'){
+      if (specie.feedSpecie === 0 && this.$page.props.use === 'Admin') {
         specie.feedSpecie = 1;
-      } else if (specie.feedSpecie === 1) {
+      } else if (specie.feedSpecie === 1 && this.$page.props.use === 'Admin') {
         specie.feedSpecie = 0;
+      } else if (this.$page.props.user === null) {
+        alert('Vous devez vous enregistrer pour pouvoir faire cela');
       }
 
       this.$inertia.post("/species/firstLunchtime/" + specie.id + "/" + specie.feedSpecie);
@@ -19856,10 +19862,26 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
   /* PROPS */
   , ["href"])]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
     "class": "dropdown-item",
-    href: _ctx.route('logout')
-  }, "Logout", 8
+    href: _ctx.route('login')
+  }, "Se connecter", 8
   /* PROPS */
-  , ["href"])])])])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)])], 64
+  , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    "class": "dropdown-item",
+    href: _ctx.route('register')
+  }, "S'enregister", 8
+  /* PROPS */
+  , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+    onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.logout && $options.logout.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    "class": "dropdown-item",
+    href: _ctx.route('logout')
+  }, "Se déconecter", 8
+  /* PROPS */
+  , ["href"])], 32
+  /* HYDRATE_EVENTS */
+  )])])])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default", {}, undefined, true)])], 64
   /* STABLE_FRAGMENT */
   );
 });
@@ -21300,8 +21322,6 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log in ");
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("S'enregister");
-
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
@@ -21391,18 +21411,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
       }, 8
       /* PROPS */
-      , ["class", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        href: _ctx.route('register')
-      }, {
-        "default": _withId(function () {
-          return [_hoisted_11];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["href"])])], 32
+      , ["class", "disabled"])])], 32
       /* HYDRATE_EVENTS */
       )])];
     }),

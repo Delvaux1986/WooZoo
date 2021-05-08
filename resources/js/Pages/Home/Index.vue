@@ -185,16 +185,17 @@ export default {
     users: Object,
     enclosures: Object,
     species: Object,
+    userlog : Object
   },
   beforeMount(){
-    console.log(this.animals);
-    console.log(this.users);
-    console.log(this.enclosures);
-    console.log(this.species);
+    // console.log(this.animals);
+    // console.log(this.users);
+    // console.log(this.enclosures);
+    // console.log(this.species);
   },
   mounted() {
     console.log("Component Home mounted.");
-    console.log(this.species);
+    console.log(this.animals);
   },
   data() {
     return {
@@ -206,11 +207,14 @@ export default {
   methods: {
     // 3 METHODS FOR UPDATE FEED ON SPECIE & ANIMAL
     changeFirstLunchtime(specie) {
-      if (specie.feedSpecie === 0) {
-        specie.feedSpecie = 1;
-      } else if (specie.feedSpecie === 1) {
-        specie.feedSpecie = 0;
-      }
+      // if(this.userlog.role === 'Admin'){
+        if (specie.feedSpecie === 0 && this.$page.props.use === 'Admin') {
+          specie.feedSpecie = 1;
+        } else if (specie.feedSpecie === 1 && this.$page.props.use === 'Admin') {
+          specie.feedSpecie = 0;
+        } else if (this.$page.props.user === null){
+          alert('Vous devez vous enregistrer pour pouvoir faire cela');
+        }
 
       this.$inertia.post(
         "/species/firstLunchtime/" + specie.id + "/" + specie.feedSpecie

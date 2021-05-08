@@ -22,14 +22,9 @@ class HomeController extends Controller
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
         // dd($now->format('H:i'));
-        $animals = Pet::where('lunchtime', '>', $now->format('H:i'))
-            ->get();
+        $animals = Pet::with('specie')->get();
         if ($now->format('Hi') < 1300 && $now->format('Hi') > 0000) { // IF ITS THE MORNING
             $species = Specie::with('specie_enclosure.enclosure')
-                ->where('lunchtime', '<', $now->format('H:i'))
-                ->orWhere('lunchtime', '>', $now->format('H:i'))
-                ->get();
-            $animals = Pet::with('specie')
                 ->where('lunchtime', '<', $now->format('H:i'))
                 ->orWhere('lunchtime', '>', $now->format('H:i'))
                 ->get();
@@ -38,21 +33,18 @@ class HomeController extends Controller
                 ->where('lunchtimeTwo', '<', $now->format('H:i'))
                 ->orWhere('lunchtimeTwo', '>', $now->format('H:i'))
                 ->get();
-            $animals = Pet::with('specie')
-                ->where('lunchtime', '<', $now->format('H:i'))
-                ->orWhere('lunchtime', '>', $now->format('H:i'))
-                ->get();
         }
         // $species = Specie::with('enclosure' , 'pets')->get();
-        
+        $userLog = Auth::user();
         $users = User::all();
         $enclosures = Enclosure::with('specie_enclosure.specie')->get();
-
+        // dd($animals);
         return Inertia::render('Home/Index', [
             'animals' => $animals,
             'users' => $users,
             'enclosures' => $enclosures,
-            'species' => $species
+            'species' => $species,
+            'userlog' => $userLog
         ]);
     }
 
