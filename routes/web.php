@@ -20,7 +20,7 @@ use App\Http\Controllers\SpeciesController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
