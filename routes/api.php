@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -14,5 +16,7 @@ use App\Http\Controllers\HomeController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 // Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
