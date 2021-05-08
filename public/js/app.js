@@ -18711,7 +18711,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     displayEnclosName: function displayEnclosName(arr) {
-      if (arr.enclosure != null) return arr.enclosure.name; // return arr.enclosure.name ;
+      if (arr.enclosure != null) return arr.enclosure.name;else return 'N/A'; // return arr.enclosure.name ;
     }
   }
 });

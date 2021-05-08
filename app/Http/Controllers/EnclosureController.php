@@ -7,6 +7,7 @@ use DateInterval;
 use Inertia\Inertia;
 use App\Models\Specie;
 use App\Models\Enclosure;
+use App\Models\Specie_Enclosure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -129,13 +130,9 @@ class EnclosureController extends Controller
      */
     public function destroy($id)
     {
-        $enclos = Enclosure::with('specie_enclosure.specie')->find($id);
-        $specie = Specie::find($enclos->specie_id);
-        $specie->enclosure_id = NULL;
-        $specie->save();
 
+        Specie_Enclosure::find(1)->where('enclosure_id', $id)->update(['enclosure_id' => 0]);
         Enclosure::destroy($id);
-
 
         return Redirect::route('enclosures');
     }

@@ -73,7 +73,10 @@ class SpeciesController extends Controller
             $enclos->update(['enclosure_id' => $request->request->get('newSpecieEnclosureId')]);
 
         }
-        // dd($specie);
+        $newEnclo = new Specie_Enclosure();
+        $newEnclo->specie_id = $newSpecie->id;
+        $newEnclo->save();
+        
         return Redirect::route('species');
     }
     /**

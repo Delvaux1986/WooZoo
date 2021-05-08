@@ -71,7 +71,7 @@ export default {
     methods: {
         displayEnclosName(arr){
             if(arr.enclosure != null) return arr.enclosure.name;
-            
+            else return 'N/A';
             // return arr.enclosure.name ;
         }
     }
