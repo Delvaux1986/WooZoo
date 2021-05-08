@@ -21,9 +21,7 @@ use App\Http\Controllers\EnclosureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-if (App::environment('production')) {
-    URL::forceScheme('https');
-}
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
