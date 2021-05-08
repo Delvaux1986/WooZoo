@@ -74,7 +74,8 @@ export default {
         this.momentHour();
         this.checkFeedTime();
         console.log();
-    }
+    },
+    
 
 }
 </script>
