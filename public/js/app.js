@@ -21392,7 +21392,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
       }, 8
       /* PROPS */
       , ["class", "disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-        href: _ctx.url('/register')
+        href: _ctx.route('register')
       }, {
         "default": _withId(function () {
           return [_hoisted_11];
