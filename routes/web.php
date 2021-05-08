@@ -1,13 +1,15 @@
 <?php
 
 use Inertia\Inertia;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PetsController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\EnclosureController;
 use App\Http\Controllers\SpeciesController;
+use App\Http\Controllers\EnclosureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,9 @@ use App\Http\Controllers\SpeciesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
