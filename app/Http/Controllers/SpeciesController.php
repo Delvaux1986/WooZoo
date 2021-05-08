@@ -137,9 +137,6 @@ class SpeciesController extends Controller
         $specie->lunchtime = $request->request->get('specieLunchtime');
         $specie->lunchtimeTwo = $request->request->get('specieLunchtimeTwo');
         $specie->enclosure_id = $request->request->get('specieEnclosure');
-       
-        
-        
 
         if (is_int($specie->getOriginal('enclosure_id'))  && $specie->enclosure_id === 1 ) { // WE GET Specie out the OF ENCLOS 
             

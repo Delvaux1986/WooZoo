@@ -3,7 +3,7 @@
     <div class="container w-80">
       <h2 class="text-center mb-2">Récapitulatif Repas</h2>
       <!-- SPECIES TABLE  -->
-      <!-- <table class="table text-center table-bordered">
+      <table class="table text-center table-bordered">
         <thead class="table-dark w-80">
           <tr>
             <th>#</th>
@@ -15,8 +15,8 @@
             <th>Nourris Soir</th>
             <th>Enclos</th>
           </tr>
-        </thead> -->
-        <!-- <tbody v-for="specie in this.species" :key="specie.id">
+        </thead>
+        <tbody v-for="specie in this.species" :key="specie.id">
           <tr>
             <td>
               <a :href="route('species.show', specie)">{{ specie.id }}</a>
@@ -67,14 +67,14 @@
                 />
               </div>
             </td>
-            <td v-if="specie.specie_enclosure[0].enclosure">
+            <td v-if="specie.specie_enclosure[0]">
               {{ specie.specie_enclosure[0].enclosure ? specie.specie_enclosure[0].enclosure.name : "N/A" }}
             </td> 
             <td v-else>N/A</td>
           </tr>
         </tbody> 
-       ANIMALS TABLE  
-      </table>-->
+       <!-- ANIMALS TABLE   -->
+      </table>
       <h2 class="text-center mb-2">Récapitulatif Animaux</h2>
       <table class="table text-center table-bordered">
         <thead class="table-dark w-80">
