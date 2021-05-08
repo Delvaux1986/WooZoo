@@ -15,4 +15,4 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
+// Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
