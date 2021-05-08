@@ -18,7 +18,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" :href="route('logout')">Logout</a></li>
+                    <li><a class="dropdown-item" :href="route('mylogout')">Logout</a></li>
                 </ul>
             </li>
         </ol>
