@@ -61,10 +61,11 @@ export default {
     props: {
         species: Object,
         user: Object,
+        tablePivot: Object
     },
     mounted() {
         console.log("Component Species/index mounted.");
-        console.log(this.species);
+        console.log(this.tablePivot);
     },
     methods: {
         displayEnclosName(arr){

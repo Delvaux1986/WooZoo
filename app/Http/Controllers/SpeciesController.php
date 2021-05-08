@@ -26,10 +26,12 @@ class SpeciesController extends Controller
     {
         $species = Specie::with('specie_enclosure.enclosure', 'pets')->get();
         $user = Auth::user();
+        $specie_enclosure = Specie_Enclosure::all();
         // dd($species);
         return Inertia::render('Species/Index', [
             'species' => $species,
-            'user' => $user
+            'user' => $user,
+            'tablePivot' => $specie_enclosure
         ]);
     }
 
