@@ -2,9 +2,7 @@
 <header class="mb-1">
     <nav class="navbar navbar-expand-lg w-100">
         <ol class="d-flex w-100 align-items-center justify-content-around">
-            <a :href="route('home')">
-                <img :src="`${logo}`" alt="logo" class="img-fluid" style="width: 100px; height: 100px;">
-            </a>
+            <a :href="route('home')"><img src="https://zupimages.net/up/21/18/228h.png" alt="logo" class="image-fluid" style="width: 100px; height: 100px;"/></a>
             <li class="nav-item h3 fw-bold"><a :href="route('animals')">Animaux</a></li>
             <li class="nav-item h3 fw-bold"><a :href="route('species')">Espèces</a></li>
             <li class="nav-item h3 fw-bold"><a :href="route('users')">Soigneurs</a></li>
@@ -48,7 +46,7 @@ export default {
 
     data() {
         return {
-            logo: "./assets/img/logo.png",
+            logo: "https://zupimages.net/viewer.php?id=21/18/228h.png",
         }
     },
     methods: {

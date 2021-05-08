@@ -1,4 +1,6 @@
 <template>
+<app-layout>
+
 <div class="register">
     <form @submit.prevent="submit" class="d-flex flex-column justify-content-around form-group">
             <div>
@@ -38,12 +40,13 @@
                     Already registered?
                 </inertia-link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4 btn btn-info text-dark" :class=" form.processing " :disabled="form.processing">
                     Register
                 </jet-button>
             </div>
         </form>
 </div>
+</app-layout>
    
 </template>
 
@@ -55,6 +58,8 @@
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import AppLayout from "./../../Layouts/AppLayout";
+
 
     export default {
         components: {
@@ -64,7 +69,8 @@
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            AppLayout
         },
 
         data() {

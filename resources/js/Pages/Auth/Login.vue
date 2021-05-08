@@ -1,12 +1,12 @@
 <template>
 <app-Layout>
 <div class="login">
-    <p class="text-center text-info">Ce projet est un Test </p>
+    
     <div v-if="status" class="">
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit" class="d-flex flex-column justify-content-around form-group">
+        <form @submit.prevent="submit" class="d-flex flex-column justify-content-around form-group mt-3">
             <div>
                 <jet-label for="email" value="Email" />
                 <jet-input id="email" type="email" class="form-control mb-1" v-model="form.email" required autofocus />
@@ -25,11 +25,11 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <inertia-link v-if="canResetPassword" :href="route('password.request')" class="">
                     Forgot your password?
                 </inertia-link>
-
-                <jet-button class="ml-4"  :class="{ 'opacity-25': form.processing }" :disabled="form.processing" >
+                <br>
+                <jet-button class="ml-4 btn btn-info text-dark"  :class=" form.processing  " :disabled="form.processing" >
                     Log in
                 </jet-button>
             </div>

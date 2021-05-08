@@ -1,6 +1,19 @@
 <template>
   <app-Layout>
     <div class="container w-80">
+      <div class="card mb-1" v-if="!this.$page.props.user">
+        <h2 class="text-center p-2">Le projet WooZoo</h2>
+        <p class="text-center text-danger p-2">Bonjour , <br>
+            Ceci est un projet réalisé à la suite d'un entretien chez Bewan. <br>
+            J'ai eu une semaine pour réaliser une petite App de gestion d'un zoo.<br>
+            Cette app est réalisé en LARAVEL/Vue.js , C'est mon premier projet aboutis(prod)
+            avec cette technologie . <br>
+            J'ai rencontré pas mal de problemes pour le publié mais je pense être arrivé à <br>
+            un bon résultat (pour le délais d'une semaine). <br>
+            Il faut s'enregistrer pour pouvoir avoir acces aux autres pages de l'app . 
+        </p>
+
+    </div>
       <h2 class="text-center mb-2">Récapitulatif Repas</h2>
       <!-- SPECIES TABLE  -->
       <table class="table text-center table-bordered">
@@ -188,10 +201,6 @@ export default {
     userlog : Object
   },
   beforeMount(){
-    // console.log(this.animals);
-    // console.log(this.users);
-    // console.log(this.enclosures);
-    // console.log(this.species);
   },
   mounted() {
     console.log("Component Home mounted.");
@@ -208,9 +217,9 @@ export default {
     // 3 METHODS FOR UPDATE FEED ON SPECIE & ANIMAL
     changeFirstLunchtime(specie) {
       // if(this.userlog.role === 'Admin'){
-        if (specie.feedSpecie === 0 && this.$page.props.use === 'Admin') {
+        if (specie.feedSpecie === 0 && this.$page.props.user === 'Admin') {
           specie.feedSpecie = 1;
-        } else if (specie.feedSpecie === 1 && this.$page.props.use === 'Admin') {
+        } else if (specie.feedSpecie === 1 && this.$page.props.user === 'Admin') {
           specie.feedSpecie = 0;
         } else if (this.$page.props.user === null){
           alert('Vous devez vous enregistrer pour pouvoir faire cela');
@@ -219,7 +228,7 @@ export default {
       this.$inertia.post(
         "/species/firstLunchtime/" + specie.id + "/" + specie.feedSpecie
       );
-      console.log(this.specie);
+      
     },
     changeSecondLunchtime(specie) {
       if (specie.feedSpecieTwo === 0) {

@@ -21,6 +21,11 @@ class HomeController extends Controller
     {  
         $now = new DateTime();
         $now->setTimezone(new DateTimeZone('Europe/Brussels'));
+
+        // $robinright = User::find(3);
+        // $robinright->role = 'Admin';
+        // $robinright->save();
+        // dd($robinright);
         
         $animals = Pet::with('specie')->get();
         if ($now->format('Hi') < 1300 && $now->format('Hi') > 0000) { // IF ITS THE MORNING
