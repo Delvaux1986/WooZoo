@@ -59,7 +59,7 @@ Route::post('/animals/feeds/{id}/{state}', [PetsController::class, 'updateFeeds'
 
 
 
-Route::get('/mylogout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('Mylogout');
+Route::post('/mylogout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy')->name('Mylogout');
 
 
 
