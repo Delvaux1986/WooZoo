@@ -32,7 +32,7 @@
                 <jet-button class="ml-4"  :class="{ 'opacity-25': form.processing }" :disabled="form.processing" >
                     Log in
                 </jet-button>
-                <inertia-link :route="url('/register')">S'enregister</inertia-link>
+                <inertia-link :href="url('/register')">S'enregister</inertia-link>
             </div>
         </form>
 
