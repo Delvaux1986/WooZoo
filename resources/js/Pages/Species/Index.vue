@@ -65,6 +65,7 @@ export default {
     },
     mounted() {
         console.log("Component Species/index mounted.");
+        console.log('TEST');
         console.log(this.tablePivot);
     },
     methods: {
